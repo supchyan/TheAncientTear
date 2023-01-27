@@ -1,4 +1,4 @@
-# TheAncientTear
+# The Ancient Tear
 ## Another anime mod for tModLoader (but lore friendly)
 
 **First of first you need to know here:**
