@@ -80,7 +80,7 @@ namespace YueMod.Items.Yue
 			}
 		}
         public override void UseAnimation(Player myPlayer) {
-			if(!Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>())) {
+			if(!myPlayer.HasBuff(ModContent.BuffType<YueBuff>())) {
 				Item.buffType = ModContent.BuffType<YueBuff>();
 			}
 

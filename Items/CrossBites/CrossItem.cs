@@ -31,7 +31,7 @@ namespace YueMod.Items.CrossBites {
 			Item.width = 32;
 			Item.height = 32;
 			Item.scale = 0.3f;
-			Item.useStyle = ItemUseStyleID.Guitar;
+			Item.useStyle = ItemUseStyleID.Rapier;
 			Item.useTime = 40;
 			Item.useAnimation = 20;
 			Item.autoReuse = false;

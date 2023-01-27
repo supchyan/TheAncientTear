@@ -21,10 +21,10 @@ namespace YueMod.Items.PileBunker {
 			return Color.White;
 		}
         public override void SetDefaults() {
-			Item.width = 24;
-			Item.height = 76;
+			Item.width = 20;
+			Item.height = 25;
 			Item.scale = 1.3f;
-			Item.useStyle = ItemUseStyleID.Guitar;
+			Item.useStyle = ItemUseStyleID.Rapier;
 			Item.useTime = 40;
 			Item.useAnimation = 20;
 			Item.autoReuse = false;
