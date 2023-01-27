@@ -49,8 +49,6 @@ namespace YueMod.Items.PileBunker {
                 }
             }
             if (Projectile.timeLeft == 0) {
-                SoundStyle pileCharge = new SoundStyle($"{nameof(YueMod)}/Items/PileBunker/PileCharge");
-                SoundEngine.PlaySound(pileCharge.WithVolumeScale(3.5f), Projectile.position);
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<PileBunkerProjectile01>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
             }
         }        

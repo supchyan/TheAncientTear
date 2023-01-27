@@ -66,6 +66,14 @@ namespace YueMod.Items.Yue
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.scale = 0.7f;
 		}
+		public override bool CanUseItem(Player player) {
+			if(player.HasBuff<YueBuff>()){
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
 		public override void UseStyle(Player player, Rectangle heldItemFrame) {
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0) {
 				player.AddBuff(Item.buffType, 3600);

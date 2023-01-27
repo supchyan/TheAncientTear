@@ -164,7 +164,7 @@ namespace YueMod.Items.CrossBites
         public override void OnSpawn(IEntitySource source)
         {
             SoundStyle Shoot = new SoundStyle($"{nameof(YueMod)}/Items/CrossBites/Shoot");
-            SoundEngine.PlaySound(Shoot);
+            SoundEngine.PlaySound(Shoot, Projectile.position);
             base.OnSpawn(source);
            
         }

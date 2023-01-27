@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -56,6 +57,12 @@ namespace YueMod.Items.PileBunker {
             if (Projectile.timeLeft == 0) {
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<PileBunkerProjectile02>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
             }
+        }
+        public override void OnSpawn(IEntitySource source)
+        {
+            SoundStyle pileCharge = new SoundStyle($"{nameof(YueMod)}/Items/PileBunker/PileCharge");
+            SoundEngine.PlaySound(pileCharge.WithVolumeScale(3.5f), Projectile.position);
+            base.OnSpawn(source);
         }
     }
 }
