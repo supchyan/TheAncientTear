@@ -127,7 +127,7 @@ namespace YueMod.Common.UI {
 			hideButton.Top.Set(16, 0f);
 			hideButton.OnClick += new MouseEvent(HideButtonClicked);
 
-
+			
 			//ALL INFO TEXT COLOR IS fff2d6!
 
 
@@ -433,6 +433,7 @@ namespace YueMod.Common.UI {
 
 
 
+			//When Worm or Brain has been defeated:
 			BrainText01 = new UIText("[c/fff2d6:Сrumbled!]", 1.2f);
 			BrainText01.Width.Set(0, 0f);
 			BrainText01.Height.Set(0, 0f);
@@ -565,24 +566,26 @@ namespace YueMod.Common.UI {
 			Append(area);
 		}
 		bool greetingsCheck = false;
-		bool WoFcheck = false;
-		bool BrainCheck = false;
+		int loreCounter = 0;
 		public override void Update(GameTime gameTime) {
+			
 			if(greetingsCheck == true) {
-				if (DownedBossSystem.Brain && BrainCheck == false) {
+
+				if (DownedBossSystem.Brain && loreCounter == 0) {
 					area.RemoveChild(transitionText);
 					area.RemoveChild(transitionTextNextButton);
 					area.Append(BrainText01);
 					area.Append(BrainText01NextButton);
-					BrainCheck = true;
+					loreCounter++;
 				}
-				if (DownedBossSystem.WoF && BrainCheck == true && WoFcheck == false) {
+				else if (DownedBossSystem.WoF && loreCounter == 2) {
 					area.RemoveChild(transitionText);
 					area.RemoveChild(transitionTextNextButton);
 					area.Append(WofText01);
 					area.Append(WofText01NextButton);
-					WoFcheck = true;
+					loreCounter++;
 				}
+				
 			}
 			base.Update(gameTime);
 		}
@@ -669,9 +672,78 @@ namespace YueMod.Common.UI {
 			greetingsCheck = true;
 			SoundEngine.PlaySound(endOfTalk);
 		}
+
+
+
 		private void transitionTextNextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
 		}
+
+
+
+		//Brain
+		private void BrainText01NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(BrainText01);
+			area.RemoveChild(BrainText01NextButton);
+			area.Append(BrainText02);
+			area.Append(BrainText02NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void BrainText02NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(BrainText02);
+			area.RemoveChild(BrainText02NextButton);
+			area.Append(BrainText03);
+			area.Append(BrainText03NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void BrainText03NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(BrainText03);
+			area.RemoveChild(BrainText03NextButton);
+			area.Append(BrainText04);
+			area.Append(BrainText04NextButton);
+			Item.NewItem(Item.GetSource_None(), Main.LocalPlayer.Center, ModContent.ItemType<PileBunkerItem>());
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void BrainText04NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(BrainText04);
+			area.RemoveChild(BrainText04NextButton);
+			area.Append(BrainText05);
+			area.Append(BrainText05NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void BrainText05NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(BrainText05);
+			area.RemoveChild(BrainText05NextButton);
+			area.Append(BrainText06);
+			area.Append(BrainText06NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void BrainText06NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(BrainText06);
+			area.RemoveChild(BrainText06NextButton);
+			area.Append(BrainText07);
+			area.Append(BrainText07NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void BrainText07NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(BrainText07);
+			area.RemoveChild(BrainText07NextButton);
+			area.Append(BrainText08);
+			area.Append(BrainText08NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void BrainText08NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			//END OF BRAIN
+			area.RemoveChild(BrainText08);
+			area.RemoveChild(BrainText08NextButton);
+			area.Append(transitionText);
+			area.Append(transitionTextNextButton);
+			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
+			SoundEngine.PlaySound(endOfTalk);
+			loreCounter = 2;
+		}
+
+
 
 		//WoF
 		private void WofText01NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
@@ -739,67 +811,10 @@ namespace YueMod.Common.UI {
 			area.Append(transitionTextNextButton);
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
 			SoundEngine.PlaySound(endOfTalk);
+			loreCounter = 3;
 		}
 
-		private void BrainText01NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
-			area.RemoveChild(BrainText01);
-			area.RemoveChild(BrainText01NextButton);
-			area.Append(BrainText02);
-			area.Append(BrainText02NextButton);
-			SoundEngine.PlaySound(nextSound);
-		}
-		private void BrainText02NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
-			area.RemoveChild(BrainText02);
-			area.RemoveChild(BrainText02NextButton);
-			area.Append(BrainText03);
-			area.Append(BrainText03NextButton);
-			SoundEngine.PlaySound(nextSound);
-		}
-		private void BrainText03NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
-			area.RemoveChild(BrainText03);
-			area.RemoveChild(BrainText03NextButton);
-			area.Append(BrainText04);
-			area.Append(BrainText04NextButton);
-			Item.NewItem(Item.GetSource_None(), Main.LocalPlayer.Center, ModContent.ItemType<PileBunkerItem>());
-			SoundEngine.PlaySound(nextSound);
-		}
-		private void BrainText04NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
-			area.RemoveChild(BrainText04);
-			area.RemoveChild(BrainText04NextButton);
-			area.Append(BrainText05);
-			area.Append(BrainText05NextButton);
-			SoundEngine.PlaySound(nextSound);
-		}
-		private void BrainText05NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
-			area.RemoveChild(BrainText05);
-			area.RemoveChild(BrainText05NextButton);
-			area.Append(BrainText06);
-			area.Append(BrainText06NextButton);
-			SoundEngine.PlaySound(nextSound);
-		}
-		private void BrainText06NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
-			area.RemoveChild(BrainText06);
-			area.RemoveChild(BrainText06NextButton);
-			area.Append(BrainText07);
-			area.Append(BrainText07NextButton);
-			SoundEngine.PlaySound(nextSound);
-		}
-		private void BrainText07NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
-			area.RemoveChild(BrainText07);
-			area.RemoveChild(BrainText07NextButton);
-			area.Append(BrainText08);
-			area.Append(BrainText08NextButton);
-			SoundEngine.PlaySound(nextSound);
-		}
-		private void BrainText08NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
-			//END OF BRAIN
-			area.RemoveChild(BrainText08);
-			area.RemoveChild(BrainText08NextButton);
-			area.Append(transitionText);
-			area.Append(transitionTextNextButton);
-			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
-			SoundEngine.PlaySound(endOfTalk);
-		}
+		
 
 
 
