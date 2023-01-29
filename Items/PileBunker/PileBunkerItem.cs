@@ -14,7 +14,7 @@ namespace YueMod.Items.PileBunker {
     public class PileBunkerItem : ModItem {
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Pile Bunker");
-			Tooltip.SetDefault("Using this item is calling the Pile Bunker for destroy any ground and enemies under of it."+"\nCan create fast transfer to hell."+"\n\nGround? AHAHAHAHA!" + $"[c/808080: unusual]" + ".");
+			Tooltip.SetDefault("Using this item is calling the Pile Bunker for destroy any ground and enemies under of it."+"\nCan create deep tunnel to get access to hell."+"\n\nGround? AHAHAHAHA!");
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;			
         }
         public override Color? GetAlpha(Color lightColor) {
@@ -39,6 +39,7 @@ namespace YueMod.Items.PileBunker {
 			//Item.shoot = ModContent.ProjectileType<PileBunkerProjectile00>();
 			Item.rare = ItemRarityID.Red;
 			Item.shoot = ModContent.ProjectileType<PileBunkerProjectile00>();
+			Item.value = Item.sellPrice(1, 0, 0, 0);
 		}
 		public override bool CanUseItem(Player player) {
 			if(player.HasBuff<PileBunkerTimer>()){

@@ -52,15 +52,15 @@ namespace YueMod.Items.CrossBites
             var dust2 = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.SolarFlare, 0f, 0f, 100, default, 0.4f);
             dust2.velocity *= 10f;
             Projectile.friendly = true;
-            AnimateProjectile();
+            Lighting.AddLight(Projectile.Center, 1f, 1f, 1f);
             GeneralBehavior(owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition, Projectile);
             SearchForTargets(owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
             Movement(foundTarget, distanceFromTarget, targetCenter, distanceToIdlePosition, vectorToIdlePosition);
-			Timer++;
-            if (Timer > 60) {
-                Projectile.Kill();
-                Timer = 0;
-            }
+			Projectile.ai[0]++;
+			if(Projectile.ai[0] > 120) {
+				Projectile.Kill();
+				Projectile.ai[0] = 0;
+			}
         }
 
         private void GeneralBehavior(Player owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition, Projectile projectile) {
@@ -156,11 +156,6 @@ namespace YueMod.Items.CrossBites
 			}
         }
 
-        public float Timer {
-			get => Projectile.ai[0];
-			set => Projectile.ai[0] = value;
-		}
-
         public override void OnSpawn(IEntitySource source)
         {
             SoundStyle Shoot = new SoundStyle($"{nameof(YueMod)}/Items/CrossBites/Shoot");
@@ -168,20 +163,6 @@ namespace YueMod.Items.CrossBites
             base.OnSpawn(source);
            
         }
-
-        public void AnimateProjectile() // Call this every frame, for example in the AI method.
-		{
-			Projectile.frameCounter++;
-			if (Projectile.frameCounter >= 1) // This will change the sprite every 8 frames (0.13 seconds). Feel free to experiment.
-			{
-				Projectile.frame++;
-				Projectile.frame %= 1; // Will reset to the first frame if you've gone through them all.
-				Projectile.frameCounter = 0;
-			}
-
-			Lighting.AddLight(Projectile.Center, 2f, 2f, 0f);
-			
-		}
         public override bool PreDraw(ref Color lightColor)
 		{
 			SpriteEffects spriteEffects = SpriteEffects.None;

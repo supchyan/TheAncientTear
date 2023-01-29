@@ -37,6 +37,12 @@ namespace YueMod.Items.Donner {
 			Item.shoot = ModContent.ProjectileType<ShootDonnerProjectile>();
 			Item.useAmmo = ModContent.ItemType<DonnerAmmo>();
 		}
+		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
+			Vector2 muzzleOffset = Vector2.Normalize(velocity) * 25f + new Vector2(3, -5);
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0)) {
+				position += muzzleOffset;
+			}
+        }
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI) {
 
 			Texture2D texture = TextureAssets.Item[Item.type].Value;
