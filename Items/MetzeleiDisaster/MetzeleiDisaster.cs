@@ -13,8 +13,24 @@ using Terraria.GameContent;
 namespace YueMod.Items.MetzeleiDisaster {
 	public class MetzeleiDisaster : ModItem {
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Metzelei Disaster");
-			Tooltip.SetDefault("Cock");
+			DisplayName.SetDefault("Metzelei Disaster (Improved)");
+			Tooltip.SetDefault("Powerful rocket launcher, shooting by using spectial type rockets.\nHas a smart module for self-aiming.");
+		}
+		public override void ModifyTooltips(List<TooltipLine> tooltips) {
+
+			var line = new TooltipLine(Mod, "cock:RemoveMe", "cock");
+			tooltips.Add(line);
+
+			line = new TooltipLine(Mod, "Face", "\nReloading after " + ammoOut + " launches.") {
+				OverrideColor = new Color(255, 10, 10)
+			};
+			tooltips.Add(line);
+			foreach (TooltipLine line2 in tooltips) {
+				if (line2.Mod == "Terraria" && line2.Name == "ItemName") {
+					line2.OverrideColor = Main.errorColor;
+				}
+			}
+			tooltips.RemoveAll(l => l.Name.EndsWith(":RemoveMe"));
 		}
 		public override void SetDefaults() {
 			Item.width = 39; 
@@ -25,7 +41,7 @@ namespace YueMod.Items.MetzeleiDisaster {
 			Item.DamageType = DamageClass.Ranged;
 			Item.knockBack = 10f; 
 			Item.noMelee = true; 
-			Item.rare = ItemRarityID.Yellow; 
+			Item.rare = ItemRarityID.Red; 
 			Item.shootSpeed = 20f; 
 			Item.useAnimation = 10; 
             Item.autoReuse = true;
@@ -34,6 +50,7 @@ namespace YueMod.Items.MetzeleiDisaster {
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.value = Item.sellPrice(1, 0, 0, 0);
 			Item.shoot = ModContent.ProjectileType<MetzeleiDisasterRocket>();
+            Item.buffType = ModContent.BuffType<MetzeleiDisasterTimer>();
 			//Item.useAmmo = ModContent.ItemType<DonnerAmmo>();
 		}
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
@@ -47,7 +64,23 @@ namespace YueMod.Items.MetzeleiDisaster {
 		}
         public override bool CanUseItem(Player player) {
             //add cooldown after 9 shots.
-			return true;
+            if (ammoOut == 0) {
+                ammoOut = 9;
+                Main.LocalPlayer.AddBuff(Item.buffType, 200);
+                SoundStyle reload = new SoundStyle($"{nameof(YueMod)}/Items/MetzeleiDisaster/bazookaReload");
+                SoundEngine.PlaySound(reload);
+                return false;   
+            }
+            if (Main.LocalPlayer.HasBuff<MetzeleiDisasterTimer>()) {
+                return false; 
+            }
+            else {
+			    return true;
+            }
+		}
+        int ammoOut = 9;
+        public override void UseAnimation(Player myPlayer) {
+			ammoOut--;
 		}
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI) {
 

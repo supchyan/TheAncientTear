@@ -26,22 +26,33 @@ namespace YueMod.Items.MetzeleiDisaster {
 			Projectile.width = 26;
         }
         public override void AI() {
-			Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90);
+			
             Player owner = Main.player[Projectile.owner];
-           // var dust2 = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.SolarFlare, 0f, 0f, 100, default, 0.4f);
-           // dust2.velocity *= 10f;
-            Projectile.friendly = true;
-            Lighting.AddLight(Projectile.Center, 1f, 1f, 1f);
+            var dust2 = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Ash, 0f, 0f, 100, default, 0.8f);
+            //dust2.velocity *= 10f;
+            Lighting.AddLight(Projectile.Center, 1f, 1f, 0f);
             SearchForTargets(owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
             Movement(foundTarget, distanceFromTarget, targetCenter);
 			Projectile.ai[0]++;
-			if(Projectile.ai[0] > 120) {
+			if(Projectile.ai[0] > 240) {
 				Projectile.Kill();
 				Projectile.ai[0] = 0;
 			}
         }
-
-
+		public override bool OnTileCollide(Vector2 oldVelocity) {
+			if (Projectile.velocity.X != oldVelocity.X) {
+					Projectile.velocity.X = -oldVelocity.X;
+				}
+				if (Projectile.velocity.Y != oldVelocity.Y) {
+					Projectile.velocity.Y = -oldVelocity.Y;
+				}
+				Projectile.velocity *= 0.75f;
+				SoundEngine.PlaySound(SoundID.Tink, Projectile.position);
+			return false;
+		}
+		public override void Kill(int timeLeft) {
+			Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileID.SolarWhipSwordExplosion, Projectile.damage, Projectile.knockBack, Main.myPlayer);
+		}
         private void SearchForTargets(Player owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter) {
 			distanceFromTarget = 700f;
 			targetCenter = Projectile.position;
@@ -73,11 +84,6 @@ namespace YueMod.Items.MetzeleiDisaster {
 				}
 			}
         }
-        public override void OnSpawn(IEntitySource source) {
-            //SoundStyle Shoot = new SoundStyle($"{nameof(YueMod)}/Items/CrossBites/Shoot");
-            //SoundEngine.PlaySound(Shoot, Projectile.position);
-            base.OnSpawn(source);
-        }
         private void Movement(bool foundTarget, float distanceFromTarget, Vector2 targetCenter) {
 
 			float speed = 1f;
@@ -86,7 +92,20 @@ namespace YueMod.Items.MetzeleiDisaster {
             direction.Normalize();
             direction *= speed;
             if (foundTarget) {
+				Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90);
 				Projectile.velocity = Projectile.velocity + direction;
+				SoundStyle detectedShort = new SoundStyle($"{nameof(YueMod)}/Items/MetzeleiDisaster/detectedShort") {
+					MaxInstances = 9,
+					SoundLimitBehavior = SoundLimitBehavior.IgnoreNew
+				};
+				SoundEngine.PlaySound(detectedShort, Projectile.position);
+			}
+			else if (!foundTarget) {
+				SoundStyle detectedFar = new SoundStyle($"{nameof(YueMod)}/Items/MetzeleiDisaster/detectedFar") {
+					SoundLimitBehavior = SoundLimitBehavior.IgnoreNew
+				};
+				SoundEngine.PlaySound(detectedFar, Projectile.position);
+				Projectile.rotation += Projectile.velocity.X*0.15f + Projectile.velocity.Y*0.15f;
 			}
 			if(Projectile.velocity.X > 20f) {
 				Projectile.velocity.X = 20f;

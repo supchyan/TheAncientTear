@@ -50,7 +50,7 @@ namespace YueMod.Items.CrossBites {
 			Projectile.minionSlots = 1f;
 			Projectile.friendly = true;
 			Projectile.penetrate = -1;
-			Projectile.rotation = Projectile.velocity.Y*0.15f + Projectile.velocity.X*0.15f + MathHelper.ToRadians(-90);
+			
 		}
 		public override bool MinionContactDamage() {
 			return false;
