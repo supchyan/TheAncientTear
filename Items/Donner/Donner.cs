@@ -33,9 +33,15 @@ namespace YueMod.Items.Donner {
 			Item.UseSound = new SoundStyle($"{nameof(YueMod)}/Items/Donner/DonnerShoot");
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.value = Item.sellPrice(5, 0, 0, 0);
-
 			Item.shoot = ModContent.ProjectileType<ShootDonnerProjectile>();
 			Item.useAmmo = ModContent.ItemType<DonnerAmmo>();
+		}
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
+
+			Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ShootDonnerProjectile>(), damage, knockback, player.whoAmI);
+			//Projectile.NewProjectile(source, position, velocity,
+			//ModContent.ProjectileType<DonnerRotater>(), damage, knockback, player.whoAmI);
+			return false;
 		}
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
 			Vector2 muzzleOffset = Vector2.Normalize(velocity) * 25f + new Vector2(3, -5);

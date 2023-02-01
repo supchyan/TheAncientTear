@@ -18,10 +18,7 @@ namespace YueMod.Items.MetzeleiDisaster {
 		}
 		public override void ModifyTooltips(List<TooltipLine> tooltips) {
 
-			var line = new TooltipLine(Mod, "cock:RemoveMe", "cock");
-			tooltips.Add(line);
-
-			line = new TooltipLine(Mod, "Face", "\nReloading after " + ammoOut + " launches.") {
+			var line = new TooltipLine(Mod, "Face", "\nReloading after " + ammoOut + " launches.") {
 				OverrideColor = new Color(255, 10, 10)
 			};
 			tooltips.Add(line);
@@ -30,7 +27,9 @@ namespace YueMod.Items.MetzeleiDisaster {
 					line2.OverrideColor = Main.errorColor;
 				}
 			}
-			tooltips.RemoveAll(l => l.Name.EndsWith(":RemoveMe"));
+		}
+		public override Color? GetAlpha(Color lightColor) {
+			return Color.White;
 		}
 		public override void SetDefaults() {
 			Item.width = 39; 
@@ -63,7 +62,6 @@ namespace YueMod.Items.MetzeleiDisaster {
 			return new Vector2(-25f, -4f);
 		}
         public override bool CanUseItem(Player player) {
-            //add cooldown after 9 shots.
             if (ammoOut == 0) {
                 ammoOut = 9;
                 Main.LocalPlayer.AddBuff(Item.buffType, 200);

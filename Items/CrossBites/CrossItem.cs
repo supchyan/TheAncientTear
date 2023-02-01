@@ -13,15 +13,15 @@ using Terraria.GameContent;
 namespace YueMod.Items.CrossBites {
 	public class CrossItem : ModItem {
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Decontamination Crosses");
-			Tooltip.SetDefault("Transfers the strong flying unit from The Beyond." + "\nDesigned to hunt on something" + $"[c/808080: unusual]" + ".");
+			DisplayName.SetDefault("Cross Bites");
+			Tooltip.SetDefault("Transfers the strong flying unit from The Beyond." + "\nDesigned to hunt on something" + $"[c/c12120: unusual]" + ".");
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;			
 		}
 		public override Color? GetAlpha(Color lightColor) {
 			return Color.White;
 		}
 		public override void ModifyTooltips(List<TooltipLine> tooltips) {
-			var line = new TooltipLine(Mod, "Verbose:RemoveMe", "\nPosition! Aim! Fire!") {
+			var line = new TooltipLine(Mod, "cock", "\nPosition! Aim! Fire!") {
 				OverrideColor = new Color(255, 25, 0)
 			};
 			tooltips.Add(line);
@@ -48,12 +48,9 @@ namespace YueMod.Items.CrossBites {
 
 		}
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
-			// This is needed so the buff that keeps your minion alive and allows you to despawn it properly applies
 			player.AddBuff(Item.buffType, 2);
-			// Minions have to be spawned manually, then have originalDamage assigned to the damage of the summon item
 			var projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, Main.myPlayer);
 			projectile.originalDamage = Item.damage;
-			// Since we spawned the projectile manually already, we do not need the game to spawn it for ourselves anymore, so return false
 			return false;
 		}
 	}

@@ -16,12 +16,12 @@ namespace YueMod.Items.PileBunker {
             Main.projPet[Projectile.type] = true;
         }
         public override void SetDefaults() {
-            Projectile.friendly = true; // Only controls if it deals damage to enemies on contact (more on that later)
+            Projectile.friendly = true;
 			Projectile.minion = true;
             Projectile.aiStyle = 0;
 			Projectile.width = 16;
 			Projectile.height = 32;
-			Projectile.hostile = true; // Can the projectile deal damage to the player?
+			Projectile.hostile = true;
 			Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.penetrate = 1;   

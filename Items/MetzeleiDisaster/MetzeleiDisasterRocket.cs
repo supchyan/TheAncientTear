@@ -25,12 +25,16 @@ namespace YueMod.Items.MetzeleiDisaster {
 			Projectile.height = 26;
 			Projectile.width = 26;
         }
+		public override Color? GetAlpha(Color lightColor) {
+			return Color.White;
+		}
         public override void AI() {
 			
             Player owner = Main.player[Projectile.owner];
-            var dust2 = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Ash, 0f, 0f, 100, default, 0.8f);
-            //dust2.velocity *= 10f;
-            Lighting.AddLight(Projectile.Center, 1f, 1f, 0f);
+            var ash = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Ash, 0f, 0f, 100, default, 0.6f);
+            var trail = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.SolarFlare, 0f, 0f, 255, default, 0.4f);
+			trail.velocity = Vector2.Zero;
+            Lighting.AddLight(Projectile.Center, 2f, 1f, 0f);
             SearchForTargets(owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
             Movement(foundTarget, distanceFromTarget, targetCenter);
 			Projectile.ai[0]++;
@@ -87,21 +91,23 @@ namespace YueMod.Items.MetzeleiDisaster {
         private void Movement(bool foundTarget, float distanceFromTarget, Vector2 targetCenter) {
 
 			float speed = 1f;
-
+			Projectile.ai[0]++;
 			Vector2 direction = targetCenter - Projectile.Center;
             direction.Normalize();
             direction *= speed;
             if (foundTarget) {
 				Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90);
-				Projectile.velocity = Projectile.velocity + direction;
+				Projectile.velocity = (Projectile.velocity + direction);
 				SoundStyle detectedShort = new SoundStyle($"{nameof(YueMod)}/Items/MetzeleiDisaster/detectedShort") {
 					MaxInstances = 9,
+					Volume = 3.5f,
 					SoundLimitBehavior = SoundLimitBehavior.IgnoreNew
 				};
 				SoundEngine.PlaySound(detectedShort, Projectile.position);
 			}
 			else if (!foundTarget) {
 				SoundStyle detectedFar = new SoundStyle($"{nameof(YueMod)}/Items/MetzeleiDisaster/detectedFar") {
+					Volume = 3.5f,
 					SoundLimitBehavior = SoundLimitBehavior.IgnoreNew
 				};
 				SoundEngine.PlaySound(detectedFar, Projectile.position);
