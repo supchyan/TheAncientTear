@@ -4,7 +4,7 @@
 **First of first you need to know here:**
 
 I love Arifureta series and this mod is about it.
-If you didn't watch this anime, or didn't read a novel, some of jokes/features/etc. won't be understandful.
+If you didn't watch this anime, or didn't read a novel, some of jokes/features/etc. won't be understandable.
 
 **The second thing:**
 
