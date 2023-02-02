@@ -26,7 +26,7 @@ namespace YueMod.Items.Donner {
 			Item.DamageType = DamageClass.Ranged;
 			Item.knockBack = 4f; 
 			Item.noMelee = true; 
-			Item.rare = ItemRarityID.Yellow; 
+			Item.rare = ItemRarityID.Red; 
 			Item.shootSpeed = 35f; 
 			Item.useAnimation = 25; 
 			Item.useTime = 25; 

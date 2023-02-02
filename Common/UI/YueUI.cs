@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader;
 using Terraria.UI;
+using Terraria.GameInput;
 using YueMod.Items.Yue;
 using YueMod.Items.Donner;
 using YueMod.Items.PileBunker;
@@ -26,6 +27,9 @@ namespace YueMod.Common.UI {
 		private UIText noname;
 		private UIText name;
 		private UIImage hideButton;
+		Asset<Texture2D> hideButtonTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonHide");
+		Asset<Texture2D> nextButtonTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext");
+		Asset<Texture2D> nextButtonDownTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNextDown");
 
 		//Transition textline is here.
 		private UIText transitionText;
@@ -107,7 +111,6 @@ namespace YueMod.Common.UI {
 			noname.Height.Set(0, 0f);
 			noname.Top.Set(15, 0f);
 			noname.Left.Set(28, 0f);
-
 			name = new UIText("[c/f1d485:Yue]", 1.2f); // text to show stat
 			name.Width.Set(0, 0f);
 			name.Height.Set(0, 0f);
@@ -119,8 +122,8 @@ namespace YueMod.Common.UI {
 			barFrame.Top.Set(0, 0f);
 			barFrame.Width.Set(0, 0f);
 			barFrame.Height.Set(0, 0f);
-			//Close button is here
-			hideButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonClose"));
+			//Hide button is here
+			hideButton = new UIImage(hideButtonTexture);
 			hideButton.Width.Set(20, 0f);
 			hideButton.Height.Set(20, 0f);
 			hideButton.Left.Set(area.Width.Pixels - hideButton.Width.Pixels - 10, 0f);
@@ -137,7 +140,7 @@ namespace YueMod.Common.UI {
 			greetingsText01.Top.Set(55, 0f);
 			greetingsText01.Left.Set(20, 0f);
 			//Next button for switch (need to be original for EVERY PAGE FUCK...)
-			greetingsText01nextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			greetingsText01nextButton = new UIImage(nextButtonTexture);
 			greetingsText01nextButton.Width.Set(20, 0f);
 			greetingsText01nextButton.Height.Set(20, 0f);
 			greetingsText01nextButton.Left.Set(area.Width.Pixels - greetingsText01nextButton.Width.Pixels - 15, 0f);
@@ -152,7 +155,7 @@ namespace YueMod.Common.UI {
 			greetingsText02.Top.Set(55, 0f);
 			greetingsText02.Left.Set(20, 0f);
 
-			greetingsText02nextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			greetingsText02nextButton = new UIImage(nextButtonTexture);
 			greetingsText02nextButton.Width.Set(20, 0f);
 			greetingsText02nextButton.Height.Set(20, 0f);
 			greetingsText02nextButton.Left.Set(area.Width.Pixels - greetingsText02nextButton.Width.Pixels - 15, 0f);
@@ -167,7 +170,7 @@ namespace YueMod.Common.UI {
 			greetingsText03.Top.Set(55, 0f);
 			greetingsText03.Left.Set(20, 0f);
 
-			greetingsText03nextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			greetingsText03nextButton = new UIImage(nextButtonTexture);
 			greetingsText03nextButton.Width.Set(20, 0f);
 			greetingsText03nextButton.Height.Set(20, 0f);
 			greetingsText03nextButton.Left.Set(area.Width.Pixels - greetingsText03nextButton.Width.Pixels - 15, 0f);
@@ -176,13 +179,13 @@ namespace YueMod.Common.UI {
 			
 
 
-			greetingsText04 = new UIText("[c/fff2d6:And as I can see, this is not my ][c/ae00ff:dimension][c/fff2d6:.]\n[c/fff2d6:Probably this is because of thing, you are]\n[c/fff2d6:holding in hands.]", 1.2f);
+			greetingsText04 = new UIText("[c/fff2d6:And as I can see, this is not my ][c/b47aff:dimension][c/fff2d6:.]\n[c/fff2d6:Probably this is because of thing, you are]\n[c/fff2d6:holding in hands.]", 1.2f);
 			greetingsText04.Width.Set(0, 0f);
 			greetingsText04.Height.Set(0, 0f);
 			greetingsText04.Top.Set(55, 0f);
 			greetingsText04.Left.Set(20, 0f);
 
-			greetingsText04nextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			greetingsText04nextButton = new UIImage(nextButtonTexture);
 			greetingsText04nextButton.Width.Set(20, 0f);
 			greetingsText04nextButton.Height.Set(20, 0f);
 			greetingsText04nextButton.Left.Set(area.Width.Pixels - greetingsText04nextButton.Width.Pixels - 15, 0f);
@@ -197,7 +200,7 @@ namespace YueMod.Common.UI {
 			greetingsText05.Top.Set(55, 0f);
 			greetingsText05.Left.Set(20, 0f);
 
-			greetingsText05nextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			greetingsText05nextButton = new UIImage(nextButtonTexture);
 			greetingsText05nextButton.Width.Set(20, 0f);
 			greetingsText05nextButton.Height.Set(20, 0f);
 			greetingsText05nextButton.Left.Set(area.Width.Pixels - greetingsText05nextButton.Width.Pixels - 15, 0f);
@@ -212,7 +215,7 @@ namespace YueMod.Common.UI {
 			greetingsText06.Top.Set(55, 0f);
 			greetingsText06.Left.Set(20, 0f);
 
-			greetingsText06nextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			greetingsText06nextButton = new UIImage(nextButtonTexture);
 			greetingsText06nextButton.Width.Set(20, 0f);
 			greetingsText06nextButton.Height.Set(20, 0f);
 			greetingsText06nextButton.Left.Set(area.Width.Pixels - greetingsText06nextButton.Width.Pixels - 15, 0f);
@@ -227,7 +230,7 @@ namespace YueMod.Common.UI {
 			greetingsText07.Top.Set(55, 0f);
 			greetingsText07.Left.Set(20, 0f);
 
-			greetingsText07nextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			greetingsText07nextButton = new UIImage(nextButtonTexture);
 			greetingsText07nextButton.Width.Set(20, 0f);
 			greetingsText07nextButton.Height.Set(20, 0f);
 			greetingsText07nextButton.Left.Set(area.Width.Pixels - greetingsText07nextButton.Width.Pixels - 15, 0f);
@@ -242,7 +245,7 @@ namespace YueMod.Common.UI {
 			greetingsText08.Top.Set(55, 0f);
 			greetingsText08.Left.Set(20, 0f);
 
-			greetingsText08nextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			greetingsText08nextButton = new UIImage(nextButtonTexture);
 			greetingsText08nextButton.Width.Set(20, 0f);
 			greetingsText08nextButton.Height.Set(20, 0f);
 			greetingsText08nextButton.Left.Set(area.Width.Pixels - greetingsText08nextButton.Width.Pixels - 15, 0f);
@@ -257,7 +260,7 @@ namespace YueMod.Common.UI {
 			greetingsText09.Top.Set(55, 0f);
 			greetingsText09.Left.Set(20, 0f);
 
-			greetingsText09nextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			greetingsText09nextButton = new UIImage(nextButtonTexture);
 			greetingsText09nextButton.Width.Set(20, 0f);
 			greetingsText09nextButton.Height.Set(20, 0f);
 			greetingsText09nextButton.Left.Set(area.Width.Pixels - greetingsText09nextButton.Width.Pixels - 15, 0f);
@@ -272,7 +275,7 @@ namespace YueMod.Common.UI {
 			greetingsText10.Top.Set(55, 0f);
 			greetingsText10.Left.Set(20, 0f);
 
-			greetingsText10nextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			greetingsText10nextButton = new UIImage(nextButtonTexture);
 			greetingsText10nextButton.Width.Set(20, 0f);
 			greetingsText10nextButton.Height.Set(20, 0f);
 			greetingsText10nextButton.Left.Set(area.Width.Pixels - greetingsText10nextButton.Width.Pixels - 15, 0f);
@@ -288,7 +291,7 @@ namespace YueMod.Common.UI {
 			transitionText.Top.Set(55, 0f);
 			transitionText.Left.Set(20, 0f);
 
-			transitionTextNextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			transitionTextNextButton = new UIImage(nextButtonTexture);
 			transitionTextNextButton.Width.Set(20, 0f);
 			transitionTextNextButton.Height.Set(20, 0f);
 			transitionTextNextButton.Left.Set(area.Width.Pixels - transitionTextNextButton.Width.Pixels - 15, 0f);
@@ -297,150 +300,14 @@ namespace YueMod.Common.UI {
 
 
 
-			//When Wall of Flesh has been defeated:
-			WofText01 = new UIText("[c/fff2d6:Disgusting creature... I'm calm, you dealt]\n[c/fff2d6:it.]", 1.2f);
-			WofText01.Width.Set(0, 0f);
-			WofText01.Height.Set(0, 0f);
-			WofText01.Top.Set(55, 0f);
-			WofText01.Left.Set(20, 0f);
-
-			WofText01NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
-			WofText01NextButton.Width.Set(20, 0f);
-			WofText01NextButton.Height.Set(20, 0f);
-			WofText01NextButton.Left.Set(area.Width.Pixels - WofText01NextButton.Width.Pixels - 15, 0f);
-			WofText01NextButton.Top.Set(area.Height.Pixels - WofText01NextButton.Width.Pixels - 10, 0f);
-			WofText01NextButton.OnClick += new MouseEvent(WofText01NextButtonClicked);
-
-
-			
-			WofText02 = new UIText("[c/fff2d6:Huh?!]", 1.2f);
-			WofText02.Width.Set(0, 0f);
-			WofText02.Height.Set(0, 0f);
-			WofText02.Top.Set(55, 0f);
-			WofText02.Left.Set(20, 0f);
-
-			WofText02NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
-			WofText02NextButton.Width.Set(20, 0f);
-			WofText02NextButton.Height.Set(20, 0f);
-			WofText02NextButton.Left.Set(area.Width.Pixels - WofText02NextButton.Width.Pixels - 15, 0f);
-			WofText02NextButton.Top.Set(area.Height.Pixels - WofText02NextButton.Width.Pixels - 10, 0f);
-			WofText02NextButton.OnClick += new MouseEvent(WofText02NextButtonClicked);
-
-
-
-			WofText03 = new UIText("[c/fff2d6:...]", 1.2f);
-			WofText03.Width.Set(0, 0f);
-			WofText03.Height.Set(0, 0f);
-			WofText03.Top.Set(55, 0f);
-			WofText03.Left.Set(20, 0f);
-
-			WofText03NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
-			WofText03NextButton.Width.Set(20, 0f);
-			WofText03NextButton.Height.Set(20, 0f);
-			WofText03NextButton.Left.Set(area.Width.Pixels - WofText03NextButton.Width.Pixels - 15, 0f);
-			WofText03NextButton.Top.Set(area.Height.Pixels - WofText03NextButton.Width.Pixels - 10, 0f);
-			WofText03NextButton.OnClick += new MouseEvent(WofText03NextButtonClicked);
-
-
-
-			WofText04 = new UIText("[c/fff2d6:Wait, this gun... He's alive...]\n[c/fff2d6:Is this because of using this shard again?]\n[c/fff2d6:How interesting.]", 1.2f);
-			WofText04.Width.Set(0, 0f);
-			WofText04.Height.Set(0, 0f);
-			WofText04.Top.Set(55, 0f);
-			WofText04.Left.Set(20, 0f);
-
-			WofText04NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
-			WofText04NextButton.Width.Set(20, 0f);
-			WofText04NextButton.Height.Set(20, 0f);
-			WofText04NextButton.Left.Set(area.Width.Pixels - WofText04NextButton.Width.Pixels - 15, 0f);
-			WofText04NextButton.Top.Set(area.Height.Pixels - WofText04NextButton.Width.Pixels - 10, 0f);
-			WofText04NextButton.OnClick += new MouseEvent(WofText04NextButtonClicked);
-
-
-
-			WofText05 = new UIText("[c/fff2d6:This revolver is called ][c/ffff00:The Donner][c/fff2d6:.]\n[c/fff2d6:It can burn even high tier enemies!]\n[c/fff2d6:Probably.]", 1.2f);
-			WofText05.Width.Set(0, 0f);
-			WofText05.Height.Set(0, 0f);
-			WofText05.Top.Set(55, 0f);
-			WofText05.Left.Set(20, 0f);
-
-			WofText05NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
-			WofText05NextButton.Width.Set(20, 0f);
-			WofText05NextButton.Height.Set(20, 0f);
-			WofText05NextButton.Left.Set(area.Width.Pixels - WofText05NextButton.Width.Pixels - 15, 0f);
-			WofText05NextButton.Top.Set(area.Height.Pixels - WofText05NextButton.Width.Pixels - 10, 0f);
-			WofText05NextButton.OnClick += new MouseEvent(WofText05NextButtonClicked);
-
-
-
-			WofText06 = new UIText("[c/fff2d6:The owner uses The Donner in conjunction]\n[c/fff2d6:with Schlag, another revolver.]", 1.2f);
-			WofText06.Width.Set(0, 0f);
-			WofText06.Height.Set(0, 0f);
-			WofText06.Top.Set(55, 0f);
-			WofText06.Left.Set(20, 0f);
-
-			WofText06NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
-			WofText06NextButton.Width.Set(20, 0f);
-			WofText06NextButton.Height.Set(20, 0f);
-			WofText06NextButton.Left.Set(area.Width.Pixels - WofText06NextButton.Width.Pixels - 15, 0f);
-			WofText06NextButton.Top.Set(area.Height.Pixels - WofText06NextButton.Width.Pixels - 10, 0f);
-			WofText06NextButton.OnClick += new MouseEvent(WofText06NextButtonClicked);
-
-
-
-			WofText07 = new UIText("[c/fff2d6:But somehow we got only one of it...]\n[c/fff2d6:Or it's replica, who knows.]", 1.2f);
-			WofText07.Width.Set(0, 0f);
-			WofText07.Height.Set(0, 0f);
-			WofText07.Top.Set(55, 0f);
-			WofText07.Left.Set(20, 0f);
-
-			WofText07NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
-			WofText07NextButton.Width.Set(20, 0f);
-			WofText07NextButton.Height.Set(20, 0f);
-			WofText07NextButton.Left.Set(area.Width.Pixels - WofText07NextButton.Width.Pixels - 15, 0f);
-			WofText07NextButton.Top.Set(area.Height.Pixels - WofText07NextButton.Width.Pixels - 10, 0f);
-			WofText07NextButton.OnClick += new MouseEvent(WofText07NextButtonClicked);
-
-
-
-			WofText08 = new UIText("[c/fff2d6:Anyway, continue your adventure.]\n[c/fff2d6:I'll notify you when I'll find more]\n[c/fff2d6:information.]", 1.2f);
-			WofText08.Width.Set(0, 0f);
-			WofText08.Height.Set(0, 0f);
-			WofText08.Top.Set(55, 0f);
-			WofText08.Left.Set(20, 0f);
-
-			WofText08NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
-			WofText08NextButton.Width.Set(20, 0f);
-			WofText08NextButton.Height.Set(20, 0f);
-			WofText08NextButton.Left.Set(area.Width.Pixels - WofText08NextButton.Width.Pixels - 15, 0f);
-			WofText08NextButton.Top.Set(area.Height.Pixels - WofText08NextButton.Width.Pixels - 10, 0f);
-			WofText08NextButton.OnClick += new MouseEvent(WofText08NextButtonClicked);
-
-
-
-			WofText09 = new UIText("[c/fff2d6:That's all for now!]", 1.2f);
-			WofText09.Width.Set(0, 0f);
-			WofText09.Height.Set(0, 0f);
-			WofText09.Top.Set(55, 0f);
-			WofText09.Left.Set(20, 0f);
-
-			WofText09NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
-			WofText09NextButton.Width.Set(20, 0f);
-			WofText09NextButton.Height.Set(20, 0f);
-			WofText09NextButton.Left.Set(area.Width.Pixels - WofText09NextButton.Width.Pixels - 15, 0f);
-			WofText09NextButton.Top.Set(area.Height.Pixels - WofText09NextButton.Width.Pixels - 10, 0f);
-			WofText09NextButton.OnClick += new MouseEvent(WofText09NextButtonClicked);
-
-
-
 			//When Worm or Brain has been defeated:
-			BrainText01 = new UIText("[c/fff2d6:Сrumbled!]", 1.2f);
+			BrainText01 = new UIText("[c/fff2d6:Crumbled!]", 1.2f);
 			BrainText01.Width.Set(0, 0f);
 			BrainText01.Height.Set(0, 0f);
 			BrainText01.Top.Set(55, 0f);
 			BrainText01.Left.Set(20, 0f);
 
-			BrainText01NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			BrainText01NextButton = new UIImage(nextButtonTexture);
 			BrainText01NextButton.Width.Set(20, 0f);
 			BrainText01NextButton.Height.Set(20, 0f);
 			BrainText01NextButton.Left.Set(area.Width.Pixels - BrainText01NextButton.Width.Pixels - 15, 0f);
@@ -455,7 +322,7 @@ namespace YueMod.Common.UI {
 			BrainText02.Top.Set(55, 0f);
 			BrainText02.Left.Set(20, 0f);
 
-			BrainText02NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			BrainText02NextButton = new UIImage(nextButtonTexture);
 			BrainText02NextButton.Width.Set(20, 0f);
 			BrainText02NextButton.Height.Set(20, 0f);
 			BrainText02NextButton.Left.Set(area.Width.Pixels - BrainText02NextButton.Width.Pixels - 15, 0f);
@@ -470,7 +337,7 @@ namespace YueMod.Common.UI {
 			BrainText03.Top.Set(55, 0f);
 			BrainText03.Left.Set(20, 0f);
 
-			BrainText03NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			BrainText03NextButton = new UIImage(nextButtonTexture);
 			BrainText03NextButton.Width.Set(20, 0f);
 			BrainText03NextButton.Height.Set(20, 0f);
 			BrainText03NextButton.Left.Set(area.Width.Pixels - BrainText03NextButton.Width.Pixels - 15, 0f);
@@ -485,7 +352,7 @@ namespace YueMod.Common.UI {
 			BrainText04.Top.Set(55, 0f);
 			BrainText04.Left.Set(20, 0f);
 
-			BrainText04NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			BrainText04NextButton = new UIImage(nextButtonTexture);
 			BrainText04NextButton.Width.Set(20, 0f);
 			BrainText04NextButton.Height.Set(20, 0f);
 			BrainText04NextButton.Left.Set(area.Width.Pixels - BrainText04NextButton.Width.Pixels - 15, 0f);
@@ -494,13 +361,13 @@ namespace YueMod.Common.UI {
 
 
 
-			BrainText05 = new UIText("[c/fff2d6:Don't ask why it's here, I don't know too,]\n[c/fff2d6:but it's name - ][c/ffff00:Pile Bunker][c/fff2d6:.]", 1.2f);
+			BrainText05 = new UIText("[c/fff2d6:Don't ask why it's here, I don't know too,]\n[c/fff2d6:but it's name - ][c/ff214e:Pile Bunker][c/fff2d6:.]", 1.2f);
 			BrainText05.Width.Set(0, 0f);
 			BrainText05.Height.Set(0, 0f);
 			BrainText05.Top.Set(55, 0f);
 			BrainText05.Left.Set(20, 0f);
 
-			BrainText05NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			BrainText05NextButton = new UIImage(nextButtonTexture);
 			BrainText05NextButton.Width.Set(20, 0f);
 			BrainText05NextButton.Height.Set(20, 0f);
 			BrainText05NextButton.Left.Set(area.Width.Pixels - BrainText05NextButton.Width.Pixels - 15, 0f);
@@ -515,7 +382,7 @@ namespace YueMod.Common.UI {
 			BrainText06.Top.Set(55, 0f);
 			BrainText06.Left.Set(20, 0f);
 
-			BrainText06NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			BrainText06NextButton = new UIImage(nextButtonTexture);
 			BrainText06NextButton.Width.Set(20, 0f);
 			BrainText06NextButton.Height.Set(20, 0f);
 			BrainText06NextButton.Left.Set(area.Width.Pixels - BrainText06NextButton.Width.Pixels - 15, 0f);
@@ -530,7 +397,7 @@ namespace YueMod.Common.UI {
 			BrainText07.Top.Set(55, 0f);
 			BrainText07.Left.Set(20, 0f);
 
-			BrainText07NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			BrainText07NextButton = new UIImage(nextButtonTexture);
 			BrainText07NextButton.Width.Set(20, 0f);
 			BrainText07NextButton.Height.Set(20, 0f);
 			BrainText07NextButton.Left.Set(area.Width.Pixels - BrainText07NextButton.Width.Pixels - 15, 0f);
@@ -545,13 +412,149 @@ namespace YueMod.Common.UI {
 			BrainText08.Top.Set(55, 0f);
 			BrainText08.Left.Set(20, 0f);
 
-			BrainText08NextButton = new UIImage(ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext"));
+			BrainText08NextButton = new UIImage(nextButtonTexture);
 			BrainText08NextButton.Width.Set(20, 0f);
 			BrainText08NextButton.Height.Set(20, 0f);
 			BrainText08NextButton.Left.Set(area.Width.Pixels - BrainText08NextButton.Width.Pixels - 15, 0f);
 			BrainText08NextButton.Top.Set(area.Height.Pixels - BrainText08NextButton.Width.Pixels - 10, 0f);
 			BrainText08NextButton.OnClick += new MouseEvent(BrainText08NextButtonClicked);
 			
+
+
+			//When Wall of Flesh has been defeated:
+			WofText01 = new UIText("[c/fff2d6:Disgusting creature... I'm calm, you dealt]\n[c/fff2d6:it.]", 1.2f);
+			WofText01.Width.Set(0, 0f);
+			WofText01.Height.Set(0, 0f);
+			WofText01.Top.Set(55, 0f);
+			WofText01.Left.Set(20, 0f);
+
+			WofText01NextButton = new UIImage(nextButtonTexture);
+			WofText01NextButton.Width.Set(20, 0f);
+			WofText01NextButton.Height.Set(20, 0f);
+			WofText01NextButton.Left.Set(area.Width.Pixels - WofText01NextButton.Width.Pixels - 15, 0f);
+			WofText01NextButton.Top.Set(area.Height.Pixels - WofText01NextButton.Width.Pixels - 10, 0f);
+			WofText01NextButton.OnClick += new MouseEvent(WofText01NextButtonClicked);
+
+
+			
+			WofText02 = new UIText("[c/fff2d6:Huh?!]", 1.2f);
+			WofText02.Width.Set(0, 0f);
+			WofText02.Height.Set(0, 0f);
+			WofText02.Top.Set(55, 0f);
+			WofText02.Left.Set(20, 0f);
+
+			WofText02NextButton = new UIImage(nextButtonTexture);
+			WofText02NextButton.Width.Set(20, 0f);
+			WofText02NextButton.Height.Set(20, 0f);
+			WofText02NextButton.Left.Set(area.Width.Pixels - WofText02NextButton.Width.Pixels - 15, 0f);
+			WofText02NextButton.Top.Set(area.Height.Pixels - WofText02NextButton.Width.Pixels - 10, 0f);
+			WofText02NextButton.OnClick += new MouseEvent(WofText02NextButtonClicked);
+
+
+
+			WofText03 = new UIText("[c/fff2d6:...]", 1.2f);
+			WofText03.Width.Set(0, 0f);
+			WofText03.Height.Set(0, 0f);
+			WofText03.Top.Set(55, 0f);
+			WofText03.Left.Set(20, 0f);
+
+			WofText03NextButton = new UIImage(nextButtonTexture);
+			WofText03NextButton.Width.Set(20, 0f);
+			WofText03NextButton.Height.Set(20, 0f);
+			WofText03NextButton.Left.Set(area.Width.Pixels - WofText03NextButton.Width.Pixels - 15, 0f);
+			WofText03NextButton.Top.Set(area.Height.Pixels - WofText03NextButton.Width.Pixels - 10, 0f);
+			WofText03NextButton.OnClick += new MouseEvent(WofText03NextButtonClicked);
+
+
+
+			WofText04 = new UIText("[c/fff2d6:Wait, this gun... He's alive...]\n[c/fff2d6:Is this because of using this shard again?]\n[c/fff2d6:How interesting.]", 1.2f);
+			WofText04.Width.Set(0, 0f);
+			WofText04.Height.Set(0, 0f);
+			WofText04.Top.Set(55, 0f);
+			WofText04.Left.Set(20, 0f);
+
+			WofText04NextButton = new UIImage(nextButtonTexture);
+			WofText04NextButton.Width.Set(20, 0f);
+			WofText04NextButton.Height.Set(20, 0f);
+			WofText04NextButton.Left.Set(area.Width.Pixels - WofText04NextButton.Width.Pixels - 15, 0f);
+			WofText04NextButton.Top.Set(area.Height.Pixels - WofText04NextButton.Width.Pixels - 10, 0f);
+			WofText04NextButton.OnClick += new MouseEvent(WofText04NextButtonClicked);
+
+
+
+			WofText05 = new UIText("[c/fff2d6:This revolver is called ][c/ff214e:The Donner][c/fff2d6:.]\n[c/fff2d6:It can burn even high tier enemies!]\n[c/fff2d6:Probably.]", 1.2f);
+			WofText05.Width.Set(0, 0f);
+			WofText05.Height.Set(0, 0f);
+			WofText05.Top.Set(55, 0f);
+			WofText05.Left.Set(20, 0f);
+
+			WofText05NextButton = new UIImage(nextButtonTexture);
+			WofText05NextButton.Width.Set(20, 0f);
+			WofText05NextButton.Height.Set(20, 0f);
+			WofText05NextButton.Left.Set(area.Width.Pixels - WofText05NextButton.Width.Pixels - 15, 0f);
+			WofText05NextButton.Top.Set(area.Height.Pixels - WofText05NextButton.Width.Pixels - 10, 0f);
+			WofText05NextButton.OnClick += new MouseEvent(WofText05NextButtonClicked);
+
+
+
+			WofText06 = new UIText("[c/fff2d6:The owner uses The Donner in conjunction]\n[c/fff2d6:with Schlag, another revolver.]", 1.2f);
+			WofText06.Width.Set(0, 0f);
+			WofText06.Height.Set(0, 0f);
+			WofText06.Top.Set(55, 0f);
+			WofText06.Left.Set(20, 0f);
+
+			WofText06NextButton = new UIImage(nextButtonTexture);
+			WofText06NextButton.Width.Set(20, 0f);
+			WofText06NextButton.Height.Set(20, 0f);
+			WofText06NextButton.Left.Set(area.Width.Pixels - WofText06NextButton.Width.Pixels - 15, 0f);
+			WofText06NextButton.Top.Set(area.Height.Pixels - WofText06NextButton.Width.Pixels - 10, 0f);
+			WofText06NextButton.OnClick += new MouseEvent(WofText06NextButtonClicked);
+
+
+
+			WofText07 = new UIText("[c/fff2d6:But somehow we got only one of it...]\n[c/fff2d6:Or it's replica, who knows.]", 1.2f);
+			WofText07.Width.Set(0, 0f);
+			WofText07.Height.Set(0, 0f);
+			WofText07.Top.Set(55, 0f);
+			WofText07.Left.Set(20, 0f);
+
+			WofText07NextButton = new UIImage(nextButtonTexture);
+			WofText07NextButton.Width.Set(20, 0f);
+			WofText07NextButton.Height.Set(20, 0f);
+			WofText07NextButton.Left.Set(area.Width.Pixels - WofText07NextButton.Width.Pixels - 15, 0f);
+			WofText07NextButton.Top.Set(area.Height.Pixels - WofText07NextButton.Width.Pixels - 10, 0f);
+			WofText07NextButton.OnClick += new MouseEvent(WofText07NextButtonClicked);
+
+
+
+			WofText08 = new UIText("[c/fff2d6:Anyway, continue your adventure.]\n[c/fff2d6:I'll notify you when I'll find more]\n[c/fff2d6:information.]", 1.2f);
+			WofText08.Width.Set(0, 0f);
+			WofText08.Height.Set(0, 0f);
+			WofText08.Top.Set(55, 0f);
+			WofText08.Left.Set(20, 0f);
+
+			WofText08NextButton = new UIImage(nextButtonTexture);
+			WofText08NextButton.Width.Set(20, 0f);
+			WofText08NextButton.Height.Set(20, 0f);
+			WofText08NextButton.Left.Set(area.Width.Pixels - WofText08NextButton.Width.Pixels - 15, 0f);
+			WofText08NextButton.Top.Set(area.Height.Pixels - WofText08NextButton.Width.Pixels - 10, 0f);
+			WofText08NextButton.OnClick += new MouseEvent(WofText08NextButtonClicked);
+
+
+
+			WofText09 = new UIText("[c/fff2d6:That's all for now!]", 1.2f);
+			WofText09.Width.Set(0, 0f);
+			WofText09.Height.Set(0, 0f);
+			WofText09.Top.Set(55, 0f);
+			WofText09.Left.Set(20, 0f);
+
+			WofText09NextButton = new UIImage(nextButtonTexture);
+			WofText09NextButton.Width.Set(20, 0f);
+			WofText09NextButton.Height.Set(20, 0f);
+			WofText09NextButton.Left.Set(area.Width.Pixels - WofText09NextButton.Width.Pixels - 15, 0f);
+			WofText09NextButton.Top.Set(area.Height.Pixels - WofText09NextButton.Width.Pixels - 10, 0f);
+			WofText09NextButton.OnClick += new MouseEvent(WofText09NextButtonClicked);
+
 
 
 			area.Append(barFrame);
@@ -566,28 +569,46 @@ namespace YueMod.Common.UI {
 			Append(area);
 		}
 		bool greetingsCheck = false;
-		int loreCounter = 0;
+		bool brainCheck = false;
+		bool wofCheck = false;
+		bool wofFirstTime = true;
+		bool brainFirstTime = true;
+		int switcher = 0;
+		int cock = 0;
 		public override void Update(GameTime gameTime) {
-			
+			if (DownedBossSystem.Brain && brainCheck == false) {
+				brainCheck = true;
+			}	
+			if (DownedBossSystem.WoF && wofCheck == false) {
+				wofCheck = true;
+			}	
 			if(greetingsCheck == true) {
-
-				if (DownedBossSystem.Brain && loreCounter == 0) {
+				if ((brainCheck == true && wofCheck == true && brainFirstTime == true && switcher == 0) || (brainCheck == true && wofCheck == false && brainFirstTime == true)) {
 					area.RemoveChild(transitionText);
 					area.RemoveChild(transitionTextNextButton);
 					area.Append(BrainText01);
 					area.Append(BrainText01NextButton);
-					loreCounter++;
 				}
-				else if (DownedBossSystem.WoF && loreCounter == 2) {
+				else if ((wofCheck == true && brainCheck == true && wofFirstTime == true && switcher == 1) || (wofCheck == true && brainCheck == false && wofFirstTime == true) ) {
 					area.RemoveChild(transitionText);
 					area.RemoveChild(transitionTextNextButton);
 					area.Append(WofText01);
 					area.Append(WofText01NextButton);
-					loreCounter++;
 				}
-				
 			}
 			base.Update(gameTime);
+			if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>()) && hideButton.IsMouseHovering) {
+				Main.instance.MouseText("Hide window");
+    		}
+			if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>()) && (greetingsText01nextButton.IsMouseHovering || greetingsText02nextButton.IsMouseHovering || greetingsText03nextButton.IsMouseHovering || greetingsText04nextButton.IsMouseHovering || greetingsText05nextButton.IsMouseHovering || greetingsText06nextButton.IsMouseHovering || greetingsText07nextButton.IsMouseHovering || greetingsText08nextButton.IsMouseHovering || greetingsText09nextButton.IsMouseHovering || greetingsText10nextButton.IsMouseHovering
+			|| transitionTextNextButton.IsMouseHovering
+			|| BrainText01NextButton.IsMouseHovering || BrainText02NextButton.IsMouseHovering || BrainText03NextButton.IsMouseHovering || BrainText04NextButton.IsMouseHovering || BrainText05NextButton.IsMouseHovering || BrainText06NextButton.IsMouseHovering || BrainText07NextButton.IsMouseHovering || BrainText08NextButton.IsMouseHovering
+			|| WofText01NextButton.IsMouseHovering || WofText02NextButton.IsMouseHovering || WofText03NextButton.IsMouseHovering || WofText04NextButton.IsMouseHovering || WofText05NextButton.IsMouseHovering || WofText06NextButton.IsMouseHovering || WofText07NextButton.IsMouseHovering || WofText08NextButton.IsMouseHovering || WofText09NextButton.IsMouseHovering
+			)) {
+				
+				Main.instance.MouseText("Next");
+				
+    		}
 		}
 		private void HideButtonClicked(UIMouseEvent evt, UIElement listeningElement) { 
 			//ModContent.GetInstance<YueUISystem>().HideMyUI();
@@ -675,6 +696,7 @@ namespace YueMod.Common.UI {
 
 
 
+		//Transition
 		private void transitionTextNextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
 		}
@@ -688,6 +710,7 @@ namespace YueMod.Common.UI {
 			area.Append(BrainText02);
 			area.Append(BrainText02NextButton);
 			SoundEngine.PlaySound(nextSound);
+			brainFirstTime = false;
 		}
 		private void BrainText02NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
 			area.RemoveChild(BrainText02);
@@ -740,7 +763,17 @@ namespace YueMod.Common.UI {
 			area.Append(transitionTextNextButton);
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
 			SoundEngine.PlaySound(endOfTalk);
-			loreCounter = 2;
+
+			
+			if (wofCheck == false) {
+				switcher = 1;
+			}
+			else if (wofCheck == true && wofFirstTime == true) {
+				switcher = 1;
+			}
+			else if (wofCheck == true && wofFirstTime == false) {
+				switcher = -1;
+			}
 		}
 
 
@@ -753,6 +786,7 @@ namespace YueMod.Common.UI {
 			area.Append(WofText02NextButton);
 			Item.NewItem(Item.GetSource_None(), Main.LocalPlayer.Center, ModContent.ItemType<Donner>());
 			SoundEngine.PlaySound(nextSound);
+			wofFirstTime = false;
 		}
 		private void WofText02NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
 			area.RemoveChild(WofText02);
@@ -811,14 +845,16 @@ namespace YueMod.Common.UI {
 			area.Append(transitionTextNextButton);
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
 			SoundEngine.PlaySound(endOfTalk);
-			loreCounter = 3;
+			wofFirstTime = false;
+			if (brainCheck == false) {
+				switcher = 0;
+			}
+			else if (brainCheck == true && brainFirstTime == false) {
+				switcher = -1;
+			}
 		}
 
 		
-
-
-
-
 
 		public override void Draw(SpriteBatch spriteBatch) {
 			if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>())) {
@@ -826,12 +862,14 @@ namespace YueMod.Common.UI {
 			}
 		}
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
-			base.DrawSelf(spriteBatch);
-			Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
-			hitbox.X += 12;
-			hitbox.Width -= 24;
-			hitbox.Y += 8;
-			hitbox.Height -= 16;
+			if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>())) {
+				base.DrawSelf(spriteBatch);
+				Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
+				hitbox.X += 12;
+				hitbox.Width -= 24;
+				hitbox.Y += 8;
+				hitbox.Height -= 16;
+			}
 		}
 	}
 

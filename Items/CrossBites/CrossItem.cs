@@ -28,9 +28,9 @@ namespace YueMod.Items.CrossBites {
 		}
 		
 		public override void SetDefaults() {
-			Item.width = 32;
-			Item.height = 32;
-			Item.scale = 0.3f;
+			Item.width = 1;
+			Item.height = 1;
+			Item.scale = 0.1f;
 			Item.useStyle = ItemUseStyleID.Rapier;
 			Item.useTime = 40;
 			Item.useAnimation = 20;

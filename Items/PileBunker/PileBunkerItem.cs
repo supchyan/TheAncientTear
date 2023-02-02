@@ -21,9 +21,9 @@ namespace YueMod.Items.PileBunker {
 			return Color.White;
 		}
         public override void SetDefaults() {
-			Item.width = 20;
-			Item.height = 25;
-			Item.scale = 1.3f;
+			Item.width = 1;
+			Item.height = 1;
+			Item.scale = 0.1f;
 			Item.useStyle = ItemUseStyleID.Rapier;
 			Item.useTime = 40;
 			Item.useAnimation = 20;
