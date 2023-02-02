@@ -17,9 +17,19 @@ using ReLogic.Content;
 
 namespace YueMod.Common.UI {
 	internal class YueUIstate : UIState {
+
+		//all sound assets below:
 		SoundStyle hideUI = new SoundStyle($"{nameof(YueMod)}/Common/UI/Sounds/hideUI");
 		SoundStyle nextSound = new SoundStyle($"{nameof(YueMod)}/Common/UI/Sounds/nextSound");
 		SoundStyle endOfTalk = new SoundStyle($"{nameof(YueMod)}/Common/UI/Sounds/endOfTalk");
+
+		//all texture assets below:
+		Asset<Texture2D> hideButtonTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonHide");
+		Asset<Texture2D> hideButtonDownTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonHide");
+		Asset<Texture2D> dragButtonTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonDrag");
+		Asset<Texture2D> dragButtonDownTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonDragDown");
+		Asset<Texture2D> NextButtonTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext");
+		Asset<Texture2D> NextButtonDownTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNextDown");
 
 		//main frame is here.
 		private UIElement area;
@@ -27,10 +37,7 @@ namespace YueMod.Common.UI {
 		private UIText noname;
 		private UIText name;
 		private UIImage hideButton;
-		Asset<Texture2D> hideButtonTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonHide");
-		Asset<Texture2D> hideButtonDownTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonHide");
-		Asset<Texture2D> NextButtonTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext");
-		Asset<Texture2D> NextButtonDownTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNextDown");
+		private UIImage dragButton;
 
 		//Transition textline is here.
 		private UIText transitionText;
@@ -120,6 +127,13 @@ namespace YueMod.Common.UI {
 			hideButton = new UIImage(hideButtonTexture);
 			SetRectangle(hideButton, 450f - 14f - 16f, 16f, 20f, 20f);
 			hideButton.OnClick += new MouseEvent(HideButtonClicked);
+
+			//Move button is here
+			dragButton = new UIImage(dragButtonTexture);
+			SetRectangle(dragButton, 450f - 14f*2 - 16f - 22f, 16f, 20f, 20f);
+			dragButton.OnMouseDown += new MouseEvent(DragStart);
+			dragButton.OnMouseUp += new MouseEvent(DragEnd);
+			//hideButton.OnClick += new MouseEvent(HideButtonClicked);
 
 			
 			//ALL INFO TEXT COLOR IS fff2d6!
@@ -383,6 +397,7 @@ namespace YueMod.Common.UI {
 			area.Append(barFrame);
 			area.Append(noname);
 			area.Append(hideButton);
+			area.Append(dragButton);
 
 
 			area.Append(greetingsText01);
@@ -421,9 +436,20 @@ namespace YueMod.Common.UI {
 					area.Append(WofText01NextButton);
 				}
 			}
+
 			base.Update(gameTime);
+			
+			if (dragging) {
+				area.Left.Set(Main.mouseX - offset.X, 0f);
+				area.Top.Set(Main.mouseY - offset.Y, 0f);
+				Recalculate();
+			}
+
 			if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>()) && hideButton.IsMouseHovering) {
 				Main.instance.MouseText("Hide window");
+    		}
+			if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>()) && dragButton.IsMouseHovering) {
+				Main.instance.MouseText("Hold to drag window");
     		}
 			if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>()) && (greetingsText01NextButton.IsMouseHovering || greetingsText02NextButton.IsMouseHovering || greetingsText03NextButton.IsMouseHovering || greetingsText04NextButton.IsMouseHovering || greetingsText05NextButton.IsMouseHovering || greetingsText06NextButton.IsMouseHovering || greetingsText07NextButton.IsMouseHovering || greetingsText08NextButton.IsMouseHovering || greetingsText09NextButton.IsMouseHovering || greetingsText10NextButton.IsMouseHovering
 			|| transitionTextNextButton.IsMouseHovering
@@ -441,6 +467,24 @@ namespace YueMod.Common.UI {
 			//ModContent.GetInstance<YueUISystem>().HideMyUI();
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
 			SoundEngine.PlaySound(hideUI);
+		}
+
+
+
+		//Dragable events below:
+		private Vector2 offset;
+		private bool dragging;
+		private void DragStart(UIMouseEvent evt, UIElement listeningElement) {
+			offset = new Vector2(evt.MousePosition.X - area.Left.Pixels, evt.MousePosition.Y - area.Top.Pixels);
+			dragging = true;
+			Recalculate();
+		}
+		private void DragEnd(UIMouseEvent evt, UIElement listeningElement) {
+			Vector2 endMousePosition = evt.MousePosition;
+			dragging = false;
+			area.Left.Set(endMousePosition.X - offset.X, 0f);
+			area.Top.Set(endMousePosition.Y - offset.Y, 0f);
+			Recalculate();
 		}
 
 
