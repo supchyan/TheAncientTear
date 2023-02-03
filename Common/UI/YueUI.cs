@@ -25,11 +25,11 @@ namespace YueMod.Common.UI {
 
 		//all texture assets below:
 		Asset<Texture2D> hideButtonTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonHide");
-		Asset<Texture2D> hideButtonDownTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonHide");
+		Asset<Texture2D> hideButtonHoveredTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonHideHover");
 		Asset<Texture2D> dragButtonTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonDrag");
-		Asset<Texture2D> dragButtonDownTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonDragDown");
+		Asset<Texture2D> dragButtonHoveredTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonDragHover");
 		Asset<Texture2D> NextButtonTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext");
-		Asset<Texture2D> NextButtonDownTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNextDown");
+		Asset<Texture2D> NextButtonHoveredTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNextHover");
 
 		//main frame is here.
 		private UIElement area;
@@ -37,7 +37,9 @@ namespace YueMod.Common.UI {
 		private UIText noname;
 		private UIText name;
 		private UIImage hideButton;
+		private UIImage hideButtonHovered;
 		private UIImage dragButton;
+		private UIImage dragButtonHovered;
 
 		//Transition textline is here.
 		private UIText transitionText;
@@ -46,24 +48,34 @@ namespace YueMod.Common.UI {
 		//Greetings textline is here.
 		private UIText greetingsText01;
 		private UIImage greetingsText01NextButton;
+		private UIImage greetingsText01NextButtonHovered;
 		private UIText greetingsText02;
 		private UIImage greetingsText02NextButton;
+		private UIImage greetingsText02NextButtonHovered;
 		private UIText greetingsText03;
 		private UIImage greetingsText03NextButton;
+		private UIImage greetingsText03NextButtonHovered;
 		private UIText greetingsText04;
 		private UIImage greetingsText04NextButton;
+		private UIImage greetingsText04NextButtonHovered;
 		private UIText greetingsText05;
 		private UIImage greetingsText05NextButton;
+		private UIImage greetingsText05NextButtonHovered;
 		private UIText greetingsText06;
 		private UIImage greetingsText06NextButton;
+		private UIImage greetingsText06NextButtonHovered;
 		private UIText greetingsText07;
 		private UIImage greetingsText07NextButton;
+		private UIImage greetingsText07NextButtonHovered;
 		private UIText greetingsText08;
 		private UIImage greetingsText08NextButton;
+		private UIImage greetingsText08NextButtonHovered;
 		private UIText greetingsText09;
 		private UIImage greetingsText09NextButton;
+		private UIImage greetingsText09NextButtonHovered;
 		private UIText greetingsText10;
 		private UIImage greetingsText10NextButton;
+		private UIImage greetingsText10NextButtonHovered;
 
 		//Brain (or worm...) textline is here.
 		private UIText BrainText01;
@@ -102,6 +114,52 @@ namespace YueMod.Common.UI {
 		private UIImage WofText08NextButton;
 		private UIText WofText09;
 		private UIImage WofText09NextButton;
+		
+		//Mech textline is here.
+		private UIText MechText01;
+		private UIImage MechText01NextButton;
+		private UIText MechText02;
+		private UIImage MechText02NextButton;
+		private UIText MechText03;
+		private UIImage MechText03NextButton;
+		private UIText MechText04;
+		private UIImage MechText04NextButton;
+		private UIText MechText05;
+		private UIImage MechText05NextButton;
+		private UIText MechText06;
+		private UIImage MechText06NextButton;
+		private UIText MechText07;
+		private UIImage MechText07NextButton;
+		private UIText MechText08;
+		private UIImage MechText08NextButton;
+		private UIText MechText09;
+		private UIImage MechText09NextButton;
+		private UIText MechText10;
+		private UIImage MechText10NextButton;
+		private UIText MechText11;
+		private UIImage MechText11NextButton;
+		private UIText MechText12;
+		private UIImage MechText12NextButton;
+		private UIText MechText13;
+		private UIImage MechText13NextButton;
+		private UIText MechText14;
+		private UIImage MechText14NextButton;
+		private UIText MechText15;
+		private UIImage MechText15NextButton;
+		private UIText MechText16;
+		private UIImage MechText16NextButton;
+		private UIText MechText17;
+		private UIImage MechText17NextButton;
+		private UIText MechText18;
+		private UIImage MechText18NextButton;
+		private UIText MechText19;
+		private UIImage MechText19NextButton;
+		private UIText MechText20;
+		private UIImage MechText20NextButton;
+		private UIText MechText21;
+		private UIImage MechText21NextButton;
+		private UIText MechText22;
+		private UIImage MechText22NextButton;
 
 		public override void OnInitialize() {
 
@@ -111,12 +169,12 @@ namespace YueMod.Common.UI {
 			area.HAlign = 0.5f;
 			area.VAlign = 0.5f;
 
-			//Yue name is here COLOR IS f1d485!
+			//Yue name is here COLOR IS ff5262!
 
-			noname = new UIText("[c/fff2d6:???]", 1f);
+			noname = new UIText("???", 1f);
 			SetRectangle(noname, 28f, 15f, 0f, 0f);
 
-			name = new UIText("[c/f1d485:Yue]", 1.2f);
+			name = new UIText("[c/ff5262:Yue]", 1.2f);
 			SetRectangle(name, 25f, 13f, 0f, 0f);
 
 			//UI is here
@@ -125,272 +183,475 @@ namespace YueMod.Common.UI {
 
 			//Hide button is here
 			hideButton = new UIImage(hideButtonTexture);
-			SetRectangle(hideButton, 450f - 14f - 16f, 16f, 20f, 20f);
-			hideButton.OnClick += new MouseEvent(HideButtonClicked);
+			SetRectangle(hideButton, 450f - 31f, 15f, 20f, 20f);
 
-			//Move button is here
+			hideButtonHovered = new UIImage(hideButtonHoveredTexture);
+			SetRectangle(hideButtonHovered, 450f - 31f, 15f, 20f, 20f);
+			hideButtonHovered.OnClick += new MouseEvent(HideButtonClicked);
+
+			//Drag button is here
 			dragButton = new UIImage(dragButtonTexture);
 			SetRectangle(dragButton, 450f - 14f*2 - 16f - 22f, 16f, 20f, 20f);
 			dragButton.OnMouseDown += new MouseEvent(DragStart);
 			dragButton.OnMouseUp += new MouseEvent(DragEnd);
-			//hideButton.OnClick += new MouseEvent(HideButtonClicked);
 
 			
 			//ALL INFO TEXT COLOR IS fff2d6!
 
 
-			greetingsText01 = new UIText("[c/fff2d6:Uuuhhhh...]", 1.2f);
+			greetingsText01 = new UIText("Uuuhhhh...", 1.2f);
 			SetRectangle(greetingsText01, 20f, 55f, 0, 0);
 
 			greetingsText01NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(greetingsText01NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			//button box is recalculating into Update() below
+			SetRectangle(greetingsText01NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			greetingsText01NextButton.OnClick += new MouseEvent(greetingsText01NextButtonClicked);
 
 
 
-			greetingsText02 = new UIText("[c/fff2d6:Where am I?...]\n[c/fff2d6:And what the most important, who're you?]\n[c/fff2d6:Friend, enemy, or...]", 1.2f);
+
+			greetingsText02 = new UIText("Where am I?...\nAnd what the most important, who're you?\nFriend, enemy, or...", 1.2f);
 			SetRectangle(greetingsText02, 20f, 55f, 0, 0);
 
 			greetingsText02NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(greetingsText02NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(greetingsText02NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			greetingsText02NextButton.OnClick += new MouseEvent(greetingsText02NextButtonClicked);
 
 
 
-			greetingsText03 = new UIText("[c/fff2d6:Anyway, you can't beat me, so ha-ha!]\n[c/fff2d6:I'm ][c/f1d485:Yue][c/fff2d6:, the vampire.]", 1.2f);
+			greetingsText03 = new UIText("Anyway, you can't beat me, so ha-ha!\nI'm [c/ff5262:Yue], the vampire.", 1.2f);
 			SetRectangle(greetingsText03, 20f, 55f, 0, 0);
 
 			greetingsText03NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(greetingsText03NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(greetingsText03NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			greetingsText03NextButton.OnClick += new MouseEvent(greetingsText03NextButtonClicked);
 			
 
 
-			greetingsText04 = new UIText("[c/fff2d6:And as I can see, this is not my ][c/b47aff:dimension][c/fff2d6:.]\n[c/fff2d6:Probably this is because of thing, you are]\n[c/fff2d6:holding in hands.]", 1.2f);
+			greetingsText04 = new UIText("And as I can see, this is not my [c/52e8ff:dimension].\nProbably this is because of thing, you are\nholding in hands.", 1.2f);
 			SetRectangle(greetingsText04, 20f, 55f, 0, 0);
 
 			greetingsText04NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(greetingsText04NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(greetingsText04NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			greetingsText04NextButton.OnClick += new MouseEvent(greetingsText04NextButtonClicked);
 
 
 
-			greetingsText05 = new UIText("[c/fff2d6:Wait, I know, this item. Is this... A tear?]\n[c/fff2d6:But it's just a shard. A little piece]\n[c/fff2d6:of the… Nevermind.]", 1.2f);
+			greetingsText05 = new UIText("Wait, I know, this item. Is this... A tear?\nBut it's just a shard. A little piece\nof the… Nevermind.", 1.2f);
 			SetRectangle(greetingsText05, 20f, 55f, 0, 0);
 
 			greetingsText05NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(greetingsText05NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(greetingsText05NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			greetingsText05NextButton.OnClick += new MouseEvent(greetingsText05NextButtonClicked);
 
 
 
-			greetingsText06 = new UIText("[c/fff2d6:Oh... As I can see, your world has]\n[c/fff2d6:the infection too...]", 1.2f);
+			greetingsText06 = new UIText("Oh... As I can see, your world has\nthe infection too...", 1.2f);
 			SetRectangle(greetingsText06, 20f, 55f, 0, 0);
 
 			greetingsText06NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(greetingsText06NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(greetingsText06NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			greetingsText06NextButton.OnClick += new MouseEvent(greetingsText06NextButtonClicked);
 			
 			
 			
-			greetingsText07 = new UIText("[c/fff2d6:I mean... I guess we can try to save this]\n[c/fff2d6:world, isn't it?]", 1.2f);
+			greetingsText07 = new UIText("I mean... I guess we can try to save this\nworld, isn't it?", 1.2f);
 			SetRectangle(greetingsText07, 20f, 55f, 0, 0);
 
 			greetingsText07NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(greetingsText07NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(greetingsText07NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			greetingsText07NextButton.OnClick += new MouseEvent(greetingsText07NextButtonClicked);
 
 
 
-			greetingsText08 = new UIText("[c/fff2d6:If something interesting happens,]\n[c/fff2d6:you can always call me by using this item!]", 1.2f);
+			greetingsText08 = new UIText("If something interesting happens,\nyou can always call me by using this item!", 1.2f);
 			SetRectangle(greetingsText08, 20f, 55f, 0, 0);
 
 			greetingsText08NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(greetingsText08NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(greetingsText08NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			greetingsText08NextButton.OnClick += new MouseEvent(greetingsText08NextButtonClicked);
 
 
 
-			greetingsText09 = new UIText("[c/fff2d6:What's for now, I need a time to think]\n[c/fff2d6:about reasons of transferring me at here]\n[c/fff2d6:and what to do next.]", 1.2f);
+			greetingsText09 = new UIText("What's for now, I need a time to think\nabout reasons of transferring me at here\nand what to do next.", 1.2f);
 			SetRectangle(greetingsText09, 20f, 55f, 0, 0);
 
 			greetingsText09NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(greetingsText09NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(greetingsText09NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			greetingsText09NextButton.OnClick += new MouseEvent(greetingsText09NextButtonClicked);
 
 
 
-			greetingsText10 = new UIText("[c/fff2d6:See you!]", 1.2f);
+			greetingsText10 = new UIText("See you!", 1.2f);
 			SetRectangle(greetingsText10, 20f, 55f, 0, 0);
 
 			greetingsText10NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(greetingsText10NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(greetingsText10NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			greetingsText10NextButton.OnClick += new MouseEvent(greetingsText10NextButtonClicked);
 
 
 
 			//if nothing to say for now, transfer this block of text.
-			transitionText = new UIText("[c/fff2d6:Sorry, it's nothing to say for now.]", 1.2f);
+			transitionText = new UIText("Sorry, it's nothing to say for now.", 1.2f);
 			SetRectangle(transitionText, 20f, 55f, 0, 0);
 
 			transitionTextNextButton = new UIImage(NextButtonTexture);
-			SetRectangle(transitionTextNextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(transitionTextNextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			transitionTextNextButton.OnClick += new MouseEvent(transitionTextNextButtonClicked);
 
 
 
 			//When Worm or Brain has been defeated:
-			BrainText01 = new UIText("[c/fff2d6:Crumbled!]", 1.2f);
+			BrainText01 = new UIText("Crumbled!", 1.2f);
 			SetRectangle(BrainText01, 20f, 55f, 0, 0);
 
 			BrainText01NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(BrainText01NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(BrainText01NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			BrainText01NextButton.OnClick += new MouseEvent(BrainText01NextButtonClicked);
 
 
 
-			BrainText02 = new UIText("[c/fff2d6:An infection soul is about to be free.]", 1.2f);
+			BrainText02 = new UIText("An infection soul is about to be free.", 1.2f);
 			SetRectangle(BrainText02, 20f, 55f, 0, 0);
 
 			BrainText02NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(BrainText02NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(BrainText02NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			BrainText02NextButton.OnClick += new MouseEvent(BrainText02NextButtonClicked);
 
 
 
-			BrainText03 = new UIText("[c/fff2d6:You is moving right way!]\n[c/fff2d6:Now I see, we can save this world.]", 1.2f);
+			BrainText03 = new UIText("You is moving right way!\nNow I see, we can save this world.", 1.2f);
 			SetRectangle(BrainText03, 20f, 55f, 0, 0);
 
 			BrainText03NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(BrainText03NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(BrainText03NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			BrainText03NextButton.OnClick += new MouseEvent(BrainText03NextButtonClicked);
 
 
 
-			BrainText04 = new UIText("[c/fff2d6:And before we'll disperse, I found this]\n[c/fff2d6:into depths of the cave below.]", 1.2f);
+			BrainText04 = new UIText("And before we'll disperse, I found this\ninto depths of the cave below.", 1.2f);
 			SetRectangle(BrainText04, 20f, 55f, 0, 0);
 
 			BrainText04NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(BrainText04NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(BrainText04NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			BrainText04NextButton.OnClick += new MouseEvent(BrainText04NextButtonClicked);
 
 
 
-			BrainText05 = new UIText("[c/fff2d6:Don't ask why it's here, I don't know too,]\n[c/fff2d6:but it's name - ][c/ff214e:Pile Bunker][c/fff2d6:.]", 1.2f);
+			BrainText05 = new UIText("Don't ask why it's here, I don't know too,\nbut it's name - [c/ff214e:Pile Bunker].", 1.2f);
 			SetRectangle(BrainText05, 20f, 55f, 0, 0);
 
 			BrainText05NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(BrainText05NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(BrainText05NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			BrainText05NextButton.OnClick += new MouseEvent(BrainText05NextButtonClicked);
 
 
 
-			BrainText06 = new UIText("[c/fff2d6:Strong weapon for... Hellivators~]\n[c/fff2d6:Also, if something will be below of it upon]\n[c/fff2d6:usage, it will be demolished.]", 1.2f);
+			BrainText06 = new UIText("Strong weapon for... Hellivators~\nAlso, if something will be below of it upon\nusage, it will be demolished.", 1.2f);
 			SetRectangle(BrainText06, 20f, 55f, 0, 0);
 
 			BrainText06NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(BrainText06NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(BrainText06NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			BrainText06NextButton.OnClick += new MouseEvent(BrainText06NextButtonClicked);
 
 
 
-			BrainText07 = new UIText("[c/fff2d6:Use it as you wish and...]", 1.2f);
+			BrainText07 = new UIText("Use it as you wish and...", 1.2f);
 			SetRectangle(BrainText07, 20f, 55f, 0, 0);
 
 			BrainText07NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(BrainText07NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(BrainText07NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			BrainText07NextButton.OnClick += new MouseEvent(BrainText07NextButtonClicked);
 
 
 
-			BrainText08 = new UIText("[c/fff2d6:Get move next!]", 1.2f);
+			BrainText08 = new UIText("Get move next!", 1.2f);
 			SetRectangle(BrainText08, 20f, 55f, 0, 0);
 
 			BrainText08NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(BrainText08NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(BrainText08NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			BrainText08NextButton.OnClick += new MouseEvent(BrainText08NextButtonClicked);
 			
 
 
 			//When Wall of Flesh has been defeated:
-			WofText01 = new UIText("[c/fff2d6:Disgusting creature... I'm calm, you dealt]\n[c/fff2d6:it.]", 1.2f);
+			WofText01 = new UIText("Disgusting creature... I'm calm, you dealt\nit.", 1.2f);
 			SetRectangle(WofText01, 20f, 55f, 0, 0);
 
 			WofText01NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(WofText01NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(WofText01NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			WofText01NextButton.OnClick += new MouseEvent(WofText01NextButtonClicked);
 
 
 			
-			WofText02 = new UIText("[c/fff2d6:Huh?!]", 1.2f);
+			WofText02 = new UIText("Huh?!", 1.2f);
 			SetRectangle(WofText02, 20f, 55f, 0, 0);
 
 			WofText02NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(WofText02NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(WofText02NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			WofText02NextButton.OnClick += new MouseEvent(WofText02NextButtonClicked);
 
 
 
-			WofText03 = new UIText("[c/fff2d6:...]", 1.2f);
+			WofText03 = new UIText("...", 1.2f);
 			SetRectangle(WofText03, 20f, 55f, 0, 0);
 
 			WofText03NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(WofText03NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(WofText03NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			WofText03NextButton.OnClick += new MouseEvent(WofText03NextButtonClicked);
 
 
 
-			WofText04 = new UIText("[c/fff2d6:Wait, this gun... He's alive...]\n[c/fff2d6:Is this because of using this shard again?]\n[c/fff2d6:How interesting.]", 1.2f);
+			WofText04 = new UIText("Wait, this gun... He's alive...\nIs this because of using this shard again?\nHow interesting.", 1.2f);
 			SetRectangle(WofText04, 20f, 55f, 0, 0);
 
 			WofText04NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(WofText04NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(WofText04NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			WofText04NextButton.OnClick += new MouseEvent(WofText04NextButtonClicked);
 
 
 
-			WofText05 = new UIText("[c/fff2d6:This revolver is called ][c/ff214e:The Donner][c/fff2d6:.]\n[c/fff2d6:It can burn even high tier enemies!]\n[c/fff2d6:Probably.]", 1.2f);
+			WofText05 = new UIText("This revolver is called [c/ff214e:The Donner].\nIt can burn even high tier enemies!\nProbably.", 1.2f);
 			SetRectangle(WofText05, 20f, 55f, 0, 0);
 
 			WofText05NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(WofText05NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(WofText05NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			WofText05NextButton.OnClick += new MouseEvent(WofText05NextButtonClicked);
 
 
 
-			WofText06 = new UIText("[c/fff2d6:The owner uses The Donner in conjunction]\n[c/fff2d6:with Schlag, another revolver.]", 1.2f);
+			WofText06 = new UIText("The owner uses The Donner in conjunction\nwith Schlag, another revolver.", 1.2f);
 			SetRectangle(WofText06, 20f, 55f, 0, 0);
 
 			WofText06NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(WofText06NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(WofText06NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			WofText06NextButton.OnClick += new MouseEvent(WofText06NextButtonClicked);
 
 
 
-			WofText07 = new UIText("[c/fff2d6:But somehow we got only one of it...]\n[c/fff2d6:Or it's replica, who knows.]", 1.2f);
+			WofText07 = new UIText("But somehow we got only one of it...\nOr it's replica, who knows.", 1.2f);
 			SetRectangle(WofText07, 20f, 55f, 0, 0);
 
 			WofText07NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(WofText07NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(WofText07NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			WofText07NextButton.OnClick += new MouseEvent(WofText07NextButtonClicked);
 
 
 
-			WofText08 = new UIText("[c/fff2d6:Anyway, continue your adventure.]\n[c/fff2d6:I'll notify you when I'll find more]\n[c/fff2d6:information.]", 1.2f);
+			WofText08 = new UIText("Anyway, continue your adventure.\nI'll notify you when I'll find more\ninformation.", 1.2f);
 			SetRectangle(WofText08, 20f, 55f, 0, 0);
 
 			WofText08NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(WofText08NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(WofText08NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			WofText08NextButton.OnClick += new MouseEvent(WofText08NextButtonClicked);
 
 
 
-			WofText09 = new UIText("[c/fff2d6:That's all for now!]", 1.2f);
+			WofText09 = new UIText("That's all for now!", 1.2f);
 			SetRectangle(WofText09, 20f, 55f, 0, 0);
 
 			WofText09NextButton = new UIImage(NextButtonTexture);
-			SetRectangle(WofText09NextButton, 450f - 14f - 17f, 165f - 14f - 17f, 20f, 20f);
+			SetRectangle(WofText09NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			WofText09NextButton.OnClick += new MouseEvent(WofText09NextButtonClicked);
+
+
+
+			//Mech has been defeated:
+			MechText01 = new UIText("Ok. Now I see. Listen, we need to talk.", 1.2f);
+			SetRectangle(MechText01, 20f, 55f, 0, 0);
+
+			MechText01NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText01NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText01NextButton.OnClick += new MouseEvent(MechText01NextButtonClicked);
+
+
+
+			MechText02 = new UIText("You might ask yourself, what am I doing\nhere and what is this shard in your hands.", 1.2f);
+			SetRectangle(MechText02, 20f, 55f, 0, 0);
+
+			MechText02NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText02NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText02NextButton.OnClick += new MouseEvent(MechText02NextButtonClicked);
+
+
+
+			MechText03 = new UIText("So… This thing is the part of decontami-\nnation technology, literally.", 1.2f);
+			SetRectangle(MechText03, 20f, 55f, 0, 0);
+
+			MechText03NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText03NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText03NextButton.OnClick += new MouseEvent(MechText03NextButtonClicked);
+
+
+
+			MechText04 = new UIText("“The Tear of blame” - That's what it was\ncalled. Technology, that could stop endless\nwar. And in some case, it did.", 1.2f);
+			SetRectangle(MechText04, 20f, 55f, 0, 0);
+
+			MechText04NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText04NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText04NextButton.OnClick += new MouseEvent(MechText04NextButtonClicked);
+
+
+
+			MechText05 = new UIText("The tear created different timelines except\nof the original one and divided confronting\nsides of the war by different dimensions.", 1.2f);
+			SetRectangle(MechText05, 20f, 55f, 0, 0);
+
+			MechText05NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText05NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText05NextButton.OnClick += new MouseEvent(MechText05NextButtonClicked);
+
+
+
+			MechText06 = new UIText("People from the one timeline doesn't exist\ninto other one. This how scientists\ndecided to stop the war.", 1.2f);
+			SetRectangle(MechText06, 20f, 55f, 0, 0);
+
+			MechText06NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText06NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText06NextButton.OnClick += new MouseEvent(MechText06NextButtonClicked);
+
+
+
+			MechText07 = new UIText("But something went wrong.\nNew timelines had created the Infection.", 1.2f);
+			SetRectangle(MechText07, 20f, 55f, 0, 0);
+
+			MechText07NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText07NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText07NextButton.OnClick += new MouseEvent(MechText07NextButtonClicked);
+
+
+
+			MechText08 = new UIText("Was it because of exceeded workload of\nthe system or something else, debates\nwasn't allowed then.", 1.2f);
+			SetRectangle(MechText08, 20f, 55f, 0, 0);
+
+			MechText08NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText08NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText08NextButton.OnClick += new MouseEvent(MechText08NextButtonClicked);
+
+
+
+			MechText09 = new UIText("Civilization from my dimension organized\nsearches of the solution, but we have\nfailed.", 1.2f);
+			SetRectangle(MechText09, 20f, 55f, 0, 0);
+
+			MechText09NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText09NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText09NextButton.OnClick += new MouseEvent(MechText09NextButtonClicked);
+
+
+
+			MechText10 = new UIText("Our world was occupied by infection and\npeople had no chance to save themselves.", 1.2f);
+			SetRectangle(MechText10, 20f, 55f, 0, 0);
+
+			MechText10NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText10NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText10NextButton.OnClick += new MouseEvent(MechText10NextButtonClicked);
+
+
+
+			MechText11 = new UIText("But in one day I found piece as yours.", 1.2f);
+			SetRectangle(MechText11, 20f, 55f, 0, 0);
+
+			MechText11NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText11NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText11NextButton.OnClick += new MouseEvent(MechText11NextButtonClicked);
+
+
+
+			MechText12 = new UIText("In normal conditions, tear can't be shown\nto any life form, but somehow it happened.", 1.2f);
+			SetRectangle(MechText12, 20f, 55f, 0, 0);
+
+			MechText12NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText12NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText12NextButton.OnClick += new MouseEvent(MechText12NextButtonClicked);
+
+
+
+			MechText13 = new UIText("I took it and transferred myself to the\ndifferent dimension, to find someone\nwho can help me save my world.", 1.2f);
+			SetRectangle(MechText13, 20f, 55f, 0, 0);
+
+			MechText13NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText13NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText13NextButton.OnClick += new MouseEvent(MechText13NextButtonClicked);
+
+
+
+			MechText14 = new UIText("And I met you. Human, who found\nthe other shard as me.", 1.2f);
+			SetRectangle(MechText14, 20f, 55f, 0, 0);
+
+			MechText14NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText14NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText14NextButton.OnClick += new MouseEvent(MechText14NextButtonClicked);
+
+
+
+			MechText15 = new UIText("Anyone who touched the shard can use\nspecific dust to clean the Infection.", 1.2f);
+			SetRectangle(MechText15, 20f, 55f, 0, 0);
+
+			MechText15NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText15NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText15NextButton.OnClick += new MouseEvent(MechText15NextButtonClicked);
+
+
+
+			MechText16 = new UIText("Because tear granted you it's force to\nchange world structure.", 1.2f);
+			SetRectangle(MechText16, 20f, 55f, 0, 0);
+
+			MechText16NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText16NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText16NextButton.OnClick += new MouseEvent(MechText16NextButtonClicked);
+
+
+
+			MechText17 = new UIText("I invited one unusual person to help us.\nBe sure you prepared house for her.", 1.2f);
+			SetRectangle(MechText17, 20f, 55f, 0, 0);
+
+			MechText17NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText17NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText17NextButton.OnClick += new MouseEvent(MechText17NextButtonClicked);
+
+
+
+			MechText18 = new UIText("She's steampunk mechanic and I showed\nher the recipe of the dust.", 1.2f);
+			SetRectangle(MechText18, 20f, 55f, 0, 0);
+
+			MechText18NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText18NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText18NextButton.OnClick += new MouseEvent(MechText18NextButtonClicked);
+
+
+
+			MechText19 = new UIText("I guess we can talk to her about capability\nto use it in our situation.", 1.2f);
+			SetRectangle(MechText19, 20f, 55f, 0, 0);
+
+			MechText19NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText19NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText19NextButton.OnClick += new MouseEvent(MechText19NextButtonClicked);
+
+
+
+			MechText20 = new UIText("Hope you will listen to me because\nthe world in dangerous for now.\nOnly you can help to it.", 1.2f);
+			SetRectangle(MechText20, 20f, 55f, 0, 0);
+
+			MechText20NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText20NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText20NextButton.OnClick += new MouseEvent(MechText20NextButtonClicked);
+
+
+
+			MechText21 = new UIText("...", 1.2f);
+			SetRectangle(MechText21, 20f, 55f, 0, 0);
+
+			MechText21NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText21NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText21NextButton.OnClick += new MouseEvent(MechText21NextButtonClicked);
+
+
+
+			MechText22 = new UIText("Sorry for vent, I'm on emotions for now. \nTake care about mechanic I told you about.", 1.2f);
+			SetRectangle(MechText22, 20f, 55f, 0, 0);
+
+			MechText22NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(MechText22NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			MechText22NextButton.OnClick += new MouseEvent(MechText22NextButtonClicked);
 
 
 
@@ -412,15 +673,25 @@ namespace YueMod.Common.UI {
 		bool greetingsCheck = false;
 		bool brainCheck = false;
 		bool wofCheck = false;
+		bool mechCheck = false;
 		bool wofFirstTime = true;
 		bool brainFirstTime = true;
+		bool mechFirstTime = true;
 		int switcher = 0;
+		float anime = 0f;
 		public override void Update(GameTime gameTime) {
+
 			if (DownedBossSystem.Brain && brainCheck == false) {
+				Main.NewText("[c/ff5262:Yue: I've something we need to discuss.]");
 				brainCheck = true;
 			}	
 			if (DownedBossSystem.WoF && wofCheck == false) {
+				Main.NewText("[c/ff5262:Yue: I've something we need to discuss.]");
 				wofCheck = true;
+			}
+			if (DownedBossSystem.Mech && mechCheck == false) {
+				Main.NewText("[c/ff5262:Yue: I've something we need to discuss.]");
+				mechCheck = true;
 			}	
 			if(greetingsCheck == true) {
 				if ((brainCheck == true && wofCheck == true && brainFirstTime == true && switcher == 0) || (brainCheck == true && wofCheck == false && brainFirstTime == true)) {
@@ -435,28 +706,184 @@ namespace YueMod.Common.UI {
 					area.Append(WofText01);
 					area.Append(WofText01NextButton);
 				}
+				else if (wofCheck == true && wofFirstTime == false && mechFirstTime == true && switcher == 2) {
+					area.RemoveChild(transitionText);
+					area.RemoveChild(transitionTextNextButton);
+					area.Append(MechText01);
+					area.Append(MechText01NextButton);
+				}
 			}
 
 			base.Update(gameTime);
+
+			//Timer for arrows animation
+			switch (Main.GameUpdateCount / 15 % 2) {
+
+				case 0:
+
+					anime = 2f;
+
+					SetRectangle(transitionTextNextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+
+					SetRectangle(greetingsText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText09NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText10NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+
+					SetRectangle(BrainText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					
+					SetRectangle(WofText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText09NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+
+					SetRectangle(MechText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText09NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText10NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText11NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText12NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText13NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText14NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText15NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText16NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText17NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText18NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText19NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText20NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText21NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText22NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+
+					break;
+					
+				case 1:
+
+					anime = 4f;
+					
+					SetRectangle(transitionTextNextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+
+					SetRectangle(greetingsText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText09NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText10NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+
+					SetRectangle(BrainText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					
+					SetRectangle(WofText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText09NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+
+					SetRectangle(MechText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText09NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText10NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText11NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText12NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText13NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText14NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText15NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText16NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText17NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText18NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText19NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText20NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText21NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText22NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+
+					break;
+			}
 			
+			//Something for dragging
 			if (dragging) {
 				area.Left.Set(Main.mouseX - offset.X, 0f);
 				area.Top.Set(Main.mouseY - offset.Y, 0f);
 				Recalculate();
 			}
-
-			if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>()) && hideButton.IsMouseHovering) {
-				Main.instance.MouseText("Hide window");
-    		}
 			if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>()) && dragButton.IsMouseHovering) {
 				Main.instance.MouseText("Hold to drag window");
     		}
-			if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>()) && (greetingsText01NextButton.IsMouseHovering || greetingsText02NextButton.IsMouseHovering || greetingsText03NextButton.IsMouseHovering || greetingsText04NextButton.IsMouseHovering || greetingsText05NextButton.IsMouseHovering || greetingsText06NextButton.IsMouseHovering || greetingsText07NextButton.IsMouseHovering || greetingsText08NextButton.IsMouseHovering || greetingsText09NextButton.IsMouseHovering || greetingsText10NextButton.IsMouseHovering
-			|| transitionTextNextButton.IsMouseHovering
-			|| BrainText01NextButton.IsMouseHovering || BrainText02NextButton.IsMouseHovering || BrainText03NextButton.IsMouseHovering || BrainText04NextButton.IsMouseHovering || BrainText05NextButton.IsMouseHovering || BrainText06NextButton.IsMouseHovering || BrainText07NextButton.IsMouseHovering || BrainText08NextButton.IsMouseHovering
-			|| WofText01NextButton.IsMouseHovering || WofText02NextButton.IsMouseHovering || WofText03NextButton.IsMouseHovering || WofText04NextButton.IsMouseHovering || WofText05NextButton.IsMouseHovering || WofText06NextButton.IsMouseHovering || WofText07NextButton.IsMouseHovering || WofText08NextButton.IsMouseHovering || WofText09NextButton.IsMouseHovering
+
+			//Hide button hovering
+			if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>()) && hideButton.IsMouseHovering) {
+				area.RemoveChild(hideButton);
+				area.Append(hideButtonHovered);
+				Main.instance.MouseText("Hide window");
+    		}
+			else if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>()) && hideButtonHovered.IsMouseHovering) {
+				Main.instance.MouseText("Hide window");
+			}
+			else if (!hideButtonHovered.IsMouseHovering) {
+				area.RemoveChild(hideButtonHovered);
+				area.Append(hideButton);
+			}
+
+			//NextButtons hovering
+			if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>()) && (
+			   greetingsText01NextButton.IsMouseHovering || greetingsText02NextButton.IsMouseHovering || greetingsText03NextButton.IsMouseHovering || greetingsText04NextButton.IsMouseHovering || greetingsText05NextButton.IsMouseHovering || greetingsText06NextButton.IsMouseHovering || greetingsText07NextButton.IsMouseHovering || greetingsText08NextButton.IsMouseHovering || greetingsText09NextButton.IsMouseHovering
+			
+			|| BrainText01NextButton.IsMouseHovering || BrainText02NextButton.IsMouseHovering || BrainText03NextButton.IsMouseHovering || BrainText04NextButton.IsMouseHovering || BrainText05NextButton.IsMouseHovering || BrainText06NextButton.IsMouseHovering || BrainText07NextButton.IsMouseHovering
+			|| WofText01NextButton.IsMouseHovering || WofText02NextButton.IsMouseHovering || WofText03NextButton.IsMouseHovering || WofText04NextButton.IsMouseHovering || WofText05NextButton.IsMouseHovering || WofText06NextButton.IsMouseHovering || WofText07NextButton.IsMouseHovering || WofText08NextButton.IsMouseHovering
+			|| MechText01NextButton.IsMouseHovering || MechText02NextButton.IsMouseHovering || MechText03NextButton.IsMouseHovering || MechText04NextButton.IsMouseHovering || MechText05NextButton.IsMouseHovering || MechText06NextButton.IsMouseHovering || MechText07NextButton.IsMouseHovering || MechText08NextButton.IsMouseHovering || MechText09NextButton.IsMouseHovering || MechText10NextButton.IsMouseHovering || MechText11NextButton.IsMouseHovering || MechText12NextButton.IsMouseHovering || MechText13NextButton.IsMouseHovering || MechText14NextButton.IsMouseHovering || MechText15NextButton.IsMouseHovering || MechText16NextButton.IsMouseHovering || MechText17NextButton.IsMouseHovering || MechText18NextButton.IsMouseHovering || MechText19NextButton.IsMouseHovering || MechText20NextButton.IsMouseHovering || MechText21NextButton.IsMouseHovering
 			)) {
 				Main.instance.MouseText("Next");
+    		}
+			if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>()) && (
+			   greetingsText10NextButton.IsMouseHovering
+			|| transitionTextNextButton.IsMouseHovering
+			|| BrainText08NextButton.IsMouseHovering
+			|| WofText09NextButton.IsMouseHovering
+			|| MechText22NextButton.IsMouseHovering
+			)) {
+				Main.instance.MouseText("Close the topic");
     		}
 		}
 
@@ -468,7 +895,6 @@ namespace YueMod.Common.UI {
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
 			SoundEngine.PlaySound(hideUI);
 		}
-
 
 
 		//Dragable events below:
@@ -722,8 +1148,170 @@ namespace YueMod.Common.UI {
 				switcher = 0;
 			}
 			else if (brainCheck == true && brainFirstTime == false) {
-				switcher = -1;
+				switcher = 2;
 			}
+		}
+
+
+
+		//Mech
+		private void MechText01NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText01);
+			area.RemoveChild(MechText01NextButton);
+			area.Append(MechText02);
+			area.Append(MechText02NextButton);
+			SoundEngine.PlaySound(nextSound);
+			mechFirstTime = false;
+		}
+		private void MechText02NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText02);
+			area.RemoveChild(MechText02NextButton);
+			area.Append(MechText03);
+			area.Append(MechText03NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText03NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText03);
+			area.RemoveChild(MechText03NextButton);
+			area.Append(MechText04);
+			area.Append(MechText04NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText04NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText04);
+			area.RemoveChild(MechText04NextButton);
+			area.Append(MechText05);
+			area.Append(MechText05NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText05NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText05);
+			area.RemoveChild(MechText05NextButton);
+			area.Append(MechText06);
+			area.Append(MechText06NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText06NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText06);
+			area.RemoveChild(MechText06NextButton);
+			area.Append(MechText07);
+			area.Append(MechText07NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText07NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText07);
+			area.RemoveChild(MechText07NextButton);
+			area.Append(MechText08);
+			area.Append(MechText08NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText08NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText08);
+			area.RemoveChild(MechText08NextButton);
+			area.Append(MechText09);
+			area.Append(MechText09NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText09NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText09);
+			area.RemoveChild(MechText09NextButton);
+			area.Append(MechText10);
+			area.Append(MechText10NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText10NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText10);
+			area.RemoveChild(MechText10NextButton);
+			area.Append(MechText11);
+			area.Append(MechText11NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText11NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText11);
+			area.RemoveChild(MechText11NextButton);
+			area.Append(MechText12);
+			area.Append(MechText12NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText12NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText12);
+			area.RemoveChild(MechText12NextButton);
+			area.Append(MechText13);
+			area.Append(MechText13NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText13NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText13);
+			area.RemoveChild(MechText13NextButton);
+			area.Append(MechText14);
+			area.Append(MechText14NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText14NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText14);
+			area.RemoveChild(MechText14NextButton);
+			area.Append(MechText15);
+			area.Append(MechText15NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText15NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText15);
+			area.RemoveChild(MechText15NextButton);
+			area.Append(MechText16);
+			area.Append(MechText16NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText16NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText16);
+			area.RemoveChild(MechText16NextButton);
+			area.Append(MechText17);
+			area.Append(MechText17NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText17NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText17);
+			area.RemoveChild(MechText17NextButton);
+			area.Append(MechText18);
+			area.Append(MechText18NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText18NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText18);
+			area.RemoveChild(MechText18NextButton);
+			area.Append(MechText19);
+			area.Append(MechText19NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText19NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText19);
+			area.RemoveChild(MechText19NextButton);
+			area.Append(MechText20);
+			area.Append(MechText20NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText20NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText20);
+			area.RemoveChild(MechText20NextButton);
+			area.Append(MechText21);
+			area.Append(MechText21NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText21NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(MechText21);
+			area.RemoveChild(MechText21NextButton);
+			area.Append(MechText22);
+			area.Append(MechText22NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void MechText22NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			//End of mech
+			area.RemoveChild(MechText22);
+			area.RemoveChild(MechText22NextButton);
+			area.Append(transitionText);
+			area.Append(transitionTextNextButton);
+			SoundEngine.PlaySound(endOfTalk);
+			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
+			switcher = 3;
 		}
 
 

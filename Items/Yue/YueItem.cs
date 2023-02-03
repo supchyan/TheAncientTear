@@ -90,6 +90,9 @@ namespace YueMod.Items.Yue
 			if(NPC.downedBoss2 && !DownedBossSystem.Brain) {
 				NPC.SetEventFlagCleared(ref DownedBossSystem.Brain, -1);
 			}
+			if(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && !DownedBossSystem.Mech) {
+				NPC.SetEventFlagCleared(ref DownedBossSystem.Mech, -1);
+			}
             base.UseAnimation(myPlayer);
         }
 	}

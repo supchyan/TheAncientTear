@@ -11,10 +11,12 @@ namespace YueMod.Systems
 	{
 		public static bool WoF = false;
 		public static bool Brain = false;
+		public static bool Mech = false;
         public override void OnWorldLoad() {
 			Main.hardMode = false;
 			WoF = false;
 			Brain = false;
+			Mech = false;
 			// downedOtherBoss = false;
 		}
 
@@ -22,6 +24,7 @@ namespace YueMod.Systems
 			Main.hardMode = false;
 			WoF = false;
 			Brain = false;
+			Mech = false;
 			// downedOtherBoss = false;
 		}
 		public override void SaveWorldData(TagCompound tag) {
@@ -31,10 +34,14 @@ namespace YueMod.Systems
 			if(Brain) {
 				tag["Brain"] = true;
 			}
+			if(Mech) {
+				tag["Mech"] = true;
+			}
 		}
 		public override void LoadWorldData(TagCompound tag) {
 			WoF = tag.ContainsKey("WoF");
 			Brain = tag.ContainsKey("Brain");
+			Mech = tag.ContainsKey("Mech");
 			// downedOtherBoss = tag.ContainsKey("downedOtherBoss");
 		}
 		public override void NetSend(BinaryWriter writer) {
@@ -42,6 +49,7 @@ namespace YueMod.Systems
 			var flags = new BitsByte();
 			flags[0] = WoF;
 			flags[1] = Brain;
+			flags[2] = Brain;
 			// flags[1] = downedOtherBoss;
 			writer.Write(flags);
 		}
@@ -50,6 +58,7 @@ namespace YueMod.Systems
 			BitsByte flags = reader.ReadByte();
 			WoF = flags[0];
 			Brain = flags[1];
+			Mech = flags[2];
 		}
 	}
 }
