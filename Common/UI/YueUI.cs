@@ -30,6 +30,7 @@ namespace YueMod.Common.UI {
 		Asset<Texture2D> dragButtonHoveredTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonDragHover");
 		Asset<Texture2D> NextButtonTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext");
 		Asset<Texture2D> NextButtonHoveredTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNextHover");
+		Asset<Texture2D> EndButtonTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonEnd");
 
 		//main frame is here.
 		private UIElement area;
@@ -199,7 +200,7 @@ namespace YueMod.Common.UI {
 			//ALL INFO TEXT COLOR IS fff2d6!
 
 
-			greetingsText01 = new UIText("Uuuhhhh...", 1.2f);
+			greetingsText01 = new UIText("Uuuhhhh...", 1.1f);
 			SetRectangle(greetingsText01, 20f, 55f, 0, 0);
 
 			greetingsText01NextButton = new UIImage(NextButtonTexture);
@@ -210,7 +211,7 @@ namespace YueMod.Common.UI {
 
 
 
-			greetingsText02 = new UIText("Where am I?...\nAnd what the most important, who're you?\nFriend, enemy, or...", 1.2f);
+			greetingsText02 = new UIText("Where am I?...\nAnd what the most important, who're you?\nFriend, enemy, or...", 1.1f);
 			SetRectangle(greetingsText02, 20f, 55f, 0, 0);
 
 			greetingsText02NextButton = new UIImage(NextButtonTexture);
@@ -219,7 +220,7 @@ namespace YueMod.Common.UI {
 
 
 
-			greetingsText03 = new UIText("Anyway, you can't beat me, so ha-ha!\nI'm [c/ff5262:Yue], the vampire.", 1.2f);
+			greetingsText03 = new UIText("Anyway, you can't beat me, so ha-ha!\nI'm [c/ff5262:Yue], the vampire.", 1.1f);
 			SetRectangle(greetingsText03, 20f, 55f, 0, 0);
 
 			greetingsText03NextButton = new UIImage(NextButtonTexture);
@@ -228,7 +229,7 @@ namespace YueMod.Common.UI {
 			
 
 
-			greetingsText04 = new UIText("And as I can see, this is not my [c/52e8ff:dimension].\nProbably this is because of thing, you are\nholding in hands.", 1.2f);
+			greetingsText04 = new UIText("And as I can see, this is not my [c/52e8ff:dimension].\nProbably this is because of thing, you are\nholding in hands.", 1.1f);
 			SetRectangle(greetingsText04, 20f, 55f, 0, 0);
 
 			greetingsText04NextButton = new UIImage(NextButtonTexture);
@@ -237,7 +238,7 @@ namespace YueMod.Common.UI {
 
 
 
-			greetingsText05 = new UIText("Wait, I know, this item. Is this... A tear?\nBut it's just a shard. A little piece\nof the… Nevermind.", 1.2f);
+			greetingsText05 = new UIText("Wait, I know, this item. Is this... A tear?\nBut it's just a shard. A little piece\nof the… Nevermind.", 1.1f);
 			SetRectangle(greetingsText05, 20f, 55f, 0, 0);
 
 			greetingsText05NextButton = new UIImage(NextButtonTexture);
@@ -246,7 +247,7 @@ namespace YueMod.Common.UI {
 
 
 
-			greetingsText06 = new UIText("Oh... As I can see, your world has\nthe infection too...", 1.2f);
+			greetingsText06 = new UIText("Oh... As I can see, your world has\nthe infection too...", 1.1f);
 			SetRectangle(greetingsText06, 20f, 55f, 0, 0);
 
 			greetingsText06NextButton = new UIImage(NextButtonTexture);
@@ -255,7 +256,7 @@ namespace YueMod.Common.UI {
 			
 			
 			
-			greetingsText07 = new UIText("I mean... I guess we can try to save this\nworld, isn't it?", 1.2f);
+			greetingsText07 = new UIText("I mean... I guess we can try to save this\nworld, isn't it?", 1.1f);
 			SetRectangle(greetingsText07, 20f, 55f, 0, 0);
 
 			greetingsText07NextButton = new UIImage(NextButtonTexture);
@@ -264,7 +265,7 @@ namespace YueMod.Common.UI {
 
 
 
-			greetingsText08 = new UIText("If something interesting happens,\nyou can always call me by using this item!", 1.2f);
+			greetingsText08 = new UIText("If something interesting happens,\nyou can always call me by using this item!", 1.1f);
 			SetRectangle(greetingsText08, 20f, 55f, 0, 0);
 
 			greetingsText08NextButton = new UIImage(NextButtonTexture);
@@ -273,7 +274,7 @@ namespace YueMod.Common.UI {
 
 
 
-			greetingsText09 = new UIText("What's for now, I need a time to think\nabout reasons of transferring me at here\nand what to do next.", 1.2f);
+			greetingsText09 = new UIText("What's for now, I need a time to think\nabout reasons of transferring me at here\nand what to do next.", 1.1f);
 			SetRectangle(greetingsText09, 20f, 55f, 0, 0);
 
 			greetingsText09NextButton = new UIImage(NextButtonTexture);
@@ -282,27 +283,27 @@ namespace YueMod.Common.UI {
 
 
 
-			greetingsText10 = new UIText("See you!", 1.2f);
+			greetingsText10 = new UIText("See you!", 1.1f);
 			SetRectangle(greetingsText10, 20f, 55f, 0, 0);
 
-			greetingsText10NextButton = new UIImage(NextButtonTexture);
+			greetingsText10NextButton = new UIImage(EndButtonTexture);
 			SetRectangle(greetingsText10NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			greetingsText10NextButton.OnClick += new MouseEvent(greetingsText10NextButtonClicked);
 
 
 
 			//if nothing to say for now, transfer this block of text.
-			transitionText = new UIText("Sorry, it's nothing to say for now.", 1.2f);
+			transitionText = new UIText("Sorry, it's nothing to say for now.", 1.1f);
 			SetRectangle(transitionText, 20f, 55f, 0, 0);
 
-			transitionTextNextButton = new UIImage(NextButtonTexture);
+			transitionTextNextButton = new UIImage(EndButtonTexture);
 			SetRectangle(transitionTextNextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			transitionTextNextButton.OnClick += new MouseEvent(transitionTextNextButtonClicked);
 
 
 
 			//When Worm or Brain has been defeated:
-			BrainText01 = new UIText("Crumbled!", 1.2f);
+			BrainText01 = new UIText("Crumbled!", 1.1f);
 			SetRectangle(BrainText01, 20f, 55f, 0, 0);
 
 			BrainText01NextButton = new UIImage(NextButtonTexture);
@@ -311,7 +312,7 @@ namespace YueMod.Common.UI {
 
 
 
-			BrainText02 = new UIText("An infection soul is about to be free.", 1.2f);
+			BrainText02 = new UIText("An infection soul is about to be free.", 1.1f);
 			SetRectangle(BrainText02, 20f, 55f, 0, 0);
 
 			BrainText02NextButton = new UIImage(NextButtonTexture);
@@ -320,7 +321,7 @@ namespace YueMod.Common.UI {
 
 
 
-			BrainText03 = new UIText("You is moving right way!\nNow I see, we can save this world.", 1.2f);
+			BrainText03 = new UIText("You is moving right way!\nNow I see, we can save this world.", 1.1f);
 			SetRectangle(BrainText03, 20f, 55f, 0, 0);
 
 			BrainText03NextButton = new UIImage(NextButtonTexture);
@@ -329,7 +330,7 @@ namespace YueMod.Common.UI {
 
 
 
-			BrainText04 = new UIText("And before we'll disperse, I found this\ninto depths of the cave below.", 1.2f);
+			BrainText04 = new UIText("And before we'll disperse, I found this\ninto depths of the cave below.", 1.1f);
 			SetRectangle(BrainText04, 20f, 55f, 0, 0);
 
 			BrainText04NextButton = new UIImage(NextButtonTexture);
@@ -338,7 +339,7 @@ namespace YueMod.Common.UI {
 
 
 
-			BrainText05 = new UIText("Don't ask why it's here, I don't know too,\nbut it's name - [c/ff214e:Pile Bunker].", 1.2f);
+			BrainText05 = new UIText("Don't ask why it's here, I don't know too,\nbut it's name - [c/ff214e:Pile Bunker].", 1.1f);
 			SetRectangle(BrainText05, 20f, 55f, 0, 0);
 
 			BrainText05NextButton = new UIImage(NextButtonTexture);
@@ -347,7 +348,7 @@ namespace YueMod.Common.UI {
 
 
 
-			BrainText06 = new UIText("Strong weapon for... Hellivators~\nAlso, if something will be below of it upon\nusage, it will be demolished.", 1.2f);
+			BrainText06 = new UIText("Strong weapon for... Hellivators~\nAlso, if something will be below of it upon\nusage, it will be demolished.", 1.1f);
 			SetRectangle(BrainText06, 20f, 55f, 0, 0);
 
 			BrainText06NextButton = new UIImage(NextButtonTexture);
@@ -356,7 +357,7 @@ namespace YueMod.Common.UI {
 
 
 
-			BrainText07 = new UIText("Use it as you wish and...", 1.2f);
+			BrainText07 = new UIText("Use it as you wish and...", 1.1f);
 			SetRectangle(BrainText07, 20f, 55f, 0, 0);
 
 			BrainText07NextButton = new UIImage(NextButtonTexture);
@@ -365,17 +366,17 @@ namespace YueMod.Common.UI {
 
 
 
-			BrainText08 = new UIText("Get move next!", 1.2f);
+			BrainText08 = new UIText("Get move next!", 1.1f);
 			SetRectangle(BrainText08, 20f, 55f, 0, 0);
 
-			BrainText08NextButton = new UIImage(NextButtonTexture);
+			BrainText08NextButton = new UIImage(EndButtonTexture);
 			SetRectangle(BrainText08NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			BrainText08NextButton.OnClick += new MouseEvent(BrainText08NextButtonClicked);
 			
 
 
 			//When Wall of Flesh has been defeated:
-			WofText01 = new UIText("Disgusting creature... I'm calm, you dealt\nit.", 1.2f);
+			WofText01 = new UIText("Disgusting creature... I'm calm, you dealt\nit.", 1.1f);
 			SetRectangle(WofText01, 20f, 55f, 0, 0);
 
 			WofText01NextButton = new UIImage(NextButtonTexture);
@@ -384,7 +385,7 @@ namespace YueMod.Common.UI {
 
 
 			
-			WofText02 = new UIText("Huh?!", 1.2f);
+			WofText02 = new UIText("Huh?!", 1.1f);
 			SetRectangle(WofText02, 20f, 55f, 0, 0);
 
 			WofText02NextButton = new UIImage(NextButtonTexture);
@@ -393,7 +394,7 @@ namespace YueMod.Common.UI {
 
 
 
-			WofText03 = new UIText("...", 1.2f);
+			WofText03 = new UIText("...", 1.1f);
 			SetRectangle(WofText03, 20f, 55f, 0, 0);
 
 			WofText03NextButton = new UIImage(NextButtonTexture);
@@ -402,7 +403,7 @@ namespace YueMod.Common.UI {
 
 
 
-			WofText04 = new UIText("Wait, this gun... He's alive...\nIs this because of using this shard again?\nHow interesting.", 1.2f);
+			WofText04 = new UIText("Wait, this gun... He's alive...\nIs this because of using this shard again?\nHow interesting.", 1.1f);
 			SetRectangle(WofText04, 20f, 55f, 0, 0);
 
 			WofText04NextButton = new UIImage(NextButtonTexture);
@@ -411,7 +412,7 @@ namespace YueMod.Common.UI {
 
 
 
-			WofText05 = new UIText("This revolver is called [c/ff214e:The Donner].\nIt can burn even high tier enemies!\nProbably.", 1.2f);
+			WofText05 = new UIText("This revolver is called [c/ff214e:The Donner].\nIt can burn even high tier enemies!\nProbably.", 1.1f);
 			SetRectangle(WofText05, 20f, 55f, 0, 0);
 
 			WofText05NextButton = new UIImage(NextButtonTexture);
@@ -420,7 +421,7 @@ namespace YueMod.Common.UI {
 
 
 
-			WofText06 = new UIText("The owner uses The Donner in conjunction\nwith Schlag, another revolver.", 1.2f);
+			WofText06 = new UIText("The owner uses The Donner in conjunction\nwith Schlag, another revolver.", 1.1f);
 			SetRectangle(WofText06, 20f, 55f, 0, 0);
 
 			WofText06NextButton = new UIImage(NextButtonTexture);
@@ -429,7 +430,7 @@ namespace YueMod.Common.UI {
 
 
 
-			WofText07 = new UIText("But somehow we got only one of it...\nOr it's replica, who knows.", 1.2f);
+			WofText07 = new UIText("But somehow we got only one of it...\nOr it's replica, who knows.", 1.1f);
 			SetRectangle(WofText07, 20f, 55f, 0, 0);
 
 			WofText07NextButton = new UIImage(NextButtonTexture);
@@ -438,7 +439,7 @@ namespace YueMod.Common.UI {
 
 
 
-			WofText08 = new UIText("Anyway, continue your adventure.\nI'll notify you when I'll find more\ninformation.", 1.2f);
+			WofText08 = new UIText("Anyway, continue your adventure.\nI'll notify you when I'll find more\ninformation.", 1.1f);
 			SetRectangle(WofText08, 20f, 55f, 0, 0);
 
 			WofText08NextButton = new UIImage(NextButtonTexture);
@@ -447,17 +448,17 @@ namespace YueMod.Common.UI {
 
 
 
-			WofText09 = new UIText("That's all for now!", 1.2f);
+			WofText09 = new UIText("That's all for now!", 1.1f);
 			SetRectangle(WofText09, 20f, 55f, 0, 0);
 
-			WofText09NextButton = new UIImage(NextButtonTexture);
+			WofText09NextButton = new UIImage(EndButtonTexture);
 			SetRectangle(WofText09NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			WofText09NextButton.OnClick += new MouseEvent(WofText09NextButtonClicked);
 
 
 
 			//Mech has been defeated:
-			MechText01 = new UIText("Ok. Now I see. Listen, we need to talk.", 1.2f);
+			MechText01 = new UIText("Ok. Now I see. Listen, we need to talk.", 1.1f);
 			SetRectangle(MechText01, 20f, 55f, 0, 0);
 
 			MechText01NextButton = new UIImage(NextButtonTexture);
@@ -466,7 +467,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText02 = new UIText("You might ask yourself, what am I doing\nhere and what is this shard in your hands.", 1.2f);
+			MechText02 = new UIText("You might ask yourself, what am I doing\nhere and what is this shard in your hands.", 1.1f);
 			SetRectangle(MechText02, 20f, 55f, 0, 0);
 
 			MechText02NextButton = new UIImage(NextButtonTexture);
@@ -475,7 +476,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText03 = new UIText("So… This thing is the part of decontami-\nnation technology, literally.", 1.2f);
+			MechText03 = new UIText("So… This thing is the part of decontami-\nnation technology, literally.", 1.1f);
 			SetRectangle(MechText03, 20f, 55f, 0, 0);
 
 			MechText03NextButton = new UIImage(NextButtonTexture);
@@ -484,7 +485,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText04 = new UIText("“The Tear of blame” - That's what it was\ncalled. Technology, that could stop endless\nwar. And in some case, it did.", 1.2f);
+			MechText04 = new UIText("“[c/52e8ff:The Tear of blame]” - that's what it was\ncalled. Technology, that could stop endless\nwar. And in some case, it did.", 1.1f);
 			SetRectangle(MechText04, 20f, 55f, 0, 0);
 
 			MechText04NextButton = new UIImage(NextButtonTexture);
@@ -493,7 +494,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText05 = new UIText("The tear created different timelines except\nof the original one and divided confronting\nsides of the war by different dimensions.", 1.2f);
+			MechText05 = new UIText("The tear created different timelines except\nof the original one and divided confronting\nsides of the war by different dimensions.", 1.1f);
 			SetRectangle(MechText05, 20f, 55f, 0, 0);
 
 			MechText05NextButton = new UIImage(NextButtonTexture);
@@ -502,7 +503,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText06 = new UIText("People from the one timeline doesn't exist\ninto other one. This how scientists\ndecided to stop the war.", 1.2f);
+			MechText06 = new UIText("People from the one timeline doesn't exist\ninto other one. This how scientists\ndecided to stop the war.", 1.1f);
 			SetRectangle(MechText06, 20f, 55f, 0, 0);
 
 			MechText06NextButton = new UIImage(NextButtonTexture);
@@ -511,7 +512,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText07 = new UIText("But something went wrong.\nNew timelines had created the Infection.", 1.2f);
+			MechText07 = new UIText("But something went wrong.\nNew timelines had created the Infection.", 1.1f);
 			SetRectangle(MechText07, 20f, 55f, 0, 0);
 
 			MechText07NextButton = new UIImage(NextButtonTexture);
@@ -520,7 +521,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText08 = new UIText("Was it because of exceeded workload of\nthe system or something else, debates\nwasn't allowed then.", 1.2f);
+			MechText08 = new UIText("Was it because of exceeded workload of\nthe system or something else, debates\nwasn't allowed then.", 1.1f);
 			SetRectangle(MechText08, 20f, 55f, 0, 0);
 
 			MechText08NextButton = new UIImage(NextButtonTexture);
@@ -529,7 +530,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText09 = new UIText("Civilization from my dimension organized\nsearches of the solution, but we have\nfailed.", 1.2f);
+			MechText09 = new UIText("Civilization from my dimension organized\nsearches of the solution, but we have\nfailed.", 1.1f);
 			SetRectangle(MechText09, 20f, 55f, 0, 0);
 
 			MechText09NextButton = new UIImage(NextButtonTexture);
@@ -538,7 +539,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText10 = new UIText("Our world was occupied by infection and\npeople had no chance to save themselves.", 1.2f);
+			MechText10 = new UIText("Our world was occupied by infection and\npeople had no chance to save themselves.", 1.1f);
 			SetRectangle(MechText10, 20f, 55f, 0, 0);
 
 			MechText10NextButton = new UIImage(NextButtonTexture);
@@ -547,7 +548,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText11 = new UIText("But in one day I found piece as yours.", 1.2f);
+			MechText11 = new UIText("But in one day I found piece as yours.", 1.1f);
 			SetRectangle(MechText11, 20f, 55f, 0, 0);
 
 			MechText11NextButton = new UIImage(NextButtonTexture);
@@ -556,7 +557,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText12 = new UIText("In normal conditions, tear can't be shown\nto any life form, but somehow it happened.", 1.2f);
+			MechText12 = new UIText("In normal conditions, tear can't be shown\nto any life form, but somehow it happened.", 1.1f);
 			SetRectangle(MechText12, 20f, 55f, 0, 0);
 
 			MechText12NextButton = new UIImage(NextButtonTexture);
@@ -565,7 +566,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText13 = new UIText("I took it and transferred myself to the\ndifferent dimension, to find someone\nwho can help me save my world.", 1.2f);
+			MechText13 = new UIText("I took it and transferred myself to the\ndifferent dimension, to find someone\nwho can help me save my world.", 1.1f);
 			SetRectangle(MechText13, 20f, 55f, 0, 0);
 
 			MechText13NextButton = new UIImage(NextButtonTexture);
@@ -574,7 +575,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText14 = new UIText("And I met you. Human, who found\nthe other shard as me.", 1.2f);
+			MechText14 = new UIText("And I met you. Human, who found\nthe other shard as me.", 1.1f);
 			SetRectangle(MechText14, 20f, 55f, 0, 0);
 
 			MechText14NextButton = new UIImage(NextButtonTexture);
@@ -583,7 +584,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText15 = new UIText("Anyone who touched the shard can use\nspecific dust to clean the Infection.", 1.2f);
+			MechText15 = new UIText("Anyone who touched the shard can use\nspecific dust to clean the Infection.", 1.1f);
 			SetRectangle(MechText15, 20f, 55f, 0, 0);
 
 			MechText15NextButton = new UIImage(NextButtonTexture);
@@ -592,7 +593,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText16 = new UIText("Because tear granted you it's force to\nchange world structure.", 1.2f);
+			MechText16 = new UIText("Because tear grants you it's force to\nchange world structure.", 1.1f);
 			SetRectangle(MechText16, 20f, 55f, 0, 0);
 
 			MechText16NextButton = new UIImage(NextButtonTexture);
@@ -601,7 +602,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText17 = new UIText("I invited one unusual person to help us.\nBe sure you prepared house for her.", 1.2f);
+			MechText17 = new UIText("I invited one unusual person to help us.\nBe sure you prepared house for her.", 1.1f);
 			SetRectangle(MechText17, 20f, 55f, 0, 0);
 
 			MechText17NextButton = new UIImage(NextButtonTexture);
@@ -610,7 +611,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText18 = new UIText("She's steampunk mechanic and I showed\nher the recipe of the dust.", 1.2f);
+			MechText18 = new UIText("She's [c/52e8ff:steampunk mechanic] and I showed\nher the recipe of the dust.", 1.1f);
 			SetRectangle(MechText18, 20f, 55f, 0, 0);
 
 			MechText18NextButton = new UIImage(NextButtonTexture);
@@ -619,7 +620,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText19 = new UIText("I guess we can talk to her about capability\nto use it in our situation.", 1.2f);
+			MechText19 = new UIText("I guess we can talk to her about capability\nto use it in our situation.", 1.1f);
 			SetRectangle(MechText19, 20f, 55f, 0, 0);
 
 			MechText19NextButton = new UIImage(NextButtonTexture);
@@ -628,7 +629,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText20 = new UIText("Hope you will listen to me because\nthe world in dangerous for now.\nOnly you can help to it.", 1.2f);
+			MechText20 = new UIText("Hope you will listen to me because\nthe world in dangerous for now.\nOnly we can save it.", 1.1f);
 			SetRectangle(MechText20, 20f, 55f, 0, 0);
 
 			MechText20NextButton = new UIImage(NextButtonTexture);
@@ -637,7 +638,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText21 = new UIText("...", 1.2f);
+			MechText21 = new UIText("...", 1.1f);
 			SetRectangle(MechText21, 20f, 55f, 0, 0);
 
 			MechText21NextButton = new UIImage(NextButtonTexture);
@@ -646,10 +647,10 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText22 = new UIText("Sorry for vent, I'm on emotions for now. \nTake care about mechanic I told you about.", 1.2f);
+			MechText22 = new UIText("Sorry for vent, I'm on emotions for now. \nTake care about [c/52e8ff:steampunk mechanic]\nthat I told you about.", 1.1f);
 			SetRectangle(MechText22, 20f, 55f, 0, 0);
 
-			MechText22NextButton = new UIImage(NextButtonTexture);
+			MechText22NextButton = new UIImage(EndButtonTexture);
 			SetRectangle(MechText22NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			MechText22NextButton.OnClick += new MouseEvent(MechText22NextButtonClicked);
 
@@ -674,39 +675,89 @@ namespace YueMod.Common.UI {
 		bool brainCheck = false;
 		bool wofCheck = false;
 		bool mechCheck = false;
+		bool anyMechCheck = false;
 		bool wofFirstTime = true;
 		bool brainFirstTime = true;
 		bool mechFirstTime = true;
+		bool anyMechFirstTime = true;
 		int switcher = 0;
 		float anime = 0f;
 		public override void Update(GameTime gameTime) {
+			
 
-			if (DownedBossSystem.Brain && brainCheck == false) {
-				Main.NewText("[c/ff5262:Yue: I've something we need to discuss.]");
+
+			if (!NPC.downedBoss2) {
+				brainFirstTime = true;
+				brainCheck = false;
+			}
+			else if (NPC.downedBoss2 && brainCheck == false) {
+				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
 				brainCheck = true;
-			}	
-			if (DownedBossSystem.WoF && wofCheck == false) {
-				Main.NewText("[c/ff5262:Yue: I've something we need to discuss.]");
+			}
+
+
+
+			if (!Main.hardMode) {
+				wofFirstTime = true;
+				wofCheck = false;
+			}
+			else if (Main.hardMode && wofCheck == false) {
+				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
 				wofCheck = true;
 			}
-			if (DownedBossSystem.Mech && mechCheck == false) {
-				Main.NewText("[c/ff5262:Yue: I've something we need to discuss.]");
+
+
+
+			if(!NPC.downedMechBossAny) {
+				anyMechFirstTime = true;
+				anyMechCheck = false;
+			}
+			if(NPC.downedMechBossAny && anyMechCheck == false) {
+				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
+				anyMechCheck = true;
+			}
+
+
+
+			if (!NPC.downedMechBoss1 || !NPC.downedMechBoss2 || !NPC.downedMechBoss3) {
+				mechFirstTime = true;
+				mechCheck = false;
+			}
+			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && mechCheck == false) {
+				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
 				mechCheck = true;
-			}	
+			}
+
+
+
 			if(greetingsCheck == true) {
+
 				if ((brainCheck == true && wofCheck == true && brainFirstTime == true && switcher == 0) || (brainCheck == true && wofCheck == false && brainFirstTime == true)) {
 					area.RemoveChild(transitionText);
 					area.RemoveChild(transitionTextNextButton);
 					area.Append(BrainText01);
 					area.Append(BrainText01NextButton);
 				}
+
+
+
 				else if ((wofCheck == true && brainCheck == true && wofFirstTime == true && switcher == 1) || (wofCheck == true && brainCheck == false && wofFirstTime == true) ) {
 					area.RemoveChild(transitionText);
 					area.RemoveChild(transitionTextNextButton);
 					area.Append(WofText01);
 					area.Append(WofText01NextButton);
 				}
-				else if (wofCheck == true && wofFirstTime == false && mechFirstTime == true && switcher == 2) {
+
+
+
+				else if(anyMechCheck == true && wofFirstTime == false && anyMechFirstTime == true && switcher == 2) {
+					area.RemoveChild(transitionText);
+					area.RemoveChild(transitionTextNextButton);
+				}
+
+
+				//this shit below need to be a switcher == 3, cause of anyMech switcher == 2;
+				else if (mechCheck == true && anyMechFirstTime == false && mechFirstTime == true && switcher == 3) {
 					area.RemoveChild(transitionText);
 					area.RemoveChild(transitionTextNextButton);
 					area.Append(MechText01);
@@ -723,60 +774,60 @@ namespace YueMod.Common.UI {
 
 					anime = 2f;
 
-					SetRectangle(transitionTextNextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(transitionTextNextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 
-					SetRectangle(greetingsText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText09NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText10NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText01NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText02NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText03NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText04NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText05NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText06NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText07NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText08NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText09NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText10NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 
-					SetRectangle(BrainText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(BrainText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(BrainText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(BrainText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(BrainText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(BrainText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(BrainText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(BrainText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText01NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(BrainText02NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(BrainText03NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(BrainText04NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(BrainText05NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(BrainText06NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(BrainText07NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(BrainText08NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 					
-					SetRectangle(WofText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText09NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText01NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText02NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText03NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText04NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText05NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText06NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText07NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText08NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText09NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 
-					SetRectangle(MechText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText09NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText10NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText11NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText12NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText13NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText14NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText15NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText16NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText17NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText18NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText19NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText20NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText21NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText22NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText01NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText02NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText03NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText04NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText05NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText06NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText07NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText08NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText09NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText10NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText11NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText12NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText13NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText14NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText15NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText16NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText17NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText18NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText19NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText20NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText21NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText22NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 
 					break;
 					
@@ -784,60 +835,60 @@ namespace YueMod.Common.UI {
 
 					anime = 4f;
 					
-					SetRectangle(transitionTextNextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(transitionTextNextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 
-					SetRectangle(greetingsText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText09NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(greetingsText10NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(greetingsText01NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText02NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText03NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText04NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText05NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText06NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText07NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText08NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText09NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(greetingsText10NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 
-					SetRectangle(BrainText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(BrainText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(BrainText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(BrainText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(BrainText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(BrainText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(BrainText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(BrainText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(BrainText01NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(BrainText02NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(BrainText03NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(BrainText04NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(BrainText05NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(BrainText06NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(BrainText07NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(BrainText08NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 					
-					SetRectangle(WofText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(WofText09NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(WofText01NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText02NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText03NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText04NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText05NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText06NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText07NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText08NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(WofText09NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 
-					SetRectangle(MechText01NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText02NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText03NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText04NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText05NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText06NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText07NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText08NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText09NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText10NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText11NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText12NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText13NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText14NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText15NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText16NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText17NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText18NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText19NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText20NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText21NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
-					SetRectangle(MechText22NextButton, 450f - 35f, 165f - 35f + anime, 22f, 22f);
+					SetRectangle(MechText01NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText02NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText03NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText04NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText05NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText06NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText07NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText08NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText09NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText10NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText11NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText12NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText13NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText14NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText15NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText16NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText17NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText18NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText19NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText20NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText21NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(MechText22NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 
 					break;
 			}
@@ -1070,7 +1121,8 @@ namespace YueMod.Common.UI {
 				switcher = 1;
 			}
 			else if (wofCheck == true && wofFirstTime == false) {
-				switcher = -1;
+				Main.NewText("2");
+				switcher = 2;
 			}
 		}
 

@@ -63,7 +63,7 @@ namespace YueMod.Items.Yue
 		}
 		public override void SetDefaults() {
 			Item.rare = ItemRarityID.Master;
-			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.scale = 0.7f;
 		}
 		public override bool CanUseItem(Player player) {
@@ -82,16 +82,6 @@ namespace YueMod.Items.Yue
         public override void UseAnimation(Player myPlayer) {
 			if(!myPlayer.HasBuff(ModContent.BuffType<YueBuff>())) {
 				Item.buffType = ModContent.BuffType<YueBuff>();
-			}
-
-			if(Main.hardMode && !DownedBossSystem.WoF) {
-				NPC.SetEventFlagCleared(ref DownedBossSystem.WoF, -1);
-			}
-			if(NPC.downedBoss2 && !DownedBossSystem.Brain) {
-				NPC.SetEventFlagCleared(ref DownedBossSystem.Brain, -1);
-			}
-			if(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && !DownedBossSystem.Mech) {
-				NPC.SetEventFlagCleared(ref DownedBossSystem.Mech, -1);
 			}
             base.UseAnimation(myPlayer);
         }
