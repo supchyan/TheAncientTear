@@ -15,7 +15,9 @@ using Terraria.GameContent;
 using System.Collections.Generic;
 using ReLogic.Content;
 
+
 namespace YueMod.Common.UI {
+	
 	internal class YueUIstate : UIState {
 
 		//all sound assets below:
@@ -115,6 +117,22 @@ namespace YueMod.Common.UI {
 		private UIImage WofText08NextButton;
 		private UIText WofText09;
 		private UIImage WofText09NextButton;
+
+		//Any Mech textline is here.
+		private UIText anyMechText01;
+		private UIImage anyMechText01NextButton;
+		private UIText anyMechText02;
+		private UIImage anyMechText02NextButton;
+		private UIText anyMechText03;
+		private UIImage anyMechText03NextButton;
+		private UIText anyMechText04;
+		private UIImage anyMechText04NextButton;
+		private UIText anyMechText05;
+		private UIImage anyMechText05NextButton;
+		private UIText anyMechText06;
+		private UIImage anyMechText06NextButton;
+		private UIText anyMechText07;
+		private UIImage anyMechText07NextButton;
 		
 		//Mech textline is here.
 		private UIText MechText01;
@@ -200,7 +218,7 @@ namespace YueMod.Common.UI {
 			//ALL INFO TEXT COLOR IS fff2d6!
 
 
-			greetingsText01 = new UIText("Uuuhhhh...", 1.1f);
+			greetingsText01 = new UIText(Dialogues.gT01, 1.1f);
 			SetRectangle(greetingsText01, 20f, 55f, 0, 0);
 
 			greetingsText01NextButton = new UIImage(NextButtonTexture);
@@ -211,7 +229,7 @@ namespace YueMod.Common.UI {
 
 
 
-			greetingsText02 = new UIText("Where am I?...\nAnd what the most important, who're you?\nFriend, enemy, or...", 1.1f);
+			greetingsText02 = new UIText(Dialogues.gT02, 1.1f);
 			SetRectangle(greetingsText02, 20f, 55f, 0, 0);
 
 			greetingsText02NextButton = new UIImage(NextButtonTexture);
@@ -220,7 +238,7 @@ namespace YueMod.Common.UI {
 
 
 
-			greetingsText03 = new UIText("Anyway, you can't beat me, so ha-ha!\nI'm [c/ff5262:Yue], the vampire.", 1.1f);
+			greetingsText03 = new UIText(Dialogues.gT03, 1.1f);
 			SetRectangle(greetingsText03, 20f, 55f, 0, 0);
 
 			greetingsText03NextButton = new UIImage(NextButtonTexture);
@@ -229,7 +247,7 @@ namespace YueMod.Common.UI {
 			
 
 
-			greetingsText04 = new UIText("And as I can see, this is not my [c/52e8ff:dimension].\nProbably this is because of thing, you are\nholding in hands.", 1.1f);
+			greetingsText04 = new UIText(Dialogues.gT04, 1.1f);
 			SetRectangle(greetingsText04, 20f, 55f, 0, 0);
 
 			greetingsText04NextButton = new UIImage(NextButtonTexture);
@@ -238,7 +256,7 @@ namespace YueMod.Common.UI {
 
 
 
-			greetingsText05 = new UIText("Wait, I know, this item. Is this... A tear?\nBut it's just a shard. A little piece\nof the… Nevermind.", 1.1f);
+			greetingsText05 = new UIText(Dialogues.gT05, 1.1f);
 			SetRectangle(greetingsText05, 20f, 55f, 0, 0);
 
 			greetingsText05NextButton = new UIImage(NextButtonTexture);
@@ -247,7 +265,7 @@ namespace YueMod.Common.UI {
 
 
 
-			greetingsText06 = new UIText("Oh... As I can see, your world has\nthe infection too...", 1.1f);
+			greetingsText06 = new UIText(Dialogues.gT06, 1.1f);
 			SetRectangle(greetingsText06, 20f, 55f, 0, 0);
 
 			greetingsText06NextButton = new UIImage(NextButtonTexture);
@@ -256,7 +274,7 @@ namespace YueMod.Common.UI {
 			
 			
 			
-			greetingsText07 = new UIText("I mean... I guess we can try to save this\nworld, isn't it?", 1.1f);
+			greetingsText07 = new UIText(Dialogues.gT07, 1.1f);
 			SetRectangle(greetingsText07, 20f, 55f, 0, 0);
 
 			greetingsText07NextButton = new UIImage(NextButtonTexture);
@@ -265,7 +283,7 @@ namespace YueMod.Common.UI {
 
 
 
-			greetingsText08 = new UIText("If something interesting happens,\nyou can always call me by using this item!", 1.1f);
+			greetingsText08 = new UIText(Dialogues.gT08, 1.1f);
 			SetRectangle(greetingsText08, 20f, 55f, 0, 0);
 
 			greetingsText08NextButton = new UIImage(NextButtonTexture);
@@ -274,7 +292,7 @@ namespace YueMod.Common.UI {
 
 
 
-			greetingsText09 = new UIText("What's for now, I need a time to think\nabout reasons of transferring me at here\nand what to do next.", 1.1f);
+			greetingsText09 = new UIText(Dialogues.gT09, 1.1f);
 			SetRectangle(greetingsText09, 20f, 55f, 0, 0);
 
 			greetingsText09NextButton = new UIImage(NextButtonTexture);
@@ -283,7 +301,7 @@ namespace YueMod.Common.UI {
 
 
 
-			greetingsText10 = new UIText("See you!", 1.1f);
+			greetingsText10 = new UIText(Dialogues.gT10, 1.1f);
 			SetRectangle(greetingsText10, 20f, 55f, 0, 0);
 
 			greetingsText10NextButton = new UIImage(EndButtonTexture);
@@ -293,7 +311,7 @@ namespace YueMod.Common.UI {
 
 
 			//if nothing to say for now, transfer this block of text.
-			transitionText = new UIText("Sorry, it's nothing to say for now.", 1.1f);
+			transitionText = new UIText(Dialogues.tT01, 1.1f);
 			SetRectangle(transitionText, 20f, 55f, 0, 0);
 
 			transitionTextNextButton = new UIImage(EndButtonTexture);
@@ -303,7 +321,7 @@ namespace YueMod.Common.UI {
 
 
 			//When Worm or Brain has been defeated:
-			BrainText01 = new UIText("Crumbled!", 1.1f);
+			BrainText01 = new UIText(Dialogues.bT01, 1.1f);
 			SetRectangle(BrainText01, 20f, 55f, 0, 0);
 
 			BrainText01NextButton = new UIImage(NextButtonTexture);
@@ -312,7 +330,7 @@ namespace YueMod.Common.UI {
 
 
 
-			BrainText02 = new UIText("An infection soul is about to be free.", 1.1f);
+			BrainText02 = new UIText(Dialogues.bT02, 1.1f);
 			SetRectangle(BrainText02, 20f, 55f, 0, 0);
 
 			BrainText02NextButton = new UIImage(NextButtonTexture);
@@ -321,7 +339,7 @@ namespace YueMod.Common.UI {
 
 
 
-			BrainText03 = new UIText("You is moving right way!\nNow I see, we can save this world.", 1.1f);
+			BrainText03 = new UIText(Dialogues.bT03, 1.1f);
 			SetRectangle(BrainText03, 20f, 55f, 0, 0);
 
 			BrainText03NextButton = new UIImage(NextButtonTexture);
@@ -330,7 +348,7 @@ namespace YueMod.Common.UI {
 
 
 
-			BrainText04 = new UIText("And before we'll disperse, I found this\ninto depths of the cave below.", 1.1f);
+			BrainText04 = new UIText(Dialogues.bT04, 1.1f);
 			SetRectangle(BrainText04, 20f, 55f, 0, 0);
 
 			BrainText04NextButton = new UIImage(NextButtonTexture);
@@ -339,7 +357,7 @@ namespace YueMod.Common.UI {
 
 
 
-			BrainText05 = new UIText("Don't ask why it's here, I don't know too,\nbut it's name - [c/ff214e:Pile Bunker].", 1.1f);
+			BrainText05 = new UIText(Dialogues.bT05, 1.1f);
 			SetRectangle(BrainText05, 20f, 55f, 0, 0);
 
 			BrainText05NextButton = new UIImage(NextButtonTexture);
@@ -348,7 +366,7 @@ namespace YueMod.Common.UI {
 
 
 
-			BrainText06 = new UIText("Strong weapon for... Hellivators~\nAlso, if something will be below of it upon\nusage, it will be demolished.", 1.1f);
+			BrainText06 = new UIText(Dialogues.bT06, 1.1f);
 			SetRectangle(BrainText06, 20f, 55f, 0, 0);
 
 			BrainText06NextButton = new UIImage(NextButtonTexture);
@@ -357,7 +375,7 @@ namespace YueMod.Common.UI {
 
 
 
-			BrainText07 = new UIText("Use it as you wish and...", 1.1f);
+			BrainText07 = new UIText(Dialogues.bT07, 1.1f);
 			SetRectangle(BrainText07, 20f, 55f, 0, 0);
 
 			BrainText07NextButton = new UIImage(NextButtonTexture);
@@ -366,7 +384,7 @@ namespace YueMod.Common.UI {
 
 
 
-			BrainText08 = new UIText("Get move next!", 1.1f);
+			BrainText08 = new UIText(Dialogues.bT08, 1.1f);
 			SetRectangle(BrainText08, 20f, 55f, 0, 0);
 
 			BrainText08NextButton = new UIImage(EndButtonTexture);
@@ -376,7 +394,7 @@ namespace YueMod.Common.UI {
 
 
 			//When Wall of Flesh has been defeated:
-			WofText01 = new UIText("Disgusting creature... I'm calm, you dealt\nit.", 1.1f);
+			WofText01 = new UIText(Dialogues.wofT01, 1.1f);
 			SetRectangle(WofText01, 20f, 55f, 0, 0);
 
 			WofText01NextButton = new UIImage(NextButtonTexture);
@@ -385,7 +403,7 @@ namespace YueMod.Common.UI {
 
 
 			
-			WofText02 = new UIText("Huh?!", 1.1f);
+			WofText02 = new UIText(Dialogues.wofT02, 1.1f);
 			SetRectangle(WofText02, 20f, 55f, 0, 0);
 
 			WofText02NextButton = new UIImage(NextButtonTexture);
@@ -394,7 +412,7 @@ namespace YueMod.Common.UI {
 
 
 
-			WofText03 = new UIText("...", 1.1f);
+			WofText03 = new UIText(Dialogues.wofT03, 1.1f);
 			SetRectangle(WofText03, 20f, 55f, 0, 0);
 
 			WofText03NextButton = new UIImage(NextButtonTexture);
@@ -403,7 +421,7 @@ namespace YueMod.Common.UI {
 
 
 
-			WofText04 = new UIText("Wait, this gun... He's alive...\nIs this because of using this shard again?\nHow interesting.", 1.1f);
+			WofText04 = new UIText(Dialogues.wofT04, 1.1f);
 			SetRectangle(WofText04, 20f, 55f, 0, 0);
 
 			WofText04NextButton = new UIImage(NextButtonTexture);
@@ -412,7 +430,7 @@ namespace YueMod.Common.UI {
 
 
 
-			WofText05 = new UIText("This revolver is called [c/ff214e:The Donner].\nIt can burn even high tier enemies!\nProbably.", 1.1f);
+			WofText05 = new UIText(Dialogues.wofT05, 1.1f);
 			SetRectangle(WofText05, 20f, 55f, 0, 0);
 
 			WofText05NextButton = new UIImage(NextButtonTexture);
@@ -421,7 +439,7 @@ namespace YueMod.Common.UI {
 
 
 
-			WofText06 = new UIText("The owner uses The Donner in conjunction\nwith Schlag, another revolver.", 1.1f);
+			WofText06 = new UIText(Dialogues.wofT06, 1.1f);
 			SetRectangle(WofText06, 20f, 55f, 0, 0);
 
 			WofText06NextButton = new UIImage(NextButtonTexture);
@@ -430,7 +448,7 @@ namespace YueMod.Common.UI {
 
 
 
-			WofText07 = new UIText("But somehow we got only one of it...\nOr it's replica, who knows.", 1.1f);
+			WofText07 = new UIText(Dialogues.wofT07, 1.1f);
 			SetRectangle(WofText07, 20f, 55f, 0, 0);
 
 			WofText07NextButton = new UIImage(NextButtonTexture);
@@ -439,7 +457,7 @@ namespace YueMod.Common.UI {
 
 
 
-			WofText08 = new UIText("Anyway, continue your adventure.\nI'll notify you when I'll find more\ninformation.", 1.1f);
+			WofText08 = new UIText(Dialogues.wofT08, 1.1f);
 			SetRectangle(WofText08, 20f, 55f, 0, 0);
 
 			WofText08NextButton = new UIImage(NextButtonTexture);
@@ -448,7 +466,7 @@ namespace YueMod.Common.UI {
 
 
 
-			WofText09 = new UIText("That's all for now!", 1.1f);
+			WofText09 = new UIText(Dialogues.wofT09, 1.1f);
 			SetRectangle(WofText09, 20f, 55f, 0, 0);
 
 			WofText09NextButton = new UIImage(EndButtonTexture);
@@ -457,8 +475,73 @@ namespace YueMod.Common.UI {
 
 
 
+			//Any Mech has been defeated:
+			anyMechText01 = new UIText(Dialogues.aMT01, 1.1f);
+			SetRectangle(anyMechText01, 20f, 55f, 0, 0);
+
+			anyMechText01NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(anyMechText01NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			anyMechText01NextButton.OnClick += new MouseEvent(AnyMechText01NextButtonClicked);
+
+
+
+			anyMechText02 = new UIText(Dialogues.aMT02, 1.1f);
+			SetRectangle(anyMechText02, 20f, 55f, 0, 0);
+
+			anyMechText02NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(anyMechText02NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			anyMechText02NextButton.OnClick += new MouseEvent(AnyMechText02NextButtonClicked);
+			
+
+
+			anyMechText03 = new UIText(Dialogues.aMT03, 1.1f);
+			SetRectangle(anyMechText03, 20f, 55f, 0, 0);
+
+			anyMechText03NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(anyMechText03NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			anyMechText03NextButton.OnClick += new MouseEvent(AnyMechText03NextButtonClicked);
+
+
+
+			anyMechText04 = new UIText(Dialogues.aMT04, 1.1f);
+			SetRectangle(anyMechText04, 20f, 55f, 0, 0);
+
+			anyMechText04NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(anyMechText04NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			anyMechText04NextButton.OnClick += new MouseEvent(AnyMechText04NextButtonClicked);
+
+
+
+			anyMechText05 = new UIText(Dialogues.aMT05, 1.1f);
+			SetRectangle(anyMechText05, 20f, 55f, 0, 0);
+
+			anyMechText05NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(anyMechText05NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			anyMechText05NextButton.OnClick += new MouseEvent(AnyMechText05NextButtonClicked);
+
+
+
+			anyMechText06 = new UIText(Dialogues.aMT06, 1.1f);
+			SetRectangle(anyMechText06, 20f, 55f, 0, 0);
+
+			anyMechText06NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(anyMechText06NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			anyMechText06NextButton.OnClick += new MouseEvent(AnyMechText06NextButtonClicked);
+
+
+
+			anyMechText07 = new UIText(Dialogues.aMT07, 1.1f);
+			SetRectangle(anyMechText07, 20f, 55f, 0, 0);
+
+			anyMechText07NextButton = new UIImage(NextButtonTexture);
+			SetRectangle(anyMechText07NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			anyMechText07NextButton.OnClick += new MouseEvent(AnyMechText07NextButtonClicked);
+
+
+
+
 			//Mech has been defeated:
-			MechText01 = new UIText("Ok. Now I see. Listen, we need to talk.", 1.1f);
+			MechText01 = new UIText(Dialogues.MT01, 1.1f);
 			SetRectangle(MechText01, 20f, 55f, 0, 0);
 
 			MechText01NextButton = new UIImage(NextButtonTexture);
@@ -467,7 +550,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText02 = new UIText("You might ask yourself, what am I doing\nhere and what is this shard in your hands.", 1.1f);
+			MechText02 = new UIText(Dialogues.MT02, 1.1f);
 			SetRectangle(MechText02, 20f, 55f, 0, 0);
 
 			MechText02NextButton = new UIImage(NextButtonTexture);
@@ -476,7 +559,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText03 = new UIText("So… This thing is the part of decontami-\nnation technology, literally.", 1.1f);
+			MechText03 = new UIText(Dialogues.MT03, 1.1f);
 			SetRectangle(MechText03, 20f, 55f, 0, 0);
 
 			MechText03NextButton = new UIImage(NextButtonTexture);
@@ -485,7 +568,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText04 = new UIText("“[c/52e8ff:The Tear of blame]” - that's what it was\ncalled. Technology, that could stop endless\nwar. And in some case, it did.", 1.1f);
+			MechText04 = new UIText(Dialogues.MT04, 1.1f);
 			SetRectangle(MechText04, 20f, 55f, 0, 0);
 
 			MechText04NextButton = new UIImage(NextButtonTexture);
@@ -494,7 +577,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText05 = new UIText("The tear created different timelines except\nof the original one and divided confronting\nsides of the war by different dimensions.", 1.1f);
+			MechText05 = new UIText(Dialogues.MT05, 1.1f);
 			SetRectangle(MechText05, 20f, 55f, 0, 0);
 
 			MechText05NextButton = new UIImage(NextButtonTexture);
@@ -503,7 +586,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText06 = new UIText("People from the one timeline doesn't exist\ninto other one. This how scientists\ndecided to stop the war.", 1.1f);
+			MechText06 = new UIText(Dialogues.MT06, 1.1f);
 			SetRectangle(MechText06, 20f, 55f, 0, 0);
 
 			MechText06NextButton = new UIImage(NextButtonTexture);
@@ -512,7 +595,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText07 = new UIText("But something went wrong.\nNew timelines had created the Infection.", 1.1f);
+			MechText07 = new UIText(Dialogues.MT07, 1.1f);
 			SetRectangle(MechText07, 20f, 55f, 0, 0);
 
 			MechText07NextButton = new UIImage(NextButtonTexture);
@@ -521,7 +604,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText08 = new UIText("Was it because of exceeded workload of\nthe system or something else, debates\nwasn't allowed then.", 1.1f);
+			MechText08 = new UIText(Dialogues.MT08, 1.1f);
 			SetRectangle(MechText08, 20f, 55f, 0, 0);
 
 			MechText08NextButton = new UIImage(NextButtonTexture);
@@ -530,7 +613,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText09 = new UIText("Civilization from my dimension organized\nsearches of the solution, but we have\nfailed.", 1.1f);
+			MechText09 = new UIText(Dialogues.MT09, 1.1f);
 			SetRectangle(MechText09, 20f, 55f, 0, 0);
 
 			MechText09NextButton = new UIImage(NextButtonTexture);
@@ -539,7 +622,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText10 = new UIText("Our world was occupied by infection and\npeople had no chance to save themselves.", 1.1f);
+			MechText10 = new UIText(Dialogues.MT10, 1.1f);
 			SetRectangle(MechText10, 20f, 55f, 0, 0);
 
 			MechText10NextButton = new UIImage(NextButtonTexture);
@@ -548,7 +631,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText11 = new UIText("But in one day I found piece as yours.", 1.1f);
+			MechText11 = new UIText(Dialogues.MT11, 1.1f);
 			SetRectangle(MechText11, 20f, 55f, 0, 0);
 
 			MechText11NextButton = new UIImage(NextButtonTexture);
@@ -557,7 +640,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText12 = new UIText("In normal conditions, tear can't be shown\nto any life form, but somehow it happened.", 1.1f);
+			MechText12 = new UIText(Dialogues.MT12, 1.1f);
 			SetRectangle(MechText12, 20f, 55f, 0, 0);
 
 			MechText12NextButton = new UIImage(NextButtonTexture);
@@ -566,7 +649,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText13 = new UIText("I took it and transferred myself to the\ndifferent dimension, to find someone\nwho can help me save my world.", 1.1f);
+			MechText13 = new UIText(Dialogues.MT13, 1.1f);
 			SetRectangle(MechText13, 20f, 55f, 0, 0);
 
 			MechText13NextButton = new UIImage(NextButtonTexture);
@@ -575,7 +658,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText14 = new UIText("And I met you. Human, who found\nthe other shard as me.", 1.1f);
+			MechText14 = new UIText(Dialogues.MT14, 1.1f);
 			SetRectangle(MechText14, 20f, 55f, 0, 0);
 
 			MechText14NextButton = new UIImage(NextButtonTexture);
@@ -584,7 +667,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText15 = new UIText("Anyone who touched the shard can use\nspecific dust to clean the Infection.", 1.1f);
+			MechText15 = new UIText(Dialogues.MT15, 1.1f);
 			SetRectangle(MechText15, 20f, 55f, 0, 0);
 
 			MechText15NextButton = new UIImage(NextButtonTexture);
@@ -593,7 +676,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText16 = new UIText("Because tear grants you it's force to\nchange world structure.", 1.1f);
+			MechText16 = new UIText(Dialogues.MT16, 1.1f);
 			SetRectangle(MechText16, 20f, 55f, 0, 0);
 
 			MechText16NextButton = new UIImage(NextButtonTexture);
@@ -602,7 +685,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText17 = new UIText("I invited one unusual person to help us.\nBe sure you prepared house for her.", 1.1f);
+			MechText17 = new UIText(Dialogues.MT17, 1.1f);
 			SetRectangle(MechText17, 20f, 55f, 0, 0);
 
 			MechText17NextButton = new UIImage(NextButtonTexture);
@@ -611,7 +694,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText18 = new UIText("She's [c/52e8ff:steampunk mechanic] and I showed\nher the recipe of the dust.", 1.1f);
+			MechText18 = new UIText(Dialogues.MT18, 1.1f);
 			SetRectangle(MechText18, 20f, 55f, 0, 0);
 
 			MechText18NextButton = new UIImage(NextButtonTexture);
@@ -620,7 +703,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText19 = new UIText("I guess we can talk to her about capability\nto use it in our situation.", 1.1f);
+			MechText19 = new UIText(Dialogues.MT19, 1.1f);
 			SetRectangle(MechText19, 20f, 55f, 0, 0);
 
 			MechText19NextButton = new UIImage(NextButtonTexture);
@@ -629,7 +712,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText20 = new UIText("Hope you will listen to me because\nthe world in dangerous for now.\nOnly we can save it.", 1.1f);
+			MechText20 = new UIText(Dialogues.MT20, 1.1f);
 			SetRectangle(MechText20, 20f, 55f, 0, 0);
 
 			MechText20NextButton = new UIImage(NextButtonTexture);
@@ -638,7 +721,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText21 = new UIText("...", 1.1f);
+			MechText21 = new UIText(Dialogues.MT21, 1.1f);
 			SetRectangle(MechText21, 20f, 55f, 0, 0);
 
 			MechText21NextButton = new UIImage(NextButtonTexture);
@@ -647,7 +730,7 @@ namespace YueMod.Common.UI {
 
 
 
-			MechText22 = new UIText("Sorry for vent, I'm on emotions for now. \nTake care about [c/52e8ff:steampunk mechanic]\nthat I told you about.", 1.1f);
+			MechText22 = new UIText(Dialogues.MT22, 1.1f);
 			SetRectangle(MechText22, 20f, 55f, 0, 0);
 
 			MechText22NextButton = new UIImage(EndButtonTexture);
@@ -656,14 +739,14 @@ namespace YueMod.Common.UI {
 
 
 
-			area.Append(barFrame);
-			area.Append(noname);
-			area.Append(hideButton);
-			area.Append(dragButton);
+			//area.Append(barFrame);
+			//area.Append(noname);
+			//area.Append(hideButton);
+			//area.Append(dragButton);
 
 
-			area.Append(greetingsText01);
-			area.Append(greetingsText01NextButton);
+			//area.Append(greetingsText01);
+			//area.Append(greetingsText01NextButton);
 			
 
 			Append(area);
@@ -671,27 +754,45 @@ namespace YueMod.Common.UI {
 
 
 
-		bool greetingsCheck = false;
+		public static bool greetingsCheck = false;
 		bool brainCheck = false;
 		bool wofCheck = false;
 		bool mechCheck = false;
 		bool anyMechCheck = false;
-		bool wofFirstTime = true;
+		public static bool greetingsFirstTime = true;
 		bool brainFirstTime = true;
-		bool mechFirstTime = true;
+		bool wofFirstTime = true;
 		bool anyMechFirstTime = true;
-		int switcher = 0;
+		bool mechFirstTime = true;
+		
+		int switcher = -1;
 		float anime = 0f;
 		public override void Update(GameTime gameTime) {
 			
+			if (newCreatedPlayer.newPlayer == true) {
 
+				newCreatedPlayer.newPlayer = false;
+				switcher = 0;
+				greetingsFirstTime = true;
+				greetingsCheck = false;
+				brainCheck = false;
+				wofCheck = false;
+				mechCheck = false;
+				area.RemoveAllChildren();
+				area.Append(barFrame);
+				area.Append(noname);
+				area.Append(hideButton);
+				area.Append(dragButton);
+				area.Append(greetingsText01);
+				area.Append(greetingsText01NextButton);
+			}
 
 			if (!NPC.downedBoss2) {
 				brainFirstTime = true;
 				brainCheck = false;
 			}
 			else if (NPC.downedBoss2 && brainCheck == false) {
-				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
+				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
 				brainCheck = true;
 			}
 
@@ -702,7 +803,7 @@ namespace YueMod.Common.UI {
 				wofCheck = false;
 			}
 			else if (Main.hardMode && wofCheck == false) {
-				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
+				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
 				wofCheck = true;
 			}
 
@@ -713,7 +814,7 @@ namespace YueMod.Common.UI {
 				anyMechCheck = false;
 			}
 			if(NPC.downedMechBossAny && anyMechCheck == false) {
-				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
+				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
 				anyMechCheck = true;
 			}
 
@@ -724,12 +825,14 @@ namespace YueMod.Common.UI {
 				mechCheck = false;
 			}
 			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && mechCheck == false) {
-				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
+				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
 				mechCheck = true;
 			}
 
 
 
+			
+			
 			if(greetingsCheck == true) {
 
 				if ((brainCheck == true && wofCheck == true && brainFirstTime == true && switcher == 0) || (brainCheck == true && wofCheck == false && brainFirstTime == true)) {
@@ -753,6 +856,8 @@ namespace YueMod.Common.UI {
 				else if(anyMechCheck == true && wofFirstTime == false && anyMechFirstTime == true && switcher == 2) {
 					area.RemoveChild(transitionText);
 					area.RemoveChild(transitionTextNextButton);
+					area.Append(anyMechText01);
+					area.Append(anyMechText01NextButton);
 				}
 
 
@@ -805,6 +910,14 @@ namespace YueMod.Common.UI {
 					SetRectangle(WofText07NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 					SetRectangle(WofText08NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 					SetRectangle(WofText09NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+
+					SetRectangle(anyMechText01NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(anyMechText02NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(anyMechText03NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(anyMechText04NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(anyMechText05NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(anyMechText06NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(anyMechText07NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 
 					SetRectangle(MechText01NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 					SetRectangle(MechText02NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
@@ -867,6 +980,14 @@ namespace YueMod.Common.UI {
 					SetRectangle(WofText08NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 					SetRectangle(WofText09NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 
+					SetRectangle(anyMechText01NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(anyMechText02NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(anyMechText03NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(anyMechText04NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(anyMechText05NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(anyMechText06NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(anyMechText07NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+
 					SetRectangle(MechText01NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 					SetRectangle(MechText02NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 					SetRectangle(MechText03NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
@@ -924,6 +1045,7 @@ namespace YueMod.Common.UI {
 			|| BrainText01NextButton.IsMouseHovering || BrainText02NextButton.IsMouseHovering || BrainText03NextButton.IsMouseHovering || BrainText04NextButton.IsMouseHovering || BrainText05NextButton.IsMouseHovering || BrainText06NextButton.IsMouseHovering || BrainText07NextButton.IsMouseHovering
 			|| WofText01NextButton.IsMouseHovering || WofText02NextButton.IsMouseHovering || WofText03NextButton.IsMouseHovering || WofText04NextButton.IsMouseHovering || WofText05NextButton.IsMouseHovering || WofText06NextButton.IsMouseHovering || WofText07NextButton.IsMouseHovering || WofText08NextButton.IsMouseHovering
 			|| MechText01NextButton.IsMouseHovering || MechText02NextButton.IsMouseHovering || MechText03NextButton.IsMouseHovering || MechText04NextButton.IsMouseHovering || MechText05NextButton.IsMouseHovering || MechText06NextButton.IsMouseHovering || MechText07NextButton.IsMouseHovering || MechText08NextButton.IsMouseHovering || MechText09NextButton.IsMouseHovering || MechText10NextButton.IsMouseHovering || MechText11NextButton.IsMouseHovering || MechText12NextButton.IsMouseHovering || MechText13NextButton.IsMouseHovering || MechText14NextButton.IsMouseHovering || MechText15NextButton.IsMouseHovering || MechText16NextButton.IsMouseHovering || MechText17NextButton.IsMouseHovering || MechText18NextButton.IsMouseHovering || MechText19NextButton.IsMouseHovering || MechText20NextButton.IsMouseHovering || MechText21NextButton.IsMouseHovering
+			|| anyMechText01NextButton.IsMouseHovering || anyMechText02NextButton.IsMouseHovering || anyMechText03NextButton.IsMouseHovering || anyMechText04NextButton.IsMouseHovering || anyMechText05NextButton.IsMouseHovering || anyMechText06NextButton.IsMouseHovering
 			)) {
 				Main.instance.MouseText("Next");
     		}
@@ -932,6 +1054,7 @@ namespace YueMod.Common.UI {
 			|| transitionTextNextButton.IsMouseHovering
 			|| BrainText08NextButton.IsMouseHovering
 			|| WofText09NextButton.IsMouseHovering
+			|| anyMechText07NextButton.IsMouseHovering
 			|| MechText22NextButton.IsMouseHovering
 			)) {
 				Main.instance.MouseText("Close the topic");
@@ -973,6 +1096,7 @@ namespace YueMod.Common.UI {
 			area.Append(greetingsText02);
 			area.Append(greetingsText02NextButton);
 			SoundEngine.PlaySound(nextSound);
+			greetingsFirstTime = false;
 		}
 		private void greetingsText02NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
 			area.RemoveChild(greetingsText02);
@@ -1121,7 +1245,6 @@ namespace YueMod.Common.UI {
 				switcher = 1;
 			}
 			else if (wofCheck == true && wofFirstTime == false) {
-				Main.NewText("2");
 				switcher = 2;
 			}
 		}
@@ -1195,12 +1318,72 @@ namespace YueMod.Common.UI {
 			area.Append(transitionTextNextButton);
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
 			SoundEngine.PlaySound(endOfTalk);
-			wofFirstTime = false;
+			//wofFirstTime = false;
 			if (brainCheck == false) {
 				switcher = 0;
 			}
 			else if (brainCheck == true && brainFirstTime == false) {
 				switcher = 2;
+			}
+		}
+
+
+
+		//any Mech
+		private void AnyMechText01NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(anyMechText01);
+			area.RemoveChild(anyMechText01NextButton);
+			area.Append(anyMechText02);
+			area.Append(anyMechText02NextButton);
+			SoundEngine.PlaySound(nextSound);
+			anyMechFirstTime = false;
+		}
+		private void AnyMechText02NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(anyMechText02);
+			area.RemoveChild(anyMechText02NextButton);
+			area.Append(anyMechText03);
+			area.Append(anyMechText03NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void AnyMechText03NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(anyMechText03);
+			area.RemoveChild(anyMechText03NextButton);
+			area.Append(anyMechText04);
+			area.Append(anyMechText04NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void AnyMechText04NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(anyMechText04);
+			area.RemoveChild(anyMechText04NextButton);
+			area.Append(anyMechText05);
+			area.Append(anyMechText05NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void AnyMechText05NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(anyMechText05);
+			area.RemoveChild(anyMechText05NextButton);
+			area.Append(anyMechText06);
+			area.Append(anyMechText06NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void AnyMechText06NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(anyMechText06);
+			area.RemoveChild(anyMechText06NextButton);
+			area.Append(anyMechText07);
+			area.Append(anyMechText07NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void AnyMechText07NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(anyMechText07);
+			area.RemoveChild(anyMechText07NextButton);
+			area.Append(transitionText);
+			area.Append(transitionTextNextButton);
+			SoundEngine.PlaySound(nextSound);
+			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
+			SoundEngine.PlaySound(endOfTalk);
+
+			if (mechCheck == false || mechCheck == true && mechFirstTime == false) {
+				switcher = 3;
 			}
 		}
 
@@ -1393,39 +1576,5 @@ namespace YueMod.Common.UI {
 
 
 	//can be ported into other code file if needed.
-	class YueUISystem : ModSystem
-	{
-		private UserInterface YueUserInterface;
-
-		internal YueUIstate YueUI;
-		public void ShowMyUI() {
-			YueUserInterface?.SetState(YueUI);
-		}
-		public void HideMyUI() {
-			YueUserInterface?.SetState(null);
-		}
-		public override void Load() {
-			if (!Main.dedServ) {
-				YueUI = new();
-				YueUserInterface = new();
-				YueUserInterface.SetState(YueUI);
-			}
-		}
-		public override void UpdateUI(GameTime gameTime) {
-			YueUserInterface?.Update(gameTime);
-		}
-		public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers) {
-			int resourceBarIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Resource Bars"));
-			if (resourceBarIndex != -1) {
-				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
-					"YueMod: YueUIbar",
-					delegate {
-						YueUserInterface.Draw(Main.spriteBatch, new GameTime());
-						return true;
-					},
-					InterfaceScaleType.UI)
-				);
-			}
-		}
-	}
+	
 }
