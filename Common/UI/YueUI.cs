@@ -8,6 +8,7 @@ using Terraria.GameInput;
 using YueMod.Items.Yue;
 using YueMod.Items.Donner;
 using YueMod.Items.PileBunker;
+using YueMod.Items.MetzeleiDisaster;
 using YueMod.Systems;
 using Terraria.Audio;
 using YueMod.Common.UI;
@@ -133,6 +134,8 @@ namespace YueMod.Common.UI {
 		private UIImage anyMechText06NextButton;
 		private UIText anyMechText07;
 		private UIImage anyMechText07NextButton;
+		private UIText anyMechText08;
+		private UIImage anyMechText08NextButton;
 		
 		//Mech textline is here.
 		private UIText MechText01;
@@ -539,6 +542,15 @@ namespace YueMod.Common.UI {
 
 
 
+			anyMechText08 = new UIText(Dialogues.aMT08, 1.1f);
+			SetRectangle(anyMechText08, 20f, 55f, 0, 0);
+
+			anyMechText08NextButton = new UIImage(EndButtonTexture);
+			SetRectangle(anyMechText08NextButton, 450f - 31f, 165f - 31f, 20f, 20f);
+			anyMechText08NextButton.OnClick += new MouseEvent(AnyMechText08NextButtonClicked);
+
+
+
 
 			//Mech has been defeated:
 			MechText01 = new UIText(Dialogues.MT01, 1.1f);
@@ -772,7 +784,7 @@ namespace YueMod.Common.UI {
 			if (newCreatedPlayer.newPlayer == true) {
 
 				newCreatedPlayer.newPlayer = false;
-				switcher = 0;
+				switcher = -1;
 				greetingsFirstTime = true;
 				greetingsCheck = false;
 				brainCheck = false;
@@ -792,7 +804,8 @@ namespace YueMod.Common.UI {
 				brainCheck = false;
 			}
 			else if (NPC.downedBoss2 && brainCheck == false) {
-				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
+				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
+
 				brainCheck = true;
 			}
 
@@ -803,7 +816,8 @@ namespace YueMod.Common.UI {
 				wofCheck = false;
 			}
 			else if (Main.hardMode && wofCheck == false) {
-				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
+				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
+
 				wofCheck = true;
 			}
 
@@ -814,7 +828,8 @@ namespace YueMod.Common.UI {
 				anyMechCheck = false;
 			}
 			if(NPC.downedMechBossAny && anyMechCheck == false) {
-				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
+				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
+
 				anyMechCheck = true;
 			}
 
@@ -825,7 +840,8 @@ namespace YueMod.Common.UI {
 				mechCheck = false;
 			}
 			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && mechCheck == false) {
-				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Use a shard when into your inventory to receive information about main story.");
+				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
+
 				mechCheck = true;
 			}
 
@@ -835,7 +851,7 @@ namespace YueMod.Common.UI {
 			
 			if(greetingsCheck == true) {
 
-				if ((brainCheck == true && wofCheck == true && brainFirstTime == true && switcher == 0) || (brainCheck == true && wofCheck == false && brainFirstTime == true)) {
+				if (brainCheck == true && brainFirstTime == true && switcher == 0) {
 					area.RemoveChild(transitionText);
 					area.RemoveChild(transitionTextNextButton);
 					area.Append(BrainText01);
@@ -844,25 +860,27 @@ namespace YueMod.Common.UI {
 
 
 
-				else if ((wofCheck == true && brainCheck == true && wofFirstTime == true && switcher == 1) || (wofCheck == true && brainCheck == false && wofFirstTime == true) ) {
+				else if (wofCheck == true && wofFirstTime == true && switcher == 1) {
 					area.RemoveChild(transitionText);
 					area.RemoveChild(transitionTextNextButton);
 					area.Append(WofText01);
 					area.Append(WofText01NextButton);
+
 				}
 
 
 
-				else if(anyMechCheck == true && wofFirstTime == false && anyMechFirstTime == true && switcher == 2) {
+				else if(anyMechCheck == true && anyMechFirstTime == true && switcher == 2) {
 					area.RemoveChild(transitionText);
 					area.RemoveChild(transitionTextNextButton);
 					area.Append(anyMechText01);
 					area.Append(anyMechText01NextButton);
+
 				}
 
 
 				//this shit below need to be a switcher == 3, cause of anyMech switcher == 2;
-				else if (mechCheck == true && anyMechFirstTime == false && mechFirstTime == true && switcher == 3) {
+				else if (mechCheck == true && mechFirstTime == true && switcher == 3) {
 					area.RemoveChild(transitionText);
 					area.RemoveChild(transitionTextNextButton);
 					area.Append(MechText01);
@@ -918,6 +936,7 @@ namespace YueMod.Common.UI {
 					SetRectangle(anyMechText05NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 					SetRectangle(anyMechText06NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 					SetRectangle(anyMechText07NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(anyMechText08NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 
 					SetRectangle(MechText01NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 					SetRectangle(MechText02NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
@@ -987,6 +1006,7 @@ namespace YueMod.Common.UI {
 					SetRectangle(anyMechText05NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 					SetRectangle(anyMechText06NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 					SetRectangle(anyMechText07NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
+					SetRectangle(anyMechText08NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 
 					SetRectangle(MechText01NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 					SetRectangle(MechText02NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
@@ -1045,7 +1065,7 @@ namespace YueMod.Common.UI {
 			|| BrainText01NextButton.IsMouseHovering || BrainText02NextButton.IsMouseHovering || BrainText03NextButton.IsMouseHovering || BrainText04NextButton.IsMouseHovering || BrainText05NextButton.IsMouseHovering || BrainText06NextButton.IsMouseHovering || BrainText07NextButton.IsMouseHovering
 			|| WofText01NextButton.IsMouseHovering || WofText02NextButton.IsMouseHovering || WofText03NextButton.IsMouseHovering || WofText04NextButton.IsMouseHovering || WofText05NextButton.IsMouseHovering || WofText06NextButton.IsMouseHovering || WofText07NextButton.IsMouseHovering || WofText08NextButton.IsMouseHovering
 			|| MechText01NextButton.IsMouseHovering || MechText02NextButton.IsMouseHovering || MechText03NextButton.IsMouseHovering || MechText04NextButton.IsMouseHovering || MechText05NextButton.IsMouseHovering || MechText06NextButton.IsMouseHovering || MechText07NextButton.IsMouseHovering || MechText08NextButton.IsMouseHovering || MechText09NextButton.IsMouseHovering || MechText10NextButton.IsMouseHovering || MechText11NextButton.IsMouseHovering || MechText12NextButton.IsMouseHovering || MechText13NextButton.IsMouseHovering || MechText14NextButton.IsMouseHovering || MechText15NextButton.IsMouseHovering || MechText16NextButton.IsMouseHovering || MechText17NextButton.IsMouseHovering || MechText18NextButton.IsMouseHovering || MechText19NextButton.IsMouseHovering || MechText20NextButton.IsMouseHovering || MechText21NextButton.IsMouseHovering
-			|| anyMechText01NextButton.IsMouseHovering || anyMechText02NextButton.IsMouseHovering || anyMechText03NextButton.IsMouseHovering || anyMechText04NextButton.IsMouseHovering || anyMechText05NextButton.IsMouseHovering || anyMechText06NextButton.IsMouseHovering
+			|| anyMechText01NextButton.IsMouseHovering || anyMechText02NextButton.IsMouseHovering || anyMechText03NextButton.IsMouseHovering || anyMechText04NextButton.IsMouseHovering || anyMechText05NextButton.IsMouseHovering || anyMechText06NextButton.IsMouseHovering || anyMechText07NextButton.IsMouseHovering
 			)) {
 				Main.instance.MouseText("Next");
     		}
@@ -1054,7 +1074,7 @@ namespace YueMod.Common.UI {
 			|| transitionTextNextButton.IsMouseHovering
 			|| BrainText08NextButton.IsMouseHovering
 			|| WofText09NextButton.IsMouseHovering
-			|| anyMechText07NextButton.IsMouseHovering
+			|| anyMechText08NextButton.IsMouseHovering
 			|| MechText22NextButton.IsMouseHovering
 			)) {
 				Main.instance.MouseText("Close the topic");
@@ -1171,6 +1191,46 @@ namespace YueMod.Common.UI {
 
 		//Transition
 		private void transitionTextNextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			if (WorldGen.crimson && brainFirstTime && switcher != 0) {
+				switcher = 0;
+				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Defeating The Brain of Cthulhu is required to receive information about the main story.");
+				Main.NewText(switcher);
+				if (brainCheck)  {
+					Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
+				}
+			}
+			else if (!WorldGen.crimson && brainFirstTime && switcher != 0) {
+				switcher = 0;
+				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Defeating The Eater of Worlds is required to receive information about the main story.");
+				Main.NewText(switcher);
+				if (brainCheck)  {
+					Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
+				}
+			}
+			else if (!brainFirstTime && wofFirstTime && switcher != 1) {
+				switcher = 1;
+				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Defeating The Wall of Flesh is required to receive information about the main story.");
+				Main.NewText(switcher);
+				if (wofCheck)  {
+					Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
+				}
+			}
+			else if (!brainFirstTime && !wofFirstTime && anyMechFirstTime == true && switcher != 2) {
+				switcher = 2;
+				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Defeating The Mechanical boss is required to receive information about the main story.");
+				Main.NewText(switcher);
+				if (anyMechCheck)  {
+					Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
+				}
+			}
+			else if (!brainFirstTime && !wofFirstTime && !anyMechFirstTime && mechFirstTime && switcher != 3) {
+				switcher = 3;
+				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Defeating all The Mechanical Bosses is required to receive information about the main story.");
+				Main.NewText(switcher);
+				if (mechCheck)  {
+					Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
+				}
+			}
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
 		}
 
@@ -1237,16 +1297,7 @@ namespace YueMod.Common.UI {
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
 			SoundEngine.PlaySound(endOfTalk);
 
-			
-			if (wofCheck == false) {
-				switcher = 1;
-			}
-			else if (wofCheck == true && wofFirstTime == true) {
-				switcher = 1;
-			}
-			else if (wofCheck == true && wofFirstTime == false) {
-				switcher = 2;
-			}
+			switcher = 2;
 		}
 
 
@@ -1319,12 +1370,8 @@ namespace YueMod.Common.UI {
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
 			SoundEngine.PlaySound(endOfTalk);
 			//wofFirstTime = false;
-			if (brainCheck == false) {
-				switcher = 0;
-			}
-			else if (brainCheck == true && brainFirstTime == false) {
-				switcher = 2;
-			}
+
+			switcher = 3;
 		}
 
 
@@ -1350,6 +1397,7 @@ namespace YueMod.Common.UI {
 			area.RemoveChild(anyMechText03NextButton);
 			area.Append(anyMechText04);
 			area.Append(anyMechText04NextButton);
+			Item.NewItem(Item.GetSource_None(), Main.LocalPlayer.Center, ModContent.ItemType<MetzeleiDisaster>());
 			SoundEngine.PlaySound(nextSound);
 		}
 		private void AnyMechText04NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
@@ -1358,6 +1406,7 @@ namespace YueMod.Common.UI {
 			area.Append(anyMechText05);
 			area.Append(anyMechText05NextButton);
 			SoundEngine.PlaySound(nextSound);
+
 		}
 		private void AnyMechText05NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
 			area.RemoveChild(anyMechText05);
@@ -1376,16 +1425,22 @@ namespace YueMod.Common.UI {
 		private void AnyMechText07NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
 			area.RemoveChild(anyMechText07);
 			area.RemoveChild(anyMechText07NextButton);
+			area.Append(anyMechText08);
+			area.Append(anyMechText08NextButton);
+			SoundEngine.PlaySound(nextSound);
+		}
+		private void AnyMechText08NextButtonClicked(UIMouseEvent evt, UIElement listeningElement) {
+			area.RemoveChild(anyMechText08);
+			area.RemoveChild(anyMechText08NextButton);
 			area.Append(transitionText);
 			area.Append(transitionTextNextButton);
 			SoundEngine.PlaySound(nextSound);
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
 			SoundEngine.PlaySound(endOfTalk);
-
-			if (mechCheck == false || mechCheck == true && mechFirstTime == false) {
-				switcher = 3;
-			}
+			
+			switcher = 4;
 		}
+
 
 
 
@@ -1546,7 +1601,8 @@ namespace YueMod.Common.UI {
 			area.Append(transitionTextNextButton);
 			SoundEngine.PlaySound(endOfTalk);
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
-			switcher = 3;
+			
+			switcher = 5;
 		}
 
 
