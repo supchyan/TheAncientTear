@@ -21,7 +21,7 @@ namespace YueMod.Items.MetzeleiDisaster {
 			Projectile.aiStyle = 0;
 			Projectile.friendly = true;
 			Projectile.DamageType = DamageClass.Ranged;
-			Projectile.damage = 333;
+			//Projectile.damage = 333;
 			Projectile.height = 26;
 			Projectile.width = 26;
         }

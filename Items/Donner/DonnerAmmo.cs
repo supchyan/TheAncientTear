@@ -23,7 +23,7 @@ namespace YueMod.Items.Donner
 			Item.maxStack = 9999;
 			Item.consumable = true; // This marks the item as consumable, making it automatically be consumed when it's used as ammunition, or something else, if possible
 			Item.knockBack = 2f;
-			Item.value = Item.sellPrice(0, 0, 15, 0); // Item price in copper coins (can be converted with Item.sellPrice/Item.buyPrice)
+			Item.value = Item.sellPrice(0, 1, 0, 0); // Item price in copper coins (can be converted with Item.sellPrice/Item.buyPrice)
 			Item.rare = ItemRarityID.Red;
 			Item.shoot = ModContent.ProjectileType<ShootDonnerProjectile>(); // The projectile that weapons fire when using this item as ammunition.
 
@@ -31,9 +31,9 @@ namespace YueMod.Items.Donner
 		}
 
 		public override void AddRecipes() {
-			CreateRecipe(999)
-				.AddIngredient(ItemID.Hellstone, 150)
-				.AddIngredient(ItemID.Obsidian, 120)
+			CreateRecipe(12)
+				.AddIngredient(ItemID.Hellstone, 180)
+				.AddIngredient(ItemID.Obsidian, 180)
 				.Register();
 		}
 	}

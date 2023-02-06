@@ -37,6 +37,7 @@ namespace YueMod.Items.MetzeleiDisaster {
 			Item.scale = 1.7f;
 			Item.autoReuse = false;
 			Item.damage = 333; 
+			Item.crit = 25;
 			Item.DamageType = DamageClass.Ranged;
 			Item.knockBack = 10f; 
 			Item.noMelee = true; 

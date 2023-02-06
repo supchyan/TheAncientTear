@@ -6,9 +6,9 @@ namespace YueMod.Common.UI {
         public static readonly string gT02 = "Did everything go well?";
         public static readonly string gT03 = "Oh, greetings, are you... Not a monster, as\nI can see. Well, in this case, nice to\nmeet you, I'm [c/ff5262:Yue]!";
         public static readonly string gT04 = "And as I can see, this is not my [c/52e8ff:dimension].\nHow excited.";
-        public static readonly string gT05 = "Wait, I know, this item. Is this... A tear\nshard? I won't ask how you got it.";
-        public static readonly string gT06 = "The infection is here too... As I thought.";
-        public static readonly string gT07 = "I mean... I guess we can try to save this\nworld, can't we";
+        public static readonly string gT05 = "Wait, I know, this item. Is this... A tear's\nshard? I won't ask how you got it.";
+        public static readonly string gT06 = "And ha-ha... The infection is here too...\nAs I thought.";
+        public static readonly string gT07 = "I mean... I guess we can try to save this\nworld, can't we?";
         public static readonly string gT08 = "If something interesting happens, you can\nalways call me using a tear shard!";
         public static readonly string gT09 = "As for now, I need time to think about what\nwe should to do next.";
         public static readonly string gT10 = "See you!";

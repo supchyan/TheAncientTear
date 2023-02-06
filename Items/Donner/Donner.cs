@@ -14,7 +14,7 @@ namespace YueMod.Items.Donner {
 	public class Donner : ModItem {
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("The Donner");
-			Tooltip.SetDefault("Unlike any other weapon, this prototype shoots fire ammunition," + "\nthe strength of which can be equal to strong magic spells." + "\nLight weight and high rate of fire, the best gun to deal with the great forces of this world.");
+			Tooltip.SetDefault("Unlike any other weapon, this prototype shoots Slug," + "\nthe strength of which can be equal to strong magic spells." + "\nLight weight and high rate of fire are doing this gun the best to deal with the great forces of this world.");
 		}
 		public override void SetDefaults() {
 			Item.width = 64; 
@@ -22,7 +22,7 @@ namespace YueMod.Items.Donner {
 			Item.scale = 0.6f;
 
 			Item.autoReuse = false;
-			Item.damage = 125; 
+			Item.damage = 225; 
 			Item.DamageType = DamageClass.Ranged;
 			Item.knockBack = 4f; 
 			Item.noMelee = true; 
@@ -32,7 +32,7 @@ namespace YueMod.Items.Donner {
 			Item.useTime = 25; 
 			Item.UseSound = new SoundStyle($"{nameof(YueMod)}/Items/Donner/DonnerShoot");
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.value = Item.sellPrice(5, 0, 0, 0);
+			Item.value = Item.sellPrice(1, 0, 0, 0);
 			Item.shoot = ModContent.ProjectileType<ShootDonnerProjectile>();
 			Item.useAmmo = ModContent.ItemType<DonnerAmmo>();
 		}

@@ -34,6 +34,7 @@ namespace YueMod.Common.UI {
 		Asset<Texture2D> NextButtonTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNext");
 		Asset<Texture2D> NextButtonHoveredTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonNextHover");
 		Asset<Texture2D> EndButtonTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonEnd");
+		Asset<Texture2D> AdviceButtonTexture = ModContent.Request<Texture2D>("YueMod/Common/UI/YueUIbuttonAdvice");
 
 		//main frame is here.
 		private UIElement area;
@@ -317,7 +318,7 @@ namespace YueMod.Common.UI {
 			transitionText = new UIText(Dialogues.tT01, 1.1f);
 			SetRectangle(transitionText, 20f, 55f, 0, 0);
 
-			transitionTextNextButton = new UIImage(EndButtonTexture);
+			transitionTextNextButton = new UIImage(AdviceButtonTexture);
 			SetRectangle(transitionTextNextButton, 450f - 31f, 165f - 31f, 20f, 20f);
 			transitionTextNextButton.OnClick += new MouseEvent(transitionTextNextButtonClicked);
 
@@ -777,10 +778,14 @@ namespace YueMod.Common.UI {
 		bool anyMechFirstTime = true;
 		bool mechFirstTime = true;
 		
+		int eventTimer = 0;
 		int switcher = -1;
 		float anime = 0f;
 		public override void Update(GameTime gameTime) {
 			
+
+			//Here is the strangest thing in code industry. Downed boss system, that works much different, than need be.
+			//I have no idea, why does it's working, but if something is working, better not to touch it, ok?
 			if (newCreatedPlayer.newPlayer == true) {
 
 				newCreatedPlayer.newPlayer = false;
@@ -804,8 +809,6 @@ namespace YueMod.Common.UI {
 				brainCheck = false;
 			}
 			else if (NPC.downedBoss2 && brainCheck == false) {
-				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
-
 				brainCheck = true;
 			}
 
@@ -816,8 +819,6 @@ namespace YueMod.Common.UI {
 				wofCheck = false;
 			}
 			else if (Main.hardMode && wofCheck == false) {
-				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
-
 				wofCheck = true;
 			}
 
@@ -828,8 +829,6 @@ namespace YueMod.Common.UI {
 				anyMechCheck = false;
 			}
 			if(NPC.downedMechBossAny && anyMechCheck == false) {
-				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
-
 				anyMechCheck = true;
 			}
 
@@ -840,15 +839,12 @@ namespace YueMod.Common.UI {
 				mechCheck = false;
 			}
 			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && mechCheck == false) {
-				//Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
-
 				mechCheck = true;
 			}
 
 
 
-			
-			
+			//Switcher system. When some of bosses defeated, UI updating using code below:
 			if(greetingsCheck == true) {
 
 				if (brainCheck == true && brainFirstTime == true && switcher == 0) {
@@ -879,7 +875,7 @@ namespace YueMod.Common.UI {
 				}
 
 
-				//this shit below need to be a switcher == 3, cause of anyMech switcher == 2;
+
 				else if (mechCheck == true && mechFirstTime == true && switcher == 3) {
 					area.RemoveChild(transitionText);
 					area.RemoveChild(transitionTextNextButton);
@@ -887,8 +883,54 @@ namespace YueMod.Common.UI {
 					area.Append(MechText01NextButton);
 				}
 			}
+			
 
+
+			//This is kind of notification system. When player doing something wrong, a mod reminds the goal.
+			//For now it triggered every 10 seconds, but in the future i'll make around every 15-30 mins.
 			base.Update(gameTime);
+			while (switcher == 0) {
+				eventTimer++;
+				if (eventTimer >= 600) {
+					Main.NewText("Le Fishe au chocolat 0");
+					eventTimer = 0;
+				}
+				break;
+			}
+			while (switcher == 1) {
+				eventTimer++;
+				if (eventTimer >= 600) {
+					Main.NewText("Le Fishe au chocolat 1");
+					eventTimer = 0;
+				}
+				break;
+			}
+			while (switcher == 2) {
+				eventTimer++;
+				if (eventTimer >= 600) {
+					Main.NewText("Le Fishe au chocolat 2");
+					eventTimer = 0;
+				}
+				break;
+			}
+			while (switcher == 3) {
+				eventTimer++;
+				if (eventTimer >= 600) {
+					Main.NewText("Le Fishe au chocolat 3");
+					eventTimer = 0;
+				}
+				break;
+			}
+			while (switcher == 4) {
+				eventTimer++;
+				if (eventTimer >= 1200) {
+					Main.NewText("Le Fishe au chocolat 4");
+					eventTimer = 0;
+				}
+				break;
+			}
+			
+
 
 			//Timer for arrows animation
 			switch (Main.GameUpdateCount / 15 % 2) {
@@ -1194,7 +1236,7 @@ namespace YueMod.Common.UI {
 			if (WorldGen.crimson && brainFirstTime && switcher != 0) {
 				switcher = 0;
 				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Defeating The Brain of Cthulhu is required to receive information about the main story.");
-				Main.NewText(switcher);
+				//Main.NewText(switcher);
 				if (brainCheck)  {
 					Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
 				}
@@ -1202,7 +1244,7 @@ namespace YueMod.Common.UI {
 			else if (!WorldGen.crimson && brainFirstTime && switcher != 0) {
 				switcher = 0;
 				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Defeating The Eater of Worlds is required to receive information about the main story.");
-				Main.NewText(switcher);
+				//Main.NewText(switcher);
 				if (brainCheck)  {
 					Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
 				}
@@ -1210,7 +1252,7 @@ namespace YueMod.Common.UI {
 			else if (!brainFirstTime && wofFirstTime && switcher != 1) {
 				switcher = 1;
 				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Defeating The Wall of Flesh is required to receive information about the main story.");
-				Main.NewText(switcher);
+				//Main.NewText(switcher);
 				if (wofCheck)  {
 					Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
 				}
@@ -1218,7 +1260,7 @@ namespace YueMod.Common.UI {
 			else if (!brainFirstTime && !wofFirstTime && anyMechFirstTime == true && switcher != 2) {
 				switcher = 2;
 				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Defeating The Mechanical boss is required to receive information about the main story.");
-				Main.NewText(switcher);
+				//Main.NewText(switcher);
 				if (anyMechCheck)  {
 					Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
 				}
@@ -1226,7 +1268,7 @@ namespace YueMod.Common.UI {
 			else if (!brainFirstTime && !wofFirstTime && !anyMechFirstTime && mechFirstTime && switcher != 3) {
 				switcher = 3;
 				Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Defeating all The Mechanical Bosses is required to receive information about the main story.");
-				Main.NewText(switcher);
+				//Main.NewText(switcher);
 				if (mechCheck)  {
 					Main.NewText("[c/ffcf21:「]" + "[c/ffcf21:System]" + "[c/ffcf21:」]" + "  Game data has been refreshed. Use the Tear's shard when into your inventory to receive information about main story.");
 				}
