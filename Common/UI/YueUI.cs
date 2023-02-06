@@ -786,9 +786,7 @@ namespace YueMod.Common.UI {
 
 			//Here is the strangest thing in code industry. Downed boss system, that works much different, than need be.
 			//I have no idea, why does it's working, but if something is working, better not to touch it, ok?
-			if (newCreatedPlayer.newPlayer == true) {
-
-				newCreatedPlayer.newPlayer = false;
+			if (YueItem.wipe) {
 				switcher = -1;
 				greetingsFirstTime = true;
 				greetingsCheck = false;

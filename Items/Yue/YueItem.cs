@@ -91,7 +91,18 @@ namespace YueMod.Items.Yue
 			if(!myPlayer.HasBuff(ModContent.BuffType<YueBuff>())) {
 				Item.buffType = ModContent.BuffType<YueBuff>();
 			}
-            base.UseAnimation(myPlayer);
-        }
+			
+		}
+		public static bool wipe = false; 
+		public override void HoldItem(Player player) {
+			if(!player.GetModPlayer<newCreatedPlayer>().holdingMyItem && player.HasItem(ModContent.ItemType<YueItem>())) {
+				player.GetModPlayer<newCreatedPlayer>().holdingMyItem = true;
+				wipe = true;
+			}
+			else if (player.GetModPlayer<newCreatedPlayer>().holdingMyItem) {
+				wipe = false;
+			}
+            base.HoldItem(player);
+		}
 	}
 }
