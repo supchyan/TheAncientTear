@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "yhHW29y8OP0WXjO2He55tcU9//W8uoxNJON6Gd1x3afVjaZQ2+WTEM5qYwtRWR3KXihzX40+ZFVm1DQhIBnn2A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Koheva_\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\YueMod\\YueMod.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Koheva_\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
+  ],
+  "logs": []
+}

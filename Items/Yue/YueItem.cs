@@ -17,12 +17,12 @@ namespace YueMod.Items.Yue
 		public override void SetStaticDefaults() {
 
 			DisplayName.SetDefault("Tear's shard");
-			Tooltip.SetDefault("The power of this item literally oozing out. You recognising, this item shouldn't be here... Never." + 
-			"\nLeft click and..." + "\n[c/520c0c:. . .]" +
-			"\n[c/c12020:'We can't control it anymore, prepare yourself!']" + "\n[c/520c0c:. . .]" +
-			"\n[c/c12020:'The world's structure is under threat! It was a bad idea!']" + "\n[c/520c0c:. . .]" +
-			"\n[c/c12020:'Press an emergency button,] [c/e61515:RIGHT NOW!] [c/c12120:Wait, why do you...][c/520c0c:#?&@%#']" + "\n[c/520c0c:. . .]" +
-			"\n[c/520c0c:S0M3ON3 H3LP U$]"
+			Tooltip.SetDefault(
+			"\nLeft click to dive to the bottom of mod content and summon [c/ff5262:Yue]." +
+			"\nWhile completing a bosses, [c/ff5262:Yue] will give to you a part of the mod content." +
+			"\nIf you don't know, what to do at some game stage, look at the chat." +
+			"\nSometimes this will help you to find out the right way." +
+			"\n[c/52e8ff:The power of this item literally oozing out. You recognising, this item shouldn't be here... Never.]"
 			);
 			
 			//Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(30, 4));
@@ -70,7 +70,7 @@ namespace YueMod.Items.Yue
 			return true;
 		}
 		public override void SetDefaults() {
-			Item.rare = ItemRarityID.Master;
+			Item.rare = ItemRarityID.Gray;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.scale = 0.7f;
 		}

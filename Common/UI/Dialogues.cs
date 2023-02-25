@@ -1,6 +1,7 @@
 namespace YueMod.Common.UI {
     internal class Dialogues {
         
+
         //greetings text is below:
         public static readonly string gT01 = "Uuuhhhh...";
         public static readonly string gT02 = "Did everything go well?";

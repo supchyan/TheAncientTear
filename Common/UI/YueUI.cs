@@ -222,6 +222,7 @@ namespace YueMod.Common.UI {
 			//ALL INFO TEXT COLOR IS fff2d6!
 
 
+
 			greetingsText01 = new UIText(Dialogues.gT01, 1.1f);
 			SetRectangle(greetingsText01, 20f, 55f, 0, 0);
 
@@ -889,32 +890,36 @@ namespace YueMod.Common.UI {
 			base.Update(gameTime);
 			while (switcher == 0) {
 				eventTimer++;
-				if (eventTimer >= 600) {
-					Main.NewText("Le Fishe au chocolat 0");
+				if (WorldGen.crimson && eventTimer >= 600 && !brainCheck) {
+					Main.NewText("kill. a brain.");
+					eventTimer = 0;
+				}
+				else if (!WorldGen.crimson && eventTimer >= 600 && !brainCheck){
+					Main.NewText("kill. a worm.");
 					eventTimer = 0;
 				}
 				break;
 			}
 			while (switcher == 1) {
 				eventTimer++;
-				if (eventTimer >= 600) {
-					Main.NewText("Le Fishe au chocolat 1");
+				if (eventTimer >= 600 && !wofCheck) {
+					Main.NewText("kill. a wall.");
 					eventTimer = 0;
 				}
 				break;
 			}
 			while (switcher == 2) {
 				eventTimer++;
-				if (eventTimer >= 600) {
-					Main.NewText("Le Fishe au chocolat 2");
+				if (eventTimer >= 600 && !anyMechCheck) {
+					Main.NewText("kill. a metal.");
 					eventTimer = 0;
 				}
 				break;
 			}
 			while (switcher == 3) {
 				eventTimer++;
-				if (eventTimer >= 600) {
-					Main.NewText("Le Fishe au chocolat 3");
+				if (eventTimer >= 600 && !mechCheck) {
+					Main.NewText("kill. all metal.");
 					eventTimer = 0;
 				}
 				break;
@@ -922,7 +927,7 @@ namespace YueMod.Common.UI {
 			while (switcher == 4) {
 				eventTimer++;
 				if (eventTimer >= 1200) {
-					Main.NewText("Le Fishe au chocolat 4");
+					Main.NewText("kill. la. kill.");
 					eventTimer = 0;
 				}
 				break;
@@ -936,6 +941,7 @@ namespace YueMod.Common.UI {
 				case 0:
 
 					anime = 2f;
+
 
 					SetRectangle(transitionTextNextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 
@@ -1006,7 +1012,7 @@ namespace YueMod.Common.UI {
 				case 1:
 
 					anime = 4f;
-					
+
 					SetRectangle(transitionTextNextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
 
 					SetRectangle(greetingsText01NextButton, 450f - 35f, 165f - 38f + anime, 22f, 22f);
@@ -1083,7 +1089,6 @@ namespace YueMod.Common.UI {
 			if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>()) && dragButton.IsMouseHovering) {
 				Main.instance.MouseText("Hold to drag window");
     		}
-
 			//Hide button hovering
 			if (Main.LocalPlayer.HasBuff(ModContent.BuffType<YueBuff>()) && hideButton.IsMouseHovering) {
 				area.RemoveChild(hideButton);
@@ -1337,7 +1342,7 @@ namespace YueMod.Common.UI {
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
 			SoundEngine.PlaySound(endOfTalk);
 
-			switcher = 2;
+			switcher = 1;
 		}
 
 
@@ -1411,7 +1416,7 @@ namespace YueMod.Common.UI {
 			SoundEngine.PlaySound(endOfTalk);
 			//wofFirstTime = false;
 
-			switcher = 3;
+			switcher = 2;
 		}
 
 
@@ -1478,7 +1483,7 @@ namespace YueMod.Common.UI {
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
 			SoundEngine.PlaySound(endOfTalk);
 			
-			switcher = 4;
+			switcher = 3;
 		}
 
 
@@ -1642,7 +1647,7 @@ namespace YueMod.Common.UI {
 			SoundEngine.PlaySound(endOfTalk);
 			Main.LocalPlayer.ClearBuff(ModContent.BuffType<YueBuff>());
 			
-			switcher = 5;
+			switcher = 4;
 		}
 
 
@@ -1669,8 +1674,4 @@ namespace YueMod.Common.UI {
 			}
 		}
 	}
-
-
-	//can be ported into other code file if needed.
-	
 }
